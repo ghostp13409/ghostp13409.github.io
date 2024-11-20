@@ -47,7 +47,7 @@ const Portfolio = () => {
           <Sidebar />
 
           {/* Main Content */}
-          <div className="flex-1 overflow-y-auto rounded-lg border-2 border-gray-800 ml-4">
+          <div className="flex-1 overflow-y-auto rounded-lg border-2 border-gray-800 ml-4 ">
             {/* Intro Section */}
             <IntroPage />
 
