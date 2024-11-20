@@ -63,7 +63,7 @@ const IntroPage = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         <div className="bg-gradient-to-r from-cyan-800 to-blue-800 p-6 rounded-lg shadow-lg border border-gray-700 relative overflow-hidden transform transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
           <Languages className="m-auto mb-4 h-10 w-10" />
-          <h2 className="text-xl font-bold mb-4"> </h2>
+          <h2 className="text-xl font-bold mb-4">Multilingual</h2>
           <p className="text-gray-300 font-bold text-l mb-8 mt-5 ">
             Java, Python, JavaScript, C#, React, ASP.Net, SQL, NoSQL <br /> You
             Name it, <br /> I got it...
@@ -73,9 +73,9 @@ const IntroPage = () => {
           <DatabaseZap className="m-auto mb-4 h-10 w-10" />
           <h2 className="text-xl font-bold mb-4">Frameworks and stuff</h2>
           <p className="text-gray-300 font-bold text-l mb-8 mt-5">
-              HTML, CSS, Bootstrap, Tailwind, React, ASP.Net, Entity Framework,
-              Node.js, Express, MongoDB, MySQL, EJS, WordPress, LINQ
-              <br /> All that cool Stuff...
+            HTML, CSS, Bootstrap, Tailwind, React, ASP.Net, Entity Framework,
+            Node.js, Express, MongoDB, MySQL, EJS, WordPress, LINQ
+            <br /> All that cool Stuff...
           </p>
         </div>
         <div className="bg-gradient-to-r from-sky-800 to-indigo-800 p-6 rounded-lg shadow-lg border border-gray-700 relative overflow-hidden transform transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
