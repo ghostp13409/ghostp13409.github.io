@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { X } from "lucide-react";
+import { X, CirclePlay } from "lucide-react";
 
 const VideoCard = ({ title, description, tags, videoUrl, thumbnailUrl }) => {
   const [showPreview, setShowPreview] = useState(false);
@@ -32,6 +32,14 @@ const VideoCard = ({ title, description, tags, videoUrl, thumbnailUrl }) => {
               {tag}
             </span>
           ))}
+          <span className="relative flex gap-2 px-3 py-1 bg-pink-400/20 text-pink-400 rounded-full text-s transform transition-transform duration-300 hover:scale-110">
+            <span class="absolute right-0 top-0 flex h-3 w-3">
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-pink-400 opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-3 w-3 bg-pink-500"></span>
+            </span>
+            <CirclePlay />
+            Video
+          </span>
         </div>
 
         <div
