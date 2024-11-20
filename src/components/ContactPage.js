@@ -115,7 +115,7 @@ const ContactPage = () => {
           )}
         </form>
       </div>
-      <div className="absolute bottom-12 left-5 border-dashed rounded-lg border-2 border-gray-500 p-4 animate-bounce duration-800 delay-100 ">
+      <div className="absolute bottom-4 left-5 border-dashed rounded-lg border-2 border-gray-500 p-4">
         <h3 className="text-xl font-bold">
           <ArrowBigLeft className="inline-block " /> Or Contact Me Here
         </h3>

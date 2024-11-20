@@ -7,9 +7,8 @@ const IntroPage = () => {
       </h1>
       <div className="bg-gray-800 p-8 rounded-lg shadow-lg border border-gray-700 relative overflow-hidden transform transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
         <p className="text-xl text-gray-300 mb-6">
-          I'm Parth. I'm a developer and I build stuff! Here's some of the
-          things I can do for you in summary, so you don't have to look for
-          things
+          Hey, I'm Parth! I build cool stuff. Here's a quick rundown of what I
+          can do for you, so you don't have to go look any further.
         </p>
         <div className="flex gap-4">
           <div className="flex items-center gap-2 text-gray-400">
@@ -84,7 +83,7 @@ const IntroPage = () => {
           <p className="text-gray-300 font-bold text-l mb-8 mt-5">
             Git, GitHub, VS Code, JetBrains, Eclipse, Visual Studio, Postman,
             Figma, Trello, Slack
-            <br /> and you can add more in just few days of training...
+            <br /> and I can master even more in just a few days of training...
           </p>
         </div>
       </div>

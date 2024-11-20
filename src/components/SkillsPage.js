@@ -13,22 +13,26 @@ const SkillsPage = () => {
       <div className="grid grid grid-cols-[repeat(auto-fill,_minmax(600px,_1fr))] gap-6 mt-6">
         {/* College | Certificates */}
         <div className="">
-          <h2 className="text-3xl font-bold mb-8 text-gray-300">College</h2>
+          <h2 className="text-3xl font-bold mb-8 text-gray-300">Education</h2>
           <div className="bg-gray-800 p-6 rounded-lg mb-6 mt-6 transform transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
             <h3 className="text-xl font-bold mb-2">
-              Computer Programming and Analysis (Level 3) (Co-op)
+              Computer Programming and Analysis (Co-Op Track)
             </h3>
             <p className="text-gray-400">Conestoga College</p>
           </div>
           <div className="grid grid-cols-3 gap-6">
             <div className="bg-gray-800 p-6 rounded-lg  transform transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
-              <h3 className="text-xl font-bold">GDG Member</h3>
+              <h3 className="text-xl font-bold">
+                Google Developer Group Member
+              </h3>
             </div>
             <div className="bg-gray-800 p-6 rounded-lg  transform transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
-              <h3 className="text-xl font-bold">GPA 4.0</h3>
+              <h3 className="text-xl font-bold">
+                4.0 <br /> GPA
+              </h3>
             </div>
             <div className="bg-gray-800 p-6 rounded-lg  transform transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
-              <h3 className="text-xl font-bold">Review Sessions</h3>
+              <h3 className="text-xl font-bold">Peer Review Sessions</h3>
             </div>
           </div>
         </div>

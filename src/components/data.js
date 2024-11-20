@@ -78,6 +78,7 @@ export const projects = [
       "Recursion",
       "Time-Space Complexity",
     ],
+    contnetUrl: "",
   },
   {
     id: 2,
@@ -89,11 +90,11 @@ export const projects = [
   },
   {
     id: 3,
-    title: "Web Scrapper",
+    title: "web Scraper",
     description:
       "Developed Selenium-based web scrapers for stock and price monitoring on local retail sites. Implemented customized SMS-based alerts using IFTTT APIs, resulting in an early edge on stock details in a competitive market.",
     imageUrl: "images/projects/WEB.jpg",
-    tags: ["Python", "Selenium", "BeautifulSoup"],
+    tags: ["Python", "Selenium", "BeautifulSoup", "IFTTT"],
   },
   {
     id: 4,
@@ -107,7 +108,7 @@ export const projects = [
     id: 5,
     title: "Graphic Design",
     description:
-      "Designed a visually appealing Logos, Posters, Brochures for a local business.",
+      "Designed visually appealing Logos, Posters, Brochures for a local business.",
     imageUrl: "images/projects/Design.jpg",
     tags: ["Canva", "Design", "Creativity"],
   },
@@ -169,7 +170,7 @@ export const CollageProjects = [
   {
     id: 1,
     title: "Spiderman Wiki",
-    description: "An Awesome website about Insomaniac's Spider Man Game.",
+    description: "An Awesome website about Insomniac's Spider Man Game.",
     imageUrl: "images/projects/spierman_wiki.mp4",
     tags: ["HTML", "CSS"],
     thumbnailUrl: "images/projects/spiderman_logo.jpg",
@@ -177,12 +178,12 @@ export const CollageProjects = [
   {
     id: 2,
     title: "Batman Garage Sale",
-    description: "An E-Commerse website with a bit of flavour.",
+    description:
+      "A Batman-themed e-commerce site built with Express.js and MongoDB, offering seamless user experience, data validation, and responsive design.",
     imageUrl: "images/projects/batman_shop.mp4",
     tags: ["JavaScript", "Express", "MongoDB", "EJS"],
     thumbnailUrl: "images/projects/batman_logo.jpg",
   },
-    
 ];
 
 export const DSACont = () => {
