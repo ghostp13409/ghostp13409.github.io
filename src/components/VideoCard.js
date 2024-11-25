@@ -42,7 +42,10 @@ const VideoCard = ({ title, description, tags, videoUrl, thumbnailUrl }) => {
 
       {/* Fullscreen Video Preview */}
       {showPreview && (
-        <div className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center">
+        <div
+          onClick={() => setShowPreview(false)}
+          className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center"
+        >
           <button
             onClick={() => setShowPreview(false)}
             className="absolute top-4 right-4 p-2 bg-gray-800 rounded-lg 
