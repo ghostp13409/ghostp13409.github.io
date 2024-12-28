@@ -1,4 +1,5 @@
 import { CollageProjects, projects } from "./data";
+import DesignPreviewCard from "./DesignPreviewCard";
 import ProjectCard from "./ProjectCard";
 import VideoCard from "./VideoCard";
 
@@ -16,8 +17,19 @@ const ProjectsPage = () => {
             description={p.description}
             tags={p.tags}
             imageUrl={p.imageUrl}
+            contnetUrl={p.contnetUrl}
+            completionDate={p.completionDate}
+            setup={p.setup}
+            webUrl={p.webUrl}
+            webContent={p.webContent}
           />
         ))}
+        <DesignPreviewCard
+          title="Graphic Design"
+          description="Designed visually appealing Logos, Posters, Brochures for a local business."
+          imageUrl="images/projects/Design.jpg"
+          tags={["Canva", "Design", "Creativity"]}
+        />
         {CollageProjects.map((p) => (
           <VideoCard
             key={p.id}

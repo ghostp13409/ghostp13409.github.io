@@ -1,5 +1,6 @@
 import { Github, Linkedin, Instagram } from "lucide-react";
 import { SiLeetcode } from "react-icons/si";
+import DesignPreview from "./DesignPreview";
 
 // Certificates
 
@@ -78,23 +79,37 @@ export const projects = [
       "Recursion",
       "Time-Space Complexity",
     ],
-    contnetUrl: "",
+    contnetUrl: "https://leetcode.com/u/ghostp134/",
+    completionDate: "Since 2023",
+    setup: ["Windows, Java, C#"],
+    webUrl:
+      "https://leetcode-stats.vercel.app/api?username=ghostp134&theme=Dark",
   },
   {
     id: 2,
     title: "LMS – Learning Management System (Open Source)",
     description:
       'Designed and integrated core system component "Progress Items". Developed comprehensive test cases for seamless system integration. Maintained and improved documentation and code formatting.',
-    imageUrl: "images/projects/LMS.jpg",
+    webUrl:
+      "https://socialify.git.ci/ehharvey/lms-2024/image?font=Inter&issues=1&language=1&name=1&pattern=Solid&stargazers=1&theme=Dark",
     tags: ["C#", "Entity Framework", "SQLite", "Testing"],
+    imageUrl: "images/projects/LMS.jpg",
+    contnetUrl: "https://github.com/ehharvey/lms-2024",
+    completionDate: "2024",
+    setup: ["Windows, Visual Studio"],
   },
   {
     id: 3,
-    title: "web Scraper",
+    title: "Web Scraper",
     description:
       "Developed Selenium-based web scrapers for stock and price monitoring on local retail sites. Implemented customized SMS-based alerts using IFTTT APIs, resulting in an early edge on stock details in a competitive market.",
     imageUrl: "images/projects/WEB.jpg",
+    webUrl: "images/projects/WebScrapper.png",
     tags: ["Python", "Selenium", "BeautifulSoup", "IFTTT"],
+    contnetUrl:
+      "https://github.com/ghostp13409/ProjectGraveyard/tree/main/WebScrapers",
+    completionDate: "2022",
+    setup: ["Ubuntu, PyCharm, IFTTT"],
   },
   {
     id: 4,
@@ -102,22 +117,22 @@ export const projects = [
     description:
       "Strategized a volatility-based trading bot. Designed the trading algorithm and simulated paper trading for testing. Deployed and experimented on the Binance platform for performance tuning.",
     imageUrl: "images/projects/Trading.jpg",
+    webUrl: "images/projects/TradingBotPreview.png",
     tags: ["Python", "API", "sqlalchemy", "Pandas", "Web Sockets"],
+    contnetUrl:
+      "https://github.com/ghostp13409/ProjectGraveyard/tree/main/WebScrapers",
+    completionDate: "2022",
+    setup: ["Fedora, VS Code"],
   },
   {
     id: 5,
-    title: "Graphic Design",
-    description:
-      "Designed visually appealing Logos, Posters, Brochures for a local business.",
-    imageUrl: "images/projects/Design.jpg",
-    tags: ["Canva", "Design", "Creativity"],
-  },
-  {
-    id: 6,
     title: "Patient Management App",
     description: "An fullfledged application for managing patient files.",
     imageUrl: "images/projects/coding_templete.jpg",
+    webUrl: "images/projects/PatientManager.png",
     tags: ["C#", "Windows Forms", "OOP", "SOLID"],
+    completionDate: "2024",
+    setup: ["Windows, Visual Studio"],
   },
 ];
 

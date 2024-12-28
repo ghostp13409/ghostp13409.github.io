@@ -16,7 +16,6 @@ const Sidebar = () => {
           }
         });
       };
-
       const observer = new IntersectionObserver(observerCallback, {
         root: null,
         rootMargin: "-50% 0px",
