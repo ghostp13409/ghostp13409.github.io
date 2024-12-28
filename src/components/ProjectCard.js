@@ -65,7 +65,7 @@ const ProjectCard = ({
             <X className="w-6 h-6" />
           </button>
           <div className="min-h-screen px-4 py-8">
-            <div className="relative max-w-6xl mx-auto">
+            <div className="relative max-w-6xl mx-auto max-h-full overflow-y-auto">
               {/* Content Grid */}
               <div
                 onClick={(e) => e.stopPropagation()}

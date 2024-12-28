@@ -1,6 +1,5 @@
 import { Github, Linkedin, Instagram } from "lucide-react";
 import { SiLeetcode } from "react-icons/si";
-import DesignPreview from "./DesignPreview";
 
 // Certificates
 
