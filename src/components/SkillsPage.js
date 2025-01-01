@@ -28,7 +28,7 @@ const SkillsPage = () => {
             </div>
             <div className="bg-gray-800 p-6 rounded-lg  transform transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
               <h3 className="text-xl font-bold">
-                4.0 <br /> GPA
+                3.99 <br /> GPA
               </h3>
             </div>
             <div className="bg-gray-800 p-6 rounded-lg  transform transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">

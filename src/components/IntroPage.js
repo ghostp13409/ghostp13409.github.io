@@ -13,7 +13,7 @@ const IntroPage = () => {
         <div className="flex gap-4">
           <div className="flex items-center gap-2 text-gray-400">
             <Code size={20} />
-            <span>1000+ days of code</span>
+            <span>3+ years of coding</span>
           </div>
           <div className="flex items-center gap-2 text-gray-400">
             <Coffee size={20} />
