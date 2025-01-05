@@ -1,4 +1,3 @@
-import { ArrowBigLeft } from "lucide-react";
 import emailjs from "@emailjs/browser";
 import { useState } from "react";
 import { Loader } from "lucide-react";
@@ -98,7 +97,7 @@ const ContactPage = () => {
             <span className="relative">
               {status.loading ? (
                 <>
-                  <Loader className="animate-spin mr-2" size={16} />
+                  <Loader className="animate-spin mr-2 inline " size={16} />
                   Sending...
                 </>
               ) : (
@@ -117,11 +116,6 @@ const ContactPage = () => {
             </div>
           )}
         </form>
-      </div>
-      <div className="absolute bottom-12 left-5 border-dashed rounded-lg border-2 border-gray-500 p-4">
-        <h3 className="text-xl font-bold">
-          <ArrowBigLeft className="inline-block" /> Or Contact Me Here
-        </h3>
       </div>
     </section>
   );

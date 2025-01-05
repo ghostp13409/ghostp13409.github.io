@@ -162,6 +162,26 @@ export const projects = [
     completionDate: "2024",
     setup: ["Windows, Visual Studio"],
   },
+  {
+    id: 6,
+    title: "...and Personal Portfolio Website",
+    description: "Modern, responsive portfolio website built with React, featuring dark mode, smooth animations, and dynamic content loading. Implements best practices in web development including component-based architecture and responsive design.",
+    imageUrl: "images/projects/Portfolio.jpg",
+    tags: [
+      "React",
+      "Next.js",
+      "Tailwind CSS",
+      "Lucide Icons",
+      "React Icons",
+      "TypeScript",
+      "Responsive Design",
+      "Dark Mode",
+      "Component Architecture"
+    ],
+    contnetUrl: "https://github.com/ghostp13409/ghostp13409.github.io",
+    completionDate: "2024",
+    setup: ["VS Code, Node.js, Git"],
+  },
 ];
 
 // Skills
@@ -213,7 +233,7 @@ export const CollageProjects = [
   {
     id: 1,
     title: "Spiderman Wiki",
-    description: "An Awesome website about Insomniac's Spider Man Game.",
+    description: "An Awesome website about Insomniac's Spider-Man Game.",
     imageUrl: "images/projects/spierman_wiki.mp4",
     tags: ["HTML", "CSS"],
     thumbnailUrl: "images/projects/spiderman_logo.jpg",

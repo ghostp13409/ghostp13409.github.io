@@ -1,91 +1,112 @@
 import { Code, Coffee, DatabaseZap, Languages, Wrench } from "lucide-react";
+import { motion } from "framer-motion";
+
 const IntroPage = () => {
+  const fadeInUp = {
+    initial: { opacity: 0, y: 20 },
+    animate: { opacity: 1, y: 0 },
+    transition: { duration: 0.6 }
+  };
+
   return (
-    <section id="intro" className="min-h-screen p-8">
-      <h1 className="text-4xl font-bold mb-10 bg-gradient-to-r from-blue-400 to-purple-500 text-transparent bg-clip-text">
+    <section id="intro" className="min-h-screen p-6  mx-auto">
+      <motion.h1 
+        {...fadeInUp}
+        className="text-4xl font-bold mb-8 bg-gradient-to-r from-blue-400 to-purple-500 text-transparent bg-clip-text tracking-tight"
+      >
         Welcome! 👋
-      </h1>
-      <div className="bg-gray-800 p-8 rounded-lg shadow-lg border border-gray-700 relative overflow-hidden transform transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
-        <p className="text-xl text-gray-300 mb-6">
-          Hey, I'm Parth! I build cool stuff. Here's a quick rundown of what I
-          can do for you, so you don't have to go look any further.
+      </motion.h1>
+
+      <motion.div 
+        {...fadeInUp}
+        className="bg-gray-800/80 backdrop-blur-sm p-6 rounded-xl shadow-2xl border border-gray-700 relative overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:border-gray-600"
+      >
+        <p className="text-xl text-gray-200 mb-6 leading-relaxed">
+          Hey, I'm Parth! I build cool stuff. Here's a quick rundown of what I can do for you, so you don't have to go look any further.
         </p>
-        <div className="flex gap-4">
-          <div className="flex items-center gap-2 text-gray-400">
-            <Code size={20} />
-            <span>3+ years of coding</span>
+        <div className="flex gap-6">
+          <div className="flex items-center gap-3 text-gray-300 hover:text-blue-400 transition-colors">
+            <Code className="h-6 w-6" />
+            <span className="text-lg">3+ years of coding</span>
           </div>
-          <div className="flex items-center gap-2 text-gray-400">
-            <Coffee size={20} />
-            <span>∞ cups of coffee</span>
+          <div className="flex items-center gap-3 text-gray-300 hover:text-purple-400 transition-colors">
+            <Coffee className="h-6 w-6" />
+            <span className="text-lg">∞ cups of coffee</span>
           </div>
         </div>
-      </div>
+      </motion.div>
 
-      {/* Services Section */}
-
-      <h2 className="text-3xl font-bold mb-8 mt-5 text-gray-300">
+      <motion.h2 
+        {...fadeInUp}
+        className="text-3xl font-bold mb-8 mt-12 text-gray-100"
+      >
         What can I do for you?
-      </h2>
+      </motion.h2>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div className="bg-gray-800 p-6 rounded-lg shadow-lg border border-gray-700 relative overflow-hidden transform transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
-          <h3 className="text-2xl font-bold mb-4">Web Development</h3>
-          <p className="text-gray-300">
-            I can build you a website that looks great and works even better!
-          </p>
-        </div>
-        <div className="bg-gray-800 p-6 rounded-lg shadow-lg border border-gray-700 relative overflow-hidden transform transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
-          <h3 className="text-2xl font-bold mb-4">Software Engineering</h3>
-          <p className="text-gray-300">
-            I can build you a software that solves your problems
-          </p>
-        </div>
-        <div className="bg-gray-800 p-6 rounded-lg shadow-lg border border-gray-700 relative overflow-hidden transform transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
-          <h3 className="text-2xl font-bold mb-4">Database Management</h3>
-          <p className="text-gray-300">
-            I can manage your database and make sure it's secure and efficient
-          </p>
-        </div>
-        <div className="bg-gray-800 p-6 rounded-lg shadow-lg border border-gray-700 relative overflow-hidden transform transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
-          <h3 className="text-2xl font-bold mb-4">Testing</h3>
-          <p className="text-gray-300">
-            I can test your software and make sure no bug goes unnoticed!
-          </p>
-        </div>
+        {/* Services cards with enhanced styling */}
+        {[
+          { title: "Web Development", desc: "I can build you a website that looks great and works even better!" },
+          { title: "Software Engineering", desc: "I can build you a software that solves your problems" },
+          { title: "Database Management", desc: "I can manage your database and make sure it's secure and efficient" },
+          { title: "Testing & Quality Assurance", desc: "I can test your software and make sure no bug goes unnoticed!" }
+        ].map((service, index) => (
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: index * 0.2 }}
+            className="bg-gray-800/80 backdrop-blur-sm p-6 rounded-xl shadow-lg border border-gray-700 group hover:bg-gray-700/50 transition-all duration-300"
+          >
+            <h3 className="text-xl font-bold mb-3 text-gray-100 group-hover:text-blue-400 transition-colors">{service.title}</h3>
+            <p className="text-gray-300 text-base">{service.desc}</p>
+          </motion.div>
+        ))}
       </div>
 
-      {/* SKills */}
-      <h2 className="text-3xl font-bold mb-8 mt-5 text-gray-300">
-        What do I know?
-      </h2>
+      <motion.h2 
+        {...fadeInUp}
+        className="text-3xl font-bold mb-8 mt-12 text-gray-100"
+      >
+        Technical Expertise
+      </motion.h2>
+
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <div className="bg-gradient-to-r from-cyan-800 to-blue-800 p-6 rounded-lg shadow-lg border border-gray-700 relative overflow-hidden transform transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
-          <Languages className="m-auto mb-4 h-10 w-10" />
-          <h2 className="text-xl font-bold mb-4">Multilingual</h2>
-          <p className="text-gray-300 font-bold text-l mb-8 mt-5 ">
-            Java, Python, JavaScript, C#, React, ASP.Net, SQL, NoSQL <br /> You
-            Name it, <br /> I got it...
+        <motion.div 
+          {...fadeInUp}
+          className="bg-gradient-to-br from-cyan-900/90 to-blue-900/90 backdrop-blur-sm p-6 rounded-xl shadow-lg border border-gray-700 hover:scale-105 transition-all duration-300"
+        >
+          <Languages className="m-auto mb-4 h-10 w-10 text-blue-400" />
+          <h2 className="text-xl font-bold mb-4 text-center">Languages</h2>
+          <p className="text-gray-200 text-lg leading-relaxed">
+          Java, Python, JavaScript, C#, React, ASP.Net, SQL, NoSQL
+You Name it,
+I got it...
           </p>
-        </div>
-        <div className="bg-gradient-to-r from-violet-800 to-fuchsia-800 p-6 rounded-lg shadow-lg border border-gray-700 relative overflow-hidden transform transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
-          <DatabaseZap className="m-auto mb-4 h-10 w-10" />
-          <h2 className="text-xl font-bold mb-4">Frameworks and stuff</h2>
-          <p className="text-gray-300 font-bold text-l mb-8 mt-5">
-            HTML, CSS, Bootstrap, Tailwind, React, ASP.Net, Entity Framework,
-            Node.js, Express, MongoDB, MySQL, EJS, WordPress, LINQ
-            <br /> All that cool Stuff...
+        </motion.div>
+
+        <motion.div 
+          {...fadeInUp}
+          className="bg-gradient-to-br from-violet-900/90 to-fuchsia-900/90 backdrop-blur-sm p-6 rounded-xl shadow-lg border border-gray-700 hover:scale-105 transition-all duration-300"
+        >
+          <DatabaseZap className="m-auto mb-4 h-10 w-10 text-purple-400" />
+          <h2 className="text-xl font-bold mb-4 text-center">Frameworks</h2>
+          <p className="text-gray-200 text-lg leading-relaxed">
+          React, ASP.Net, Node.js, Express, MySQL, EJS, Bootstrap, Tailwind
+          <br />All that cool Stuff...
           </p>
-        </div>
-        <div className="bg-gradient-to-r from-sky-800 to-indigo-800 p-6 rounded-lg shadow-lg border border-gray-700 relative overflow-hidden transform transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
-          <Wrench className="m-auto mb-4 h-10 w-10" />
-          <h3 className="text-xl font-bold mb-4">Tools</h3>
-          <p className="text-gray-300 font-bold text-l mb-8 mt-5">
-            Git, GitHub, VS Code, JetBrains, Eclipse, Visual Studio, Postman,
-            Figma, Trello, Slack
-            <br /> and I can master even more in just a few days of training...
+        </motion.div>
+
+        <motion.div 
+          {...fadeInUp}
+          className="bg-gradient-to-br from-sky-900/90 to-indigo-900/90 backdrop-blur-sm p-6 rounded-xl shadow-lg border border-gray-700 hover:scale-105 transition-all duration-300"
+        >
+          <Wrench className="m-auto mb-4 h-10 w-10 text-sky-400" />
+          <h3 className="text-xl font-bold mb-4 text-center">Tools</h3>
+          <p className="text-gray-200 text-lg leading-relaxed">
+            Git, VS Code, JetBrains Suite, Docker, Slack <br />And I can master even more in just a few days of training!
           </p>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
