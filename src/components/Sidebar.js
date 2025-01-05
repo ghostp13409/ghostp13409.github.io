@@ -68,13 +68,15 @@ const Sidebar = () => {
     </>
   );
   return (
-    <div className="w-64 bg-gray-800 p-6 flex flex-col shadow-xl rounded-lg">
+    <div className="w-64 bg-gray-800/30 backdrop-blur-md p-6 flex flex-col shadow-xl rounded-lg border border-gray-700/50">
       <div className="flex flex-col items-center mb-8">
-        <img
-          src="images/profile_logo.jpeg"
-          className="w-26 h-26 bg-gray-700 rounded-full mb-4 hover:scale-110 transition-transform duration-300"
-          alt="Profile logo"
-        />
+        <div className="relative group">
+          <img
+            src="images/profile_logo.jpeg"
+            className="relative w-26 h-26 bg-gray-700 rounded-full mb-4 transform transition-all duration-500 hover:scale-110"
+            alt="Profile logo"
+          />
+        </div>
         <h2 className="text-xl font-bold">Parth Gajjar</h2>
         <p className="text-gray-400">Developer</p>
       </div>

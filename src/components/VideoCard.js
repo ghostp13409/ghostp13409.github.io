@@ -8,10 +8,12 @@ const VideoCard = ({ title, description, tags, videoUrl, thumbnailUrl }) => {
     <>
       <div
         onClick={() => setShowPreview(true)}
-        className="bg-gray-800 p-6 rounded-lg transform transition-all duration-300 
-          hover:scale-105 hover:shadow-xl cursor-pointer group"
+        className="bg-gray-800/50 backdrop-blur-sm p-6 rounded-lg transform transition-all duration-500 
+          hover:scale-105 hover:shadow-xl hover:shadow-blue-500/20 cursor-pointer group relative overflow-hidden"
       >
         {/* Video Thumbnail */}
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-600/10 to-purple-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
         <div className="h-48 bg-gray-700 rounded-lg mb-4 overflow-hidden">
           <img
             src={thumbnailUrl}

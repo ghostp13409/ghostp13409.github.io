@@ -70,7 +70,7 @@ const ContactPage = () => {
             onChange={handleChange}
             placeholder="Name"
             required
-            className="w-full p-2 bg-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none transition-all duration-300"
+            className="w-full p-3 bg-gray-700/50 backdrop-blur-sm rounded-lg focus:ring-2 focus:ring-blue-500/50 outline-none transition-all duration-300 border border-gray-600/50 hover:border-blue-500/50"
           />
           <input
             type="email"
@@ -79,7 +79,7 @@ const ContactPage = () => {
             onChange={handleChange}
             placeholder="Email"
             required
-            className="w-full p-2 bg-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none transition-all duration-300"
+            className="w-full p-3 bg-gray-700/50 backdrop-blur-sm rounded-lg focus:ring-2 focus:ring-blue-500/50 outline-none transition-all duration-300 border border-gray-600/50 hover:border-blue-500/50"
           />
           <textarea
             name="message"
@@ -87,21 +87,24 @@ const ContactPage = () => {
             onChange={handleChange}
             placeholder="Message"
             required
-            className="w-full p-2 bg-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none h-32 transition-all duration-300"
+            className="w-full p-3 bg-gray-700/50 backdrop-blur-sm rounded-lg focus:ring-2 focus:ring-blue-500/50 outline-none h-32 transition-all duration-300 border border-gray-600/50 hover:border-blue-500/50"
           />
           <button
             type="submit"
             disabled={status.loading}
-            className="px-6 py-2 bg-blue-600 rounded-lg hover:bg-blue-700 transition-all duration-300 transform hover:-translate-y-1 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
+            className="relative px-6 py-2 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg transition-all duration-300 transform hover:-translate-y-1 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center overflow-hidden group"
           >
-            {status.loading ? (
-              <>
-                <Loader className="animate-spin mr-2" size={16} />
-                Sending...
-              </>
-            ) : (
-              "Send Message"
-            )}
+            <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            <span className="relative">
+              {status.loading ? (
+                <>
+                  <Loader className="animate-spin mr-2" size={16} />
+                  Sending...
+                </>
+              ) : (
+                "Send Message"
+              )}
+            </span>
           </button>
 
           {status.error && (

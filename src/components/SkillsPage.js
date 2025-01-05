@@ -1,4 +1,4 @@
-import { Skills, Certificates } from "./data";
+import { Skills, Certificates, inProgress } from "./data";
 
 const SkillsPage = () => {
   return (
@@ -7,7 +7,6 @@ const SkillsPage = () => {
         Here's Some Cool Stuff I Did 👨‍🎓
       </h1>
 
-      {/* <ProfileStats className="mt-6" /> */}
 
       {/* Education Section */}
       <div className="grid grid grid-cols-[repeat(auto-fill,_minmax(600px,_1fr))] gap-6 mt-6">
@@ -67,6 +66,43 @@ const SkillsPage = () => {
         </div>
       </div>
 
+      {/* In Progress Section */}
+      <h2 className="text-3xl font-bold mb-8 mt-8 text-gray-300">Currently Learning</h2>
+      <div className="grid grid-cols-[repeat(auto-fill,_minmax(300px,_1fr))] gap-6 mb-8">
+        {inProgress.map((item) => (
+          <div
+            key={item.id}
+            className="group relative p-[1px] bg-gradient-to-br from-yellow-500 to-orange-500 rounded-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+          >
+            <div className="bg-gray-800 p-6 rounded-lg h-full backdrop-blur-sm">
+              <h3 className="text-xl font-bold mb-2 bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent">
+                {item.title}
+              </h3>
+              <a 
+                href={item.sourceUrl}
+                target="_blank"
+                rel="noopener noreferrer" 
+                className="text-gray-400 hover:text-gray-300 transition-colors mb-4 block"
+              >
+                {item.source}
+              </a>
+              <div className="relative pt-1">
+                <div className="overflow-hidden h-2 text-xs flex rounded bg-gray-700">
+                  <div
+                    style={{ width: item.progress }}
+                    className="transition-all duration-500 shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-gradient-to-r from-yellow-500 to-orange-500"
+                  ></div>
+                </div>
+                <span className="text-sm text-gray-400 mt-1">{item.progress}</span>
+              </div>
+              <span className="absolute top-2 right-2 text-xs px-2 py-1 bg-gray-700 rounded-full text-gray-400">
+                {item.sourcePlatform}
+              </span>
+            </div>
+          </div>
+        ))}
+      </div>
+
       {/* Skills Section */}
       <h2 className="text-3xl font-bold mb-8 mt-8 text-gray-300">Skills</h2>
 
@@ -75,22 +111,27 @@ const SkillsPage = () => {
         {Skills.map((skillset) => (
           <div
             key={skillset.id}
-            className="bg-gray-800 p-6 rounded-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+            className="group relative p-[1px] bg-gradient-to-br from-blue-500 to-purple-500 rounded-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
           >
-            <h3 className="text-xl font-bold mb-4">{skillset.title}</h3>
-            <div className="flex flex-wrap gap-2">
-              {skillset.tags.map((tag) => (
-                <span
-                  key={tag}
-                  className={`px-3 py-1 ${skillset.color} rounded-full text-s transform transition-transform duration-300 hover:scale-110`}
-                >
-                  {tag}
-                </span>
-              ))}
+            <div className="bg-gray-800 p-6 rounded-lg h-full backdrop-blur-sm">
+              <h3 className="text-xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">{skillset.title}</h3>
+              <div className="flex flex-wrap gap-2">
+                {skillset.tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className={`px-3 py-1 ${skillset.color} rounded-full text-s transform transition-all duration-300 hover:scale-110 hover:shadow-lg`}
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
             </div>
           </div>
         ))}
       </div>
+
+        
+
     </section>
   );
 };

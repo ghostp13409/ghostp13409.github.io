@@ -38,6 +38,35 @@ export const Certificates = [
   },
 ];
 
+// In-Progress Learnings and Certificates
+
+export const inProgress = [
+  {
+    id: 1,
+    title: "Docker",
+    source: " Docker Foundations Professional Certificate",
+    sourceUrl: "https://www.linkedin.com/learning/paths/docker-foundations-professional-certificate",
+    sourcePlatform: "LinkedIn Learning",
+    progress: "70%"
+  },
+  {
+    id: 2,
+    title: "Kubernetes",
+    source: "Getting Started with Kubernetes",
+    sourceUrl: "https://www.linkedin.com/learning/paths/getting-started-with-kubernetes",
+    sourcePlatform: "LinkedIn Learning",
+    progress: "12%"
+  },
+  {
+    id: 3,
+    title: "Spring MVC",
+    source: "Spring MVC Tutorial Project For Beginners",
+    sourceUrl: "https://www.youtube.com/playlist?list=PL82C6-O4XrHejlASdecIsroNEbZFYo_X1",
+    sourcePlatform: "YouTube",
+    progress: "47%"
+  }
+]
+
 // Social Links
 export const socials = [
   {
@@ -195,7 +224,7 @@ export const CollageProjects = [
     description:
       "A Batman-themed e-commerce site built with Express.js and MongoDB, offering seamless user experience, data validation, and responsive design.",
     imageUrl: "images/projects/batman_shop.mp4",
-    tags: ["JavaScript", "Express", "MongoDB", "EJS"],
+    tags: ["JavaScript", "Express", "MongoDB", "EJS", "HTML", "CSS"],
     thumbnailUrl: "images/projects/batman_logo.jpg",
   },
 ];
