@@ -164,18 +164,12 @@ export const projects = [
   },
   {
     id: 6,
-    title: "...and Personal Portfolio Website",
+    title: "Personal Portfolio Website",
     description: "Modern, responsive portfolio website built with React, featuring dark mode, smooth animations, and dynamic content loading. Implements best practices in web development including component-based architecture and responsive design.",
     imageUrl: "images/projects/Portfolio.jpg",
     tags: [
       "React",
-      "Next.js",
       "Tailwind CSS",
-      "Lucide Icons",
-      "React Icons",
-      "TypeScript",
-      "Responsive Design",
-      "Dark Mode",
       "Component Architecture"
     ],
     contnetUrl: "https://github.com/ghostp13409/ghostp13409.github.io",
