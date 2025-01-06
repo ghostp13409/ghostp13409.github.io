@@ -1,6 +1,7 @@
 import emailjs from "@emailjs/browser";
 import { useState } from "react";
 import { Loader } from "lucide-react";
+import { Hobbies } from "./data";
 
 const ContactPage = () => {
   const [formData, setFormData] = useState({
@@ -13,6 +14,11 @@ const ContactPage = () => {
     error: null,
     success: false,
   });
+  const [clickCount, setClickCount] = useState(0);
+
+  const handleHeadingClick = () => {
+    setClickCount((prev) => prev + 1);
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -56,9 +62,24 @@ const ContactPage = () => {
 
   return (
     <section id="hire" className="relative min-h-screen p-8">
-      <h1 className="text-4xl font-bold mb-10 bg-gradient-to-r from-blue-400 to-purple-500 text-transparent bg-clip-text">
-        Work with Me 👥
-      </h1>
+      <div className="flex items-center justify-center gap-4 mb-10">
+        <h1
+          className="text-4xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 text-transparent bg-clip-text cursor-pointer"
+          onClick={handleHeadingClick}
+        >
+          Work with Me 👥
+        </h1>
+        {clickCount > 0 && clickCount < 5 && (
+          <span className="text-sm text-gray-400 animate-pulse">
+            x{5 - clickCount}
+          </span>
+        )}
+        {clickCount >= 5 && (
+          <span className="text-sm text-green-400 animate-bounce">
+            Secret Section Unlocked!
+          </span>
+        )}
+      </div>
       <div className="bg-gray-800 p-6 rounded-lg mb-6 transform transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
         <h3 className="text-xl font-bold mb-4">Send Me A Message</h3>
         <form onSubmit={handleSubmit} className="space-y-4">
@@ -117,6 +138,33 @@ const ContactPage = () => {
           )}
         </form>
       </div>
+
+      {clickCount >= 5 && (
+        <div className="mt-8 bg-gray-800/50 p-6 rounded-lg transform transition-all duration-500">
+          <h3 className="text-xl font-bold mb-6 text-purple-400">
+            Hobbies 🌟
+          </h3>
+          <div
+            className=" bg-slate-600 drop-shadow-lg p-4 rounded-lg text-gray-300 mb-4 "
+          >
+            <p className="text-gray-300">
+              Congrats! I see you're a curious one, and you have taken enough interest in me to find this section. As a reward, you'll get to know me better by getting to know my hobbies.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {Hobbies.map((hobby) => (
+              <div
+                key={hobby.id}
+                className="bg-gray-700/30 p-4 rounded-lg hover:scale-105 transition-transform duration-300"
+              >
+                <h4 className="text-lg font-semibold mb-2">{hobby.title}</h4>
+                <p className="text-gray-300 text-sm">{hobby.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
     </section>
   );
 };

@@ -1,3 +1,4 @@
+import { title } from "framer-motion/client";
 import { Github, Linkedin, Instagram } from "lucide-react";
 import { SiLeetcode } from "react-icons/si";
 
@@ -36,6 +37,14 @@ export const Certificates = [
     skills: ["C#", "OOP"],
     link: "https://www.linkedin.com/learning/certificates/d72227d379baff564a7ee1f56571ade76057da603f379e6c9f27517017848b7c",
   },
+  {
+    id: 5,
+    title: "Learning Docker",
+    issuer: "LinkedIn Learning",
+    date: "2024",
+    skills: ["Docker"],
+    link: "https://www.linkedin.com/learning/certificates/6a157c70e8820cb0e3b3880a25528e7ff024866533677a76e6459993541360f6"
+  }
 ];
 
 // In-Progress Learnings and Certificates
@@ -280,3 +289,42 @@ export const DSACont = () => {
     </div>
   );
 };
+
+export const Hobbies = [
+  {
+    id: 1,
+    title: "Doom Eternal ☠️",
+    imageUrl: "images/hobbies/doom.jpg",
+    description: "Halo maybe infinite, but Doom is Eternal. I've played it 7 times and you'll probably find me playing it again.",
+  },
+  {
+    id: 2,
+    title: "Game Modding 🎮",
+    imageUrl: "images/hobbies/modding.jpg",
+    description: "I love modding games. Mostly Bathesda games. I got 450 hrs in skyrim and 400 of them would most probably be modding. My current obsession is starfield.",
+  },
+  {
+    id: 3,
+    title: "Distro Hopping 🐧",
+    imageUrl: "images/hobbies/linux.jpg",
+    description: "Borderline obsessed with Distro hopping. I've tried 20+ distros and I'm currently using Fedora. I'm trying out hyprland and really loving it!",
+  },
+  {
+    id: 4,
+    title: "Binge Watching 🎥",
+    imageUrl: "images/hobbies/netflix.jpg",
+    description: "It would be a lie if I said I watch a lot of new content. I just re-watch my comfort shows. After 7th run of HIMYM and 5th run of GOT, I'm currently on my 3rd run of Prison Break.",
+  },
+  {
+    id: 5,
+    title: "Badminton 🏸",
+    imageUrl: "images/hobbies/badminton.jpg",
+    description: "That's right, I'm not only a screen junkie. I love some Sports too. I'm pretty good at badminton. However, havn't played it over a year now. Would love to play again.",
+  },
+  {
+    id: 6,
+    title: "Swimming 🏊🏻‍♂️",
+    imageUrl: "images/hobbies/swimming.jpg",
+    description: "I love swimming. My instructor told me I could go national. That was a long time ago and I've quit swimmning since ages, but I still like to brag. I'm trying to get back into it.",
+  }
+]
