@@ -1,6 +1,6 @@
 import emailjs from "@emailjs/browser";
 import { useState } from "react";
-import { Loader } from "lucide-react";
+import { ArrowLeftIcon, Loader } from "lucide-react";
 import { Hobbies } from "./data";
 
 const ContactPage = () => {
@@ -69,6 +69,11 @@ const ContactPage = () => {
         >
           Work with Me 👥
         </h1>
+        {clickCount === 0 && (
+          <span className="text-sm text-gray-400 flex gap-2 animate-pulse">
+            <ArrowLeftIcon /> click it!
+          </span>
+        )}
         {clickCount > 0 && clickCount < 5 && (
           <span className="text-sm text-gray-400 animate-pulse">
             x{5 - clickCount}
@@ -141,14 +146,12 @@ const ContactPage = () => {
 
       {clickCount >= 5 && (
         <div className="mt-8 bg-gray-800/50 p-6 rounded-lg transform transition-all duration-500">
-          <h3 className="text-xl font-bold mb-6 text-purple-400">
-            Hobbies 🌟
-          </h3>
-          <div
-            className=" bg-slate-600 drop-shadow-lg p-4 rounded-lg text-gray-300 mb-4 "
-          >
+          <h3 className="text-xl font-bold mb-6 text-purple-400">Hobbies 🌟</h3>
+          <div className=" bg-slate-600 drop-shadow-lg p-4 rounded-lg text-gray-300 mb-4 ">
             <p className="text-gray-300">
-              Congrats! I see you're a curious one, and you have taken enough interest in me to find this section. As a reward, you'll get to know me better by getting to know my hobbies.
+              Congrats! I see you're a curious one, and you have taken enough
+              interest in me to find this section. As a reward, you'll get to
+              know me better by getting to know my hobbies.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -164,7 +167,6 @@ const ContactPage = () => {
           </div>
         </div>
       )}
-
     </section>
   );
 };

@@ -1,4 +1,3 @@
-import { title } from "framer-motion/client";
 import { Github, Linkedin, Instagram } from "lucide-react";
 import { SiLeetcode } from "react-icons/si";
 
@@ -39,12 +38,12 @@ export const Certificates = [
   },
   {
     id: 5,
-    title: "Learning Docker",
-    issuer: "LinkedIn Learning",
-    date: "2024",
-    skills: ["Docker"],
-    link: "https://www.linkedin.com/learning/certificates/6a157c70e8820cb0e3b3880a25528e7ff024866533677a76e6459993541360f6"
-  }
+    title: "Docker Foundations Professional Certificate",
+    issuer: "Docker | LinkedIn Learning",
+    date: "2025",
+    skills: ["Docker Products", "Containerization"],
+    link: "https://www.linkedin.com/learning/certificates/d0642a9e13d502832d1304a189831c057e02076130689640955d251807c5ab57",
+  },
 ];
 
 // In-Progress Learnings and Certificates
@@ -52,29 +51,32 @@ export const Certificates = [
 export const inProgress = [
   {
     id: 1,
-    title: "Docker",
-    source: " Docker Foundations Professional Certificate",
-    sourceUrl: "https://www.linkedin.com/learning/paths/docker-foundations-professional-certificate",
+    title: "Kubernetes",
+    source: "Getting Started with Kubernetes",
+    sourceUrl:
+      "https://www.linkedin.com/learning/paths/getting-started-with-kubernetes",
     sourcePlatform: "LinkedIn Learning",
-    progress: "70%"
+    progress: "12%",
   },
   {
     id: 2,
-    title: "Kubernetes",
-    source: "Getting Started with Kubernetes",
-    sourceUrl: "https://www.linkedin.com/learning/paths/getting-started-with-kubernetes",
-    sourcePlatform: "LinkedIn Learning",
-    progress: "12%"
+    title: "Spring MVC",
+    source: "Spring MVC Tutorial Project For Beginners",
+    sourceUrl:
+      "https://www.youtube.com/playlist?list=PL82C6-O4XrHejlASdecIsroNEbZFYo_X1",
+    sourcePlatform: "YouTube",
+    progress: "47%",
   },
   {
     id: 3,
-    title: "Spring MVC",
-    source: "Spring MVC Tutorial Project For Beginners",
-    sourceUrl: "https://www.youtube.com/playlist?list=PL82C6-O4XrHejlASdecIsroNEbZFYo_X1",
-    sourcePlatform: "YouTube",
-    progress: "47%"
-  }
-]
+    title: "Cloud Computing",
+    source: "Azure Fundamentals AZ-900",
+    sourceUrl:
+      "https://learn.microsoft.com/en-us/credentials/certifications/azure-fundamentals/?practice-assessment-type=certification",
+    sourcePlatform: "Microsoft",
+    progress: "5%",
+  },
+];
 
 // Social Links
 export const socials = [
@@ -174,13 +176,10 @@ export const projects = [
   {
     id: 6,
     title: "Personal Portfolio Website",
-    description: "Modern, responsive portfolio website built with React, featuring dark mode, smooth animations, and dynamic content loading. Implements best practices in web development including component-based architecture and responsive design.",
+    description:
+      "Modern, responsive portfolio website built with React, featuring dark mode, smooth animations, and dynamic content loading. Implements best practices in web development including component-based architecture and responsive design.",
     imageUrl: "images/projects/Portfolio.jpg",
-    tags: [
-      "React",
-      "Tailwind CSS",
-      "Component Architecture"
-    ],
+    tags: ["React", "Tailwind CSS", "Component Architecture"],
     contnetUrl: "https://github.com/ghostp13409/ghostp13409.github.io",
     completionDate: "2024",
     setup: ["VS Code, Node.js, Git"],
@@ -295,36 +294,42 @@ export const Hobbies = [
     id: 1,
     title: "Doom Eternal ☠️",
     imageUrl: "images/hobbies/doom.jpg",
-    description: "Halo maybe infinite, but Doom is Eternal. I've played it 7 times and you'll probably find me playing it again.",
+    description:
+      "Halo maybe infinite, but Doom is Eternal. I've played it 7 times and you'll probably find me playing it again.",
   },
   {
     id: 2,
     title: "Game Modding 🎮",
     imageUrl: "images/hobbies/modding.jpg",
-    description: "I love modding games. Mostly Bathesda games. I got 450 hrs in skyrim and 400 of them would most probably be modding. My current obsession is starfield.",
+    description:
+      "I love modding games. Mostly Bathesda games. I got 450 hrs in skyrim and 400 of them would most probably be modding. My current obsession is starfield.",
   },
   {
     id: 3,
     title: "Distro Hopping 🐧",
     imageUrl: "images/hobbies/linux.jpg",
-    description: "Borderline obsessed with Distro hopping. I've tried 20+ distros and I'm currently using Fedora. I'm trying out hyprland and really loving it!",
+    description:
+      "Borderline obsessed with Distro hopping. I've tried 20+ distros and I'm currently using Fedora. I'm trying out hyprland and really loving it!",
   },
   {
     id: 4,
     title: "Binge Watching 🎥",
     imageUrl: "images/hobbies/netflix.jpg",
-    description: "It would be a lie if I said I watch a lot of new content. I just re-watch my comfort shows. After 7th run of HIMYM and 5th run of GOT, I'm currently on my 3rd run of Prison Break.",
+    description:
+      "It would be a lie if I said I watch a lot of new content. I just re-watch my comfort shows. After 7th run of HIMYM and 5th run of GOT, I'm currently on my 3rd run of Prison Break.",
   },
   {
     id: 5,
     title: "Badminton 🏸",
     imageUrl: "images/hobbies/badminton.jpg",
-    description: "That's right, I'm not only a screen junkie. I love some Sports too. I'm pretty good at badminton. However, havn't played it over a year now. Would love to play again.",
+    description:
+      "That's right, I'm not only a screen junkie. I love some Sports too. I'm pretty good at badminton. However, havn't played it over a year now. Would love to play again.",
   },
   {
     id: 6,
     title: "Swimming 🏊🏻‍♂️",
     imageUrl: "images/hobbies/swimming.jpg",
-    description: "I love swimming. My instructor told me I could go national. That was a long time ago and I've quit swimmning since ages, but I still like to brag. I'm trying to get back into it.",
-  }
-]
+    description:
+      "I love swimming. My instructor told me I could go national. That was a long time ago and I've quit swimmning since ages, but I still like to brag. I'm trying to get back into it.",
+  },
+];
