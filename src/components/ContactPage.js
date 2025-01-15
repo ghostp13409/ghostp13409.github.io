@@ -146,7 +146,7 @@ const ContactPage = () => {
 
       {clickCount >= 5 && (
         <div className="mt-8 bg-gray-800/50 p-6 rounded-lg transform transition-all duration-500">
-          <h3 className="text-xl font-bold mb-6 text-purple-400">Hobbies 🌟</h3>
+          <h3 className="text-xl font-bold mb-6 text-purple-400 ">Hobbies 🌟</h3>
           <div className=" bg-slate-600 drop-shadow-lg p-4 rounded-lg text-gray-300 mb-4 ">
             <p className="text-gray-300">
               Congrats! I see you're a curious one, and you have taken enough
@@ -158,10 +158,12 @@ const ContactPage = () => {
             {Hobbies.map((hobby) => (
               <div
                 key={hobby.id}
-                className="bg-gray-700/30 p-4 rounded-lg hover:scale-105 transition-transform duration-300"
+                className="group relative p-[1px] bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 rounded-xl overflow-hidden shadow-lg hover:shadow-blue-500/20 transition-all duration-500"
               >
-                <h4 className="text-lg font-semibold mb-2">{hobby.title}</h4>
-                <p className="text-gray-300 text-sm">{hobby.description}</p>
+                <div className="bg-gray-900/95 backdrop-blur-xl p-6 rounded-xl h-full transition-all duration-300 group-hover:bg-gray-800/90">
+                  <h4 className="text-lg font-semibold text-purple-400 mb-2">{hobby.title}</h4>
+                  <p className="text-gray-300 text-sm">{hobby.description}</p>
+                </div>
               </div>
             ))}
           </div>

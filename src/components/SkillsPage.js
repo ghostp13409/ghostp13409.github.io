@@ -211,7 +211,7 @@ const SkillsPage = () => {
         </motion.div>
       </motion.div>
 
-      {/* Certificates Section - Enhanced cards */}
+      {/* Certificates Section */}
       <motion.div {...fadeInUp} className="space-y-12">
         <h2 className="text-4xl font-bold bg-gradient-to-r from-gray-100 to-gray-300 text-transparent bg-clip-text">
           Professional Certifications
