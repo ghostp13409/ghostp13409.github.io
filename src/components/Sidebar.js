@@ -56,11 +56,14 @@ const Sidebar = () => {
         }
       `}
     >
-      <Icon size={20} className={`
+      <Icon
+        size={20}
+        className={`
         relative z-10 transition-transform duration-300
         ${activeSection === section ? "text-white" : "text-gray-400"}
         group-hover:scale-110
-      `} />
+      `}
+      />
       <span className="relative z-10 text-base">{label}</span>
       {activeSection === section && (
         <motion.div
@@ -73,14 +76,14 @@ const Sidebar = () => {
   );
 
   return (
-    <motion.div 
+    <motion.div
       initial={{ opacity: 0, x: -20 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.6 }}
       className="w-64 bg-gray-800/80 backdrop-blur-md p-6 flex flex-col shadow-xl rounded-xl border border-gray-700/50"
     >
       <div className="flex flex-col items-center mb-8">
-        <motion.div 
+        <motion.div
           className="relative group"
           whileHover={{ scale: 1.05 }}
           transition={{ type: "spring", bounce: 0.5 }}
@@ -102,10 +105,12 @@ const Sidebar = () => {
         <NavButton section="hire" icon={Heart} label="Get in touch" />
       </nav>
 
-      <motion.div 
-        className={`space-y-2 ${activeSection === 'hire' ? 'scale-105' : ''} transition-all duration-300`}
+      <motion.div
+        className={`space-y-2 ${
+          activeSection === "hire" ? "scale-105" : ""
+        } transition-all duration-300`}
       >
-        {activeSection === 'hire' && (
+        {activeSection === "hire" && (
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -114,9 +119,13 @@ const Sidebar = () => {
             Or reach out to me through here...
           </motion.p>
         )}
-        <motion.div 
+        <motion.div
           className={`flex flex-wrap justify-center gap-2 p-2 rounded-lg transition-all duration-300
-            ${activeSection === 'hire' ? 'bg-gray-700/30 border border-gray-600/50' : ''}`}
+            ${
+              activeSection === "hire"
+                ? "bg-gray-700/30 border border-gray-600/50"
+                : ""
+            }`}
         >
           {socials.map((social, index) => (
             <motion.a
@@ -125,9 +134,11 @@ const Sidebar = () => {
               whileTap={{ scale: 0.95 }}
               href={social.url}
               className={`p-2 rounded-lg transition-all duration-300 
-                ${activeSection === 'hire' 
-                  ? 'bg-gray-600/50 hover:bg-gray-500/50 hover:text-blue-400'
-                  : 'bg-gray-700/50 hover:bg-gray-600/50 hover:text-blue-400'}`}
+                ${
+                  activeSection === "hire"
+                    ? "bg-gray-600/50 hover:bg-gray-500/50 hover:text-blue-400"
+                    : "bg-gray-700/50 hover:bg-gray-600/50 hover:text-blue-400"
+                }`}
               target="_blank"
               rel="noopener noreferrer"
             >

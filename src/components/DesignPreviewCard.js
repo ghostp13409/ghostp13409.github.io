@@ -15,8 +15,10 @@ const DesignPreviewCard = ({ title, description, tags, imageUrl }) => {
           hover:border-blue-500/20"
       >
         {/* Card gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-600/10 via-purple-600/10 to-blue-600/10 
-          opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+        <div
+          className="absolute inset-0 bg-gradient-to-br from-blue-600/10 via-purple-600/10 to-blue-600/10 
+          opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+        />
 
         {/* Image container with controlled aspect ratio */}
         <div className="relative aspect-[16/9] w-full overflow-hidden">
@@ -26,15 +28,23 @@ const DesignPreviewCard = ({ title, description, tags, imageUrl }) => {
             className="w-full h-full object-cover object-center transform group-hover:scale-105 
               transition-transform duration-500 ease-out"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-gray-800/80 to-transparent opacity-0 
-            group-hover:opacity-100 transition-opacity duration-300" />
+          <div
+            className="absolute inset-0 bg-gradient-to-t from-gray-800/80 to-transparent opacity-0 
+            group-hover:opacity-100 transition-opacity duration-300"
+          />
         </div>
 
         {/* Content section */}
         <div className="p-5 flex flex-col flex-grow">
-          <h3 className="text-xl font-bold mb-2 text-gray-100 group-hover:text-blue-400 
-            transition-colors duration-300">{title}</h3>
-          <p className="text-gray-400 text-sm mb-4 line-clamp-2 flex-grow">{description}</p>
+          <h3
+            className="text-xl font-bold mb-2 text-gray-100 group-hover:text-blue-400 
+            transition-colors duration-300"
+          >
+            {title}
+          </h3>
+          <p className="text-gray-400 text-sm mb-4 line-clamp-2 flex-grow">
+            {description}
+          </p>
 
           <div className="flex flex-wrap gap-2">
             {tags.map((tag, index) => (
@@ -53,8 +63,10 @@ const DesignPreviewCard = ({ title, description, tags, imageUrl }) => {
 
       {/* Preview Modal */}
       {showPreview && (
-        <div className="fixed inset-0 bg-black/90 z-50 overflow-y-auto"
-             onClick={() => setShowPreview(false)}>
+        <div
+          className="fixed inset-0 bg-black/90 z-50 overflow-y-auto"
+          onClick={() => setShowPreview(false)}
+        >
           <button
             onClick={() => setShowPreview(false)}
             className="absolute top-4 right-4 p-2 bg-gray-800/80 backdrop-blur-sm rounded-lg 

@@ -1,12 +1,6 @@
 import React, { useState } from "react";
 
-const HobbiesCard = ({
-  title,
-  description,
-  tags,
-  imageUrl,
-
-}) => {
+const HobbiesCard = ({ title, description, tags, imageUrl }) => {
   const [showPreview, setShowPreview] = useState(false);
 
   return (
@@ -19,8 +13,10 @@ const HobbiesCard = ({
           hover:border-blue-500/20"
       >
         {/* Card gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-600/10 via-purple-600/10 to-blue-600/10 
-          opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+        <div
+          className="absolute inset-0 bg-gradient-to-br from-blue-600/10 via-purple-600/10 to-blue-600/10 
+          opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+        />
 
         {/* Image container with controlled aspect ratio */}
         {/* <div className="relative aspect-[16/9] w-full overflow-hidden">
@@ -36,10 +32,15 @@ const HobbiesCard = ({
 
         {/* Content section */}
         <div className="p-5 flex flex-col flex-grow">
-          <h3 className="text-xl font-bold mb-2 text-gray-100 group-hover:text-blue-400 
-            transition-colors duration-300">{title}</h3>
-          <p className="text-gray-400 text-sm mb-4 line-clamp-2 flex-grow">{description}</p>
-
+          <h3
+            className="text-xl font-bold mb-2 text-gray-100 group-hover:text-blue-400 
+            transition-colors duration-300"
+          >
+            {title}
+          </h3>
+          <p className="text-gray-400 text-sm mb-4 line-clamp-2 flex-grow">
+            {description}
+          </p>
         </div>
       </div>
     </>

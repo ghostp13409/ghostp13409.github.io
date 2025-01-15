@@ -27,8 +27,10 @@ const ProjectCard = ({
           hover:border-blue-500/20"
       >
         {/* Card gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-600/10 via-purple-600/10 to-blue-600/10 
-          opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+        <div
+          className="absolute inset-0 bg-gradient-to-br from-blue-600/10 via-purple-600/10 to-blue-600/10 
+          opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+        />
 
         {/* Image container with controlled aspect ratio */}
         <div className="relative aspect-[16/9] w-full overflow-hidden">
@@ -38,15 +40,23 @@ const ProjectCard = ({
             className="w-full h-full object-cover object-center transform group-hover:scale-105 
               transition-transform duration-500 ease-out"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-gray-800/80 to-transparent opacity-0 
-            group-hover:opacity-100 transition-opacity duration-300" />
+          <div
+            className="absolute inset-0 bg-gradient-to-t from-gray-800/80 to-transparent opacity-0 
+            group-hover:opacity-100 transition-opacity duration-300"
+          />
         </div>
 
         {/* Content section */}
         <div className="p-5 flex flex-col flex-grow">
-          <h3 className="text-xl font-bold mb-2 text-gray-100 group-hover:text-blue-400 
-            transition-colors duration-300">{title}</h3>
-          <p className="text-gray-400 text-sm mb-4 line-clamp-2 flex-grow">{description}</p>
+          <h3
+            className="text-xl font-bold mb-2 text-gray-100 group-hover:text-blue-400 
+            transition-colors duration-300"
+          >
+            {title}
+          </h3>
+          <p className="text-gray-400 text-sm mb-4 line-clamp-2 flex-grow">
+            {description}
+          </p>
 
           <div className="flex flex-wrap gap-2">
             {tags.map((tag, index) => (
@@ -65,8 +75,10 @@ const ProjectCard = ({
 
       {/* Modal */}
       {showPreview && (
-        <div className="fixed inset-0 bg-black/90 z-50 overflow-y-auto px-4 py-6" 
-          onClick={() => setShowPreview(false)}>
+        <div
+          className="fixed inset-0 bg-black/90 z-50 overflow-y-auto px-4 py-6"
+          onClick={() => setShowPreview(false)}
+        >
           <div className="min-h-screen flex items-center justify-center">
             <div
               onClick={(e) => e.stopPropagation()}
@@ -92,23 +104,34 @@ const ProjectCard = ({
                       className="w-full h-full object-cover object-center"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-transparent to-transparent" />
-                    <h2 className="absolute bottom-6 left-6 text-3xl font-bold text-white">{title}</h2>
+                    <h2 className="absolute bottom-6 left-6 text-3xl font-bold text-white">
+                      {title}
+                    </h2>
                   </div>
                 </div>
 
                 {/* Content Columns */}
                 <div className="space-y-6">
                   <div className="bg-gray-800/50 backdrop-blur rounded-xl p-6">
-                    <h3 className="text-xl font-bold mb-4 text-blue-400">About the Project</h3>
-                    <p className="text-gray-300 leading-relaxed">{description}</p>
+                    <h3 className="text-xl font-bold mb-4 text-blue-400">
+                      About the Project
+                    </h3>
+                    <p className="text-gray-300 leading-relaxed">
+                      {description}
+                    </p>
                   </div>
 
                   {keyFeatures && keyFeatures.length > 0 && (
                     <div className="bg-gray-800/50 backdrop-blur rounded-xl p-6">
-                      <h3 className="text-xl font-bold mb-4 text-blue-400">Key Features</h3>
+                      <h3 className="text-xl font-bold mb-4 text-blue-400">
+                        Key Features
+                      </h3>
                       <ul className="space-y-3">
                         {keyFeatures.map((feature, index) => (
-                          <li key={index} className="flex items-start gap-3 text-gray-300">
+                          <li
+                            key={index}
+                            className="flex items-start gap-3 text-gray-300"
+                          >
                             <span className="text-blue-400 mt-1">•</span>
                             <span>{feature}</span>
                           </li>
@@ -120,7 +143,9 @@ const ProjectCard = ({
 
                 <div className="space-y-6">
                   <div className="bg-gray-800/50 backdrop-blur rounded-xl p-6">
-                    <h3 className="text-xl font-bold mb-4 text-blue-400">Technical Stack</h3>
+                    <h3 className="text-xl font-bold mb-4 text-blue-400">
+                      Technical Stack
+                    </h3>
                     <div className="flex flex-wrap gap-2">
                       {tags?.map((tech, index) => (
                         <span
@@ -135,7 +160,9 @@ const ProjectCard = ({
                   </div>
 
                   <div className="bg-gray-800/50 backdrop-blur rounded-xl p-6">
-                    <h3 className="text-xl font-bold mb-4 text-blue-400">Project Details</h3>
+                    <h3 className="text-xl font-bold mb-4 text-blue-400">
+                      Project Details
+                    </h3>
                     <div className="space-y-4">
                       {setup && (
                         <div className="flex items-center gap-4 text-gray-300">
@@ -171,7 +198,9 @@ const ProjectCard = ({
                       <h3 className="text-xl font-bold mb-4 text-blue-400">
                         Challenges & Solutions
                       </h3>
-                      <p className="text-gray-300 leading-relaxed">{challenges}</p>
+                      <p className="text-gray-300 leading-relaxed">
+                        {challenges}
+                      </p>
                     </div>
                   )}
                 </div>

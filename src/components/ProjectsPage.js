@@ -8,19 +8,19 @@ const ProjectsPage = () => {
   const fadeInUp = {
     initial: { opacity: 0, y: 20 },
     animate: { opacity: 1, y: 0 },
-    transition: { duration: 0.6 }
+    transition: { duration: 0.6 },
   };
 
   return (
     <section id="projects" className="min-h-screen p-6 mx-auto">
-      <motion.h1 
+      <motion.h1
         {...fadeInUp}
         className="text-4xl font-bold mb-8 bg-gradient-to-r from-blue-400 to-purple-500 text-transparent bg-clip-text tracking-tight"
       >
         Projects 🚀
       </motion.h1>
-      
-      <motion.div 
+
+      <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.6 }}
@@ -46,7 +46,7 @@ const ProjectsPage = () => {
             />
           </motion.div>
         ))}
-        
+
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
