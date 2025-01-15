@@ -1,3 +1,5 @@
+import GameCard from "../live_demos/GameCard";
+import MovieRatingCard from "../live_demos/MovieRatingCard";
 import { CollageProjects, projects } from "./data";
 import DesignPreviewCard from "./DesignPreviewCard";
 import ProjectCard from "./ProjectCard";
@@ -76,6 +78,22 @@ const ProjectsPage = () => {
             />
           </motion.div>
         ))}
+      </motion.div>
+
+      <motion.h1
+        {...fadeInUp}
+        className="text-4xl font-bold mb-8 bg-gradient-to-r from-blue-400 to-purple-500 text-transparent bg-clip-text tracking-tight"
+      >
+        Live Demos 🚀
+      </motion.h1>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.6 }}
+        className="grid grid-cols-3 gap-3"
+      >
+        <MovieRatingCard />
+        <GameCard />
       </motion.div>
     </section>
   );
