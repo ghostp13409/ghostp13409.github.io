@@ -48,6 +48,9 @@ const Portfolio = () => {
 
           {/* Main Content */}
           <div className="flex-1 overflow-y-auto rounded-lg border-2 border-gray-800 ml-4 ">
+            <h1 className=" p-4 text-2xl font-bold text-center border-b-2 border-gray-800">
+              Khemara is buffed!
+            </h1>
             {/* Intro Section */}
             <IntroPage />
 
