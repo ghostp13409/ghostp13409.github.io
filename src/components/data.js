@@ -51,6 +51,15 @@ export const Certificates = [
 export const inProgress = [
   {
     id: 1,
+    title: "AZ-204: Azure Developer Associate",
+    source: "Microsoft Certified: Azure Developer Associate",
+    sourceUrl:
+      "https://learn.microsoft.com/en-us/credentials/certifications/azure-developer/?practice-assessment-type=certification",
+    sourcePlatform: "Microsoft",
+    progress: "40%",
+  },
+  {
+    id: 2,
     title: "Kubernetes",
     source: "Getting Started with Kubernetes",
     sourceUrl:
@@ -59,22 +68,13 @@ export const inProgress = [
     progress: "12%",
   },
   {
-    id: 2,
+    id: 3,
     title: "Spring MVC",
     source: "Spring MVC Tutorial Project For Beginners",
     sourceUrl:
       "https://www.youtube.com/playlist?list=PL82C6-O4XrHejlASdecIsroNEbZFYo_X1",
     sourcePlatform: "YouTube",
     progress: "47%",
-  },
-  {
-    id: 3,
-    title: "Cloud Computing",
-    source: "Azure Fundamentals AZ-900",
-    sourceUrl:
-      "https://learn.microsoft.com/en-us/credentials/certifications/azure-fundamentals/?practice-assessment-type=certification",
-    sourcePlatform: "Microsoft",
-    progress: "5%",
   },
 ];
 

@@ -1,5 +1,5 @@
-import GameCard from "../live_demos/GameCard";
-import MovieRatingCard from "../live_demos/MovieRatingCard";
+// import GameCard from "../live_demos/GameCard";
+// import MovieRatingCard from "../live_demos/MovieRatingCard";
 import { CollageProjects, projects } from "./data";
 import DesignPreviewCard from "./DesignPreviewCard";
 import ProjectCard from "./ProjectCard";
@@ -80,7 +80,7 @@ const ProjectsPage = () => {
         ))}
       </motion.div>
 
-      <motion.h1
+      {/* <motion.h1
         {...fadeInUp}
         className="text-4xl font-bold mb-8 bg-gradient-to-r from-blue-400 to-purple-500 text-transparent bg-clip-text tracking-tight"
       >
@@ -94,7 +94,7 @@ const ProjectsPage = () => {
       >
         <MovieRatingCard />
         <GameCard />
-      </motion.div>
+      </motion.div> */}
     </section>
   );
 };
