@@ -1,6 +1,233 @@
 import { Github, Linkedin, Instagram } from "lucide-react";
 import { SiLeetcode } from "react-icons/si";
 
+// Education Data
+export const education = {
+  institution: {
+    name: "Conestoga College",
+    location: "Ontario, Canada",
+    logo: "CC",
+    website: "https://www.conestogac.on.ca/"
+  },
+  program: {
+    title: "Advanced Diploma in Computer Programming and Analysis",
+    type: "Co-operative Education Program",
+    duration: "2024 - 2027",
+    gpa: "3.99",
+    status: "Full-Time Study",
+    totalSemesters: 10,
+    completedSemesters: 4, // 3 complete + half of current semester
+     // (4 / 10) * 100
+      },
+      description: "Comprehensive 3-year program combining theoretical knowledge with practical industry experience through integrated co-operative work terms, preparing students for successful careers in software development.",
+      timeline: [
+        {
+          id: 1,
+          phase: "Semester 1",
+          period: "Winter 2024",
+          status: "completed",
+          courses: [
+            "Programming Fundamentals (C#)",
+            "Web Development Basics", 
+            "Database Concepts",
+            "Mathematics for Computing",
+            "Professional Communications"
+          ],
+          keySkills: ["C# Programming", "HTML/CSS", "SQL Basics", "Problem Solving"],
+          grade: "4.00",
+          gpa: 4.0,
+          highlights: ["Dean's Honor List", "Perfect Attendance", "Top 5% of Class"],
+          projects: ["Console Calculator App", "Static Portfolio Website", "Database Design Project"]
+        },
+        {
+          id: 2,
+          phase: "Semester 2", 
+          period: "Summer 2024",
+          status: "completed",
+          courses: [
+            "Object-Oriented Programming (C#)",
+            "Advanced Web Development (JavaScript)", 
+            "System Analysis & Design",
+            "Data Structures & Algorithms",
+            "Business Intelligence"
+          ],
+          keySkills: ["OOP Concepts", "JavaScript/DOM", "UML Design", "Algorithm Analysis"],
+          grade: "4.00",
+          gpa: 4.0,
+          highlights: ["Study Group Leader", "Outstanding Project Award", "Peer Tutor"],
+          projects: ["Windows Forms Application", "Dynamic Web Application", "System Design Documentation"]
+        },
+        {
+          id: 3,
+          phase: "Semester 3",
+          period: "Fall 2024", 
+          status: "completed",
+          courses: [
+            "Enterprise Applications (ASP.NET)",
+            "Software Testing & Quality Assurance",
+            "Agile Project Management", 
+            "Advanced Database Programming",
+            "Mobile Application Fundamentals"
+          ],
+          keySkills: ["ASP.NET MVC", "Unit Testing", "Agile Methodologies", "Advanced SQL"],
+          grade: "3.99", 
+          gpa: 3.99,
+          highlights: ["Innovation Challenge Finalist", "Scrum Master Role", "Technical Presentation Award"],
+          projects: ["E-commerce Web Application", "Automated Testing Suite", "Team Project Management"]
+        },
+        {
+          id: 4,
+          phase: "Semester 4",
+          period: "Winter 2025",
+          status: "completed",
+          courses: [
+            "Mobile Development (Flutter/Dart)",
+            "Java Enterprise Applications",
+            "Quality Assurance Automation",
+            "Capstone Project Phase I", 
+            "Professional Portfolio Development"
+          ],
+          keySkills: ["Flutter Development", "Java Servlets", "Selenium Testing", "Project Management"],
+          grade: "4.00",
+          gpa: 4.0,
+          highlights: ["Google Developer Group Member", "Industry Mentorship Program", "Capstone Team Lead"],
+          projects: ["Cross-platform Mobile App", "Enterprise Java Application", "Automated Testing Framework"]
+        },
+        {
+          id: 5,
+          phase: "Co-op Term 1",
+          period: "Summer 2025",
+          status: "upcoming",
+          courses: ["Industry Work Experience", "Professional Development", "Workplace Communication"],
+          keySkills: ["Industry Experience", "Professional Development", "Real-world Problem Solving"],
+          grade: "TBD",
+          gpa: null,
+          highlights: ["Open to Work", "Industry-Ready Skills", "Professional Network Building"],
+          projects: ["TBD - Industry Projects"]
+        },
+        {
+          id: 6,
+          phase: "Co-op Term 2", 
+          period: "Fall 2025",
+          status: "upcoming",
+          courses: ["Advanced Industry Experience", "Leadership Development", "Technical Specialization"],
+          keySkills: ["Advanced Technical Skills", "Leadership", "Specialization"],
+          grade: "TBD",
+          gpa: null, 
+          highlights: ["Career Advancement", "Technical Leadership", "Industry Connections"],
+          projects: ["TBD - Advanced Industry Projects"]
+        },
+        {
+          id: 7,
+          phase: "Co-op Term 3",
+          period: "Winter 2026", 
+          status: "upcoming",
+          courses: ["Senior Development Role", "Mentorship Experience", "Industry Innovation"],
+          keySkills: ["Senior Development", "Mentoring", "Innovation"],
+          grade: "TBD",
+          gpa: null,
+          highlights: ["Senior Role Experience", "Mentorship Opportunities", "Innovation Projects"],
+          projects: ["TBD - Senior Level Projects"]
+        },
+        {
+          id: 8,
+          phase: "Co-op Term 4",
+          period: "Summer 2026",
+          status: "upcoming", 
+          courses: ["Capstone Industry Project", "Career Preparation", "Professional Certification"],
+          keySkills: ["Capstone Development", "Career Readiness", "Professional Certification"],
+          grade: "TBD",
+          gpa: null,
+          highlights: ["Capstone Project Completion", "Job Readiness", "Industry Certification"],
+          projects: ["TBD - Capstone Industry Project"]
+        },
+        {
+          id: 9,
+          phase: "Semester 5",
+          period: "Fall 2026",
+          status: "upcoming",
+          courses: [
+            "Advanced Software Architecture",
+            "Emerging Technologies", 
+            "Capstone Project Phase II",
+            "Industry Research Project",
+            "Professional Ethics"
+          ],
+          keySkills: ["Software Architecture", "Emerging Tech", "Research Methods", "Ethics"],
+          grade: "TBD",
+          gpa: null,
+          highlights: ["Advanced Specialization", "Research Experience", "Ethical Leadership"],
+          projects: ["Advanced Architecture Project", "Technology Research", "Final Capstone"]
+        },
+        {
+          id: 10,
+          phase: "Semester 6",
+          period: "Winter 2027",
+          status: "upcoming",
+          courses: [
+            "Advanced Capstone Project",
+            "Industry Transition Preparation",
+            "Professional Portfolio Finalization", 
+            "Career Development",
+            "Technology Innovation"
+          ],
+          keySkills: ["Advanced Development", "Career Preparation", "Innovation", "Leadership"],
+          grade: "TBD",
+          gpa: null,
+          highlights: ["Graduation Preparation", "Industry Transition", "Final Portfolio"],
+          projects: ["Final Capstone Presentation", "Professional Portfolio", "Career Preparation"]
+        }
+      ],
+      achievements: [
+        {
+          title: "Dean's Honor List",
+          subtitle: "All Semesters (3.99 GPA)",
+          icon: "🏆",
+          color: "from-yellow-500 to-orange-500",
+          bgColor: "yellow-500/10",
+          borderColor: "yellow-500/20",
+          description: "Consistently maintained excellence with 3.99 GPA across all completed semesters"
+        },
+        {
+          title: "Google Developer",
+          subtitle: "Community Member",
+          icon: "🌐", 
+          color: "from-blue-500 to-cyan-500",
+          bgColor: "blue-500/10",
+          borderColor: "blue-500/20",
+          description: "Active participant in Google Developer Group events and tech community"
+        },
+        {
+          title: "Study Group Leader",
+          subtitle: "Peer Mentoring & Tutoring",
+          icon: "👥",
+          color: "from-green-500 to-emerald-500", 
+          bgColor: "green-500/10",
+          borderColor: "green-500/20",
+          description: "Leading study groups and providing peer tutoring for programming courses"
+        },
+        {
+          title: "Co-op Ready",
+          subtitle: "Industry Prepared",
+          icon: "💼",
+          color: "from-purple-500 to-pink-500",
+          bgColor: "purple-500/10", 
+          borderColor: "purple-500/20",
+          description: "Prepared for professional work environment with industry-relevant skills"
+        }
+      ],
+      progressStats: {
+        completedSemesters: 3,
+        currentSemester: 4,
+        totalSemesters: 10,
+        completedPercentage: 35, // (3.5 / 10) * 100
+    coopTermsCompleted: 0,
+    totalCoopTerms: 4,
+    academicSemestersCompleted: 3,
+    totalAcademicSemesters: 6
+  }
+};
+
 // Certificates
 
 export const Certificates = [
@@ -104,6 +331,18 @@ export const socials = [
 
 // Projects
 export const projects = [
+  {
+    id: 0,
+    title: "WindChime - A Mindfulness App",
+    description:
+      "WindChime is a flutter-based cross-platform mindfulness application designed to help users achieve better mental well-being through guided meditation, breathwork exercises, and mindfulness practices. The app provides a clean and intuitive interface for users to explore various meditation techniques and track their progress.",
+    imageUrl: "images/projects/WindChime.png",
+    tags: ["Flutter", "Dart", "Firebase", "REST API", "State Management"],
+    contnetUrl: "https://github.com/ghostp13409/WindChime",
+    completionDate: "2025",
+    setup: ["Windows, VS Code, Android Studio"],
+    webUrl: "images/projects/WindChime.png",
+  },
   {
     id: 1,
     title: "DSA Exercises",
