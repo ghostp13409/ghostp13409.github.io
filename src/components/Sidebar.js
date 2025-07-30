@@ -99,7 +99,7 @@ const Sidebar = ({ isMobile = false, onMenuItemClick = () => {} }) => {
     <div className={`${
       isMobile
         ? "w-full bg-gray-900/95 backdrop-blur-xl p-4 sm:p-6 flex flex-col h-full border-r border-gray-700/50 overflow-y-auto"
-        : "w-72 bg-gray-900/60 backdrop-blur-xl p-6 flex flex-col shadow-2xl rounded-3xl border border-gray-700/50 relative overflow-hidden"
+        : "max-w-xs w-full bg-gray-900/60 backdrop-blur-xl p-4 md:p-6 flex flex-col shadow-2xl rounded-3xl border border-gray-700/50 relative overflow-hidden min-h-0 overflow-y-auto"
     }`}>
       {/* Background decoration for desktop */}
       {!isMobile && (
@@ -116,7 +116,7 @@ const Sidebar = ({ isMobile = false, onMenuItemClick = () => {} }) => {
             <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full blur-lg opacity-0 group-hover:opacity-30 transition-opacity duration-300"></div>
             <img
               src="images/profile_logo.jpeg"
-              className={`relative ${isMobile ? "w-16 h-16" : "w-40 h-40"} rounded-full object-cover border-2 border-gray-700/50 transition-all duration-300 group-hover:border-blue-500/50`}
+              className={`relative ${isMobile ? "w-16 h-16" : "w-28 h-28"} rounded-full object-cover border-2 border-gray-700/50 transition-all duration-300 group-hover:border-blue-500/50`}
               alt="Profile logo"
             />
             <div className={`absolute -bottom-1 right-3 ${isMobile ? "w-5 h-5" : "w-6 h-6"} bg-gradient-to-r from-green-400 to-blue-500 rounded-full border-2 border-gray-900 flex items-center justify-center animate-pulse`}>
