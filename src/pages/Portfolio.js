@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Sidebar from "./Sidebar";
+import Sidebar from "../components/Sidebar";
 import SkillsPage from "./SkillsPage";
 import ProjectsPage from "./ProjectsPage";
 import ContactPage from "./ContactPage";
@@ -43,16 +43,20 @@ const Portfolio = () => {
   // Close mobile menu when clicking outside
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (isMobileMenuOpen && !event.target.closest('.mobile-sidebar') && !event.target.closest('.mobile-menu-button')) {
+      if (
+        isMobileMenuOpen &&
+        !event.target.closest(".mobile-sidebar") &&
+        !event.target.closest(".mobile-menu-button")
+      ) {
         setIsMobileMenuOpen(false);
       }
     };
 
     if (isMobileMenuOpen) {
-      document.addEventListener('click', handleClickOutside);
+      document.addEventListener("click", handleClickOutside);
     }
-    
-    return () => document.removeEventListener('click', handleClickOutside);
+
+    return () => document.removeEventListener("click", handleClickOutside);
   }, [isMobileMenuOpen]);
 
   return (

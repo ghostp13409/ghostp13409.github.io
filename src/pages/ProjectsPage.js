@@ -1,7 +1,7 @@
-import { CollageProjects, projects } from "./data";
-import DesignPreviewCard from "./DesignPreviewCard";
-import ProjectCard from "./ProjectCard";
-import VideoCard from "./VideoCard";
+import { CollageProjects, projects } from "../data/data";
+import DesignPreviewCard from "../components/DesignPreviewCard";
+import ProjectCard from "../components/ProjectCard";
+import VideoCard from "../components/VideoCard";
 import { motion } from "framer-motion";
 import { Rocket, Code, Palette } from "lucide-react";
 
@@ -21,7 +21,10 @@ const ProjectsPage = () => {
   };
 
   return (
-    <section id="projects" className="min-h-screen flex flex-col justify-center items-center p-6 relative overflow-hidden">
+    <section
+      id="projects"
+      className="min-h-screen flex flex-col justify-center items-center p-6 relative overflow-hidden"
+    >
       {/* Background decoration */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-20 left-10 w-20 h-20 bg-blue-500/10 rounded-full blur-xl"></div>
@@ -47,10 +50,11 @@ const ProjectsPage = () => {
         <motion.div variants={fadeInUp} className="mb-12">
           <div className="bg-gray-900/60 backdrop-blur-xl p-8 rounded-3xl border border-gray-700/50 shadow-2xl">
             <p className="text-xl sm:text-2xl text-gray-200 leading-relaxed mb-6">
-              Here's a collection of projects 
-              that showcase my journey as a developer. Each one taught me something new and pushed my boundaries.
+              Here's a collection of projects that showcase my journey as a
+              developer. Each one taught me something new and pushed my
+              boundaries.
             </p>
-            
+
             <div className="flex items-center justify-center gap-6 text-gray-400">
               <div className="flex items-center gap-2">
                 <Code className="h-5 w-5" />
@@ -63,8 +67,6 @@ const ProjectsPage = () => {
             </div>
           </div>
         </motion.div>
-
-        
 
         {/* Main Projects Grid */}
         <motion.div
@@ -131,9 +133,10 @@ const ProjectsPage = () => {
         {/* Project Philosophy */}
         <motion.div variants={fadeInUp}>
           <blockquote className="text-lg sm:text-xl italic text-gray-300 max-w-3xl mx-auto leading-relaxed">
-            "I use every project as a learning opportunity. Whether it's mastering a new framework, 
-            solving a complex algorithm, or creating something that genuinely helps people - 
-            I approach each challenge with curiosity and determination."
+            "I use every project as a learning opportunity. Whether it's
+            mastering a new framework, solving a complex algorithm, or creating
+            something that genuinely helps people - I approach each challenge
+            with curiosity and determination."
           </blockquote>
         </motion.div>
       </motion.div>

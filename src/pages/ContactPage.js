@@ -1,7 +1,13 @@
 import emailjs from "@emailjs/browser";
 import { useState } from "react";
-import { ArrowLeftIcon, Loader, Mail, MessageCircle, Heart } from "lucide-react";
-import { Hobbies } from "./data";
+import {
+  ArrowLeftIcon,
+  Loader,
+  Mail,
+  MessageCircle,
+  Heart,
+} from "lucide-react";
+import { Hobbies } from "../data/data";
 import { motion } from "framer-motion";
 
 const ContactPage = () => {
@@ -76,7 +82,10 @@ const ContactPage = () => {
   };
 
   return (
-    <section id="hire" className="min-h-screen flex flex-col justify-center items-center p-6 relative overflow-hidden">
+    <section
+      id="hire"
+      className="min-h-screen flex flex-col justify-center items-center p-6 relative overflow-hidden"
+    >
       {/* Background decoration */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-20 left-10 w-20 h-20 bg-blue-500/10 rounded-full blur-xl"></div>
@@ -102,7 +111,7 @@ const ContactPage = () => {
             </h1>
             {clickCount === 0 && (
               <span className="text-sm text-gray-400 flex items-center gap-2 animate-pulse">
-                <ArrowLeftIcon className="w-4 h-4" /> click it!
+                <ArrowLeftIcon className="w-4 h-4" /> click me!
               </span>
             )}
             {clickCount > 0 && clickCount < 5 && (
@@ -122,11 +131,14 @@ const ContactPage = () => {
         <motion.div variants={fadeInUp} className="mb-12">
           <div className="bg-gray-900/60 backdrop-blur-xl p-8 rounded-3xl border border-gray-700/50 shadow-2xl">
             <p className="text-xl sm:text-2xl text-gray-200 leading-relaxed mb-6">
-              Got a project in mind? Looking for a <span className="text-blue-400 font-semibold">co-op student</span>? 
-              Or just want to chat about tech? I'd love to hear from you! Drop me a message and 
-              let's build something <span className="text-purple-400 font-semibold">amazing</span> together.
+              Got a project in mind? Looking for a{" "}
+              <span className="text-blue-400 font-semibold">co-op student</span>
+              ? Or just want to chat about tech? I'd love to hear from you! Drop
+              me a message and let's build something{" "}
+              <span className="text-purple-400 font-semibold">amazing</span>{" "}
+              together.
             </p>
-            
+
             <div className="flex items-center justify-center gap-6 text-gray-400">
               <div className="flex items-center gap-2">
                 <Mail className="h-5 w-5" />
@@ -147,7 +159,7 @@ const ContactPage = () => {
               <MessageCircle className="h-8 w-8 text-blue-400" />
               Send Me A Message
             </h2>
-            
+
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <input
@@ -169,7 +181,7 @@ const ContactPage = () => {
                   className="w-full p-4 bg-gray-700/50 backdrop-blur-sm rounded-xl focus:ring-2 focus:ring-blue-500/50 outline-none transition-all duration-300 border border-gray-600/50 hover:border-blue-500/50 text-gray-100 placeholder-gray-400"
                 />
               </div>
-              
+
               <textarea
                 name="message"
                 value={formData.message}
@@ -179,7 +191,7 @@ const ContactPage = () => {
                 rows={6}
                 className="w-full p-4 bg-gray-700/50 backdrop-blur-sm rounded-xl focus:ring-2 focus:ring-blue-500/50 outline-none transition-all duration-300 border border-gray-600/50 hover:border-blue-500/50 text-gray-100 placeholder-gray-400 resize-none"
               />
-              
+
               <button
                 type="submit"
                 disabled={status.loading}
@@ -226,15 +238,15 @@ const ContactPage = () => {
                 <Heart className="h-8 w-8 text-purple-400" />
                 My Hobbies
               </h2>
-              
+
               <div className="bg-purple-500/10 border border-purple-500/20 rounded-xl p-6 mb-8">
                 <p className="text-gray-300 leading-relaxed">
-                  Congrats! I see you're a curious one, and you have taken enough
-                  interest in me to find this section. As a reward, you'll get to
-                  know me better by getting to know my hobbies. 🎉
+                  Congrats! I see you're a curious one, and you have taken
+                  enough interest in me to find this section. As a reward,
+                  you'll get to know me better by getting to know my hobbies. 🎉
                 </p>
               </div>
-              
+
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-6 gap-6">
                 {Hobbies.map((hobby, index) => (
                   <motion.div
@@ -247,7 +259,9 @@ const ContactPage = () => {
                     <h3 className="text-lg font-bold text-purple-400 mb-3 group-hover:text-purple-300 transition-colors">
                       {hobby.title}
                     </h3>
-                    <p className="text-gray-300 text-sm leading-relaxed">{hobby.description}</p>
+                    <p className="text-gray-300 text-sm leading-relaxed">
+                      {hobby.description}
+                    </p>
                   </motion.div>
                 ))}
               </div>
