@@ -132,9 +132,9 @@ const ContactPage = () => {
           <div className="bg-gray-900/60 backdrop-blur-xl p-8 rounded-3xl border border-gray-700/50 shadow-2xl">
             <p className="text-xl sm:text-2xl text-gray-200 leading-relaxed mb-6">
               Got a project in mind? Looking for a{" "}
-              <span className="text-blue-400 font-semibold">co-op student</span>
-              ? Or just want to chat about tech? I'd love to hear from you! Drop
-              me a message and let's build something{" "}
+              <span className="text-blue-400 font-semibold">fresher</span>? Or
+              just want to chat about tech? I'd love to hear from you! Drop me a
+              message and let's build something{" "}
               <span className="text-purple-400 font-semibold">amazing</span>{" "}
               together.
             </p>

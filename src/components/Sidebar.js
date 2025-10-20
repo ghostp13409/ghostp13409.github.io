@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Brain, Heart, Rocket, Sparkles, User, Mail } from "lucide-react";
+import { Brain, Heart, Rocket, Sparkles, User } from "lucide-react";
 import { socials } from "../data/data";
 
 const Sidebar = ({ isMobile = false, onMenuItemClick = () => {} }) => {
@@ -168,15 +168,6 @@ const Sidebar = ({ isMobile = false, onMenuItemClick = () => {} }) => {
             <p className="text-sm text-gray-400 font-medium">
               Software Developer
             </p>
-          </div>
-          <div
-            className={`px-3 py-1.5 bg-green-500/10 border border-green-500/20 rounded-full ${
-              isMobile ? "text-center" : ""
-            }`}
-          >
-            <span className="text-xs text-green-400 font-medium">
-              Available for Co-op
-            </span>
           </div>
         </div>
 
