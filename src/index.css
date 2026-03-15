@@ -1,13 +1,141 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import "tailwindcss";
+
+@theme {
+  /* Fresh & Creative Palette using CSS variables for Dark Mode support */
+  --color-page-bg: var(--page-bg);
+  --color-text-main: var(--text-main);
+  --color-text-muted: var(--text-muted);
+  
+  --color-accent-peach: var(--accent-peach);
+  --color-accent-mint: var(--accent-mint);
+  --color-accent-sky: var(--accent-sky);
+  --color-accent-lavender: var(--accent-lavender);
+  
+  --color-card-bg: var(--card-bg);
+  --color-card-border: var(--card-border);
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+:root {
+  --page-bg: oklch(98% 0.01 45);    /* Warm Cream */
+  --text-main: oklch(25% 0.02 260); /* Deep Soft Charcoal */
+  --text-muted: oklch(50% 0.02 260); /* Gentle Gray */
+  
+  --accent-peach: oklch(85% 0.12 45);  /* Soft Peach */
+  --accent-mint: oklch(92% 0.1 145);   /* Muted Mint */
+  --accent-sky: oklch(88% 0.1 245);    /* Airy Sky Blue */
+  --accent-lavender: oklch(90% 0.08 300); /* Soft Lavender */
+  
+  --card-bg: rgba(255, 255, 255, 0.7);
+  --card-border: rgba(0, 0, 0, 0.04);
+}
+
+.dark {
+  --page-bg: oklch(18% 0.02 260);    /* Deep Charcoal/Navy */
+  --text-main: oklch(95% 0.01 45);   /* Off White */
+  --text-muted: oklch(70% 0.02 260);  /* Readable Gray */
+  
+  --accent-peach: oklch(75% 0.15 45);  /* Vibrant Peach */
+  --accent-mint: oklch(80% 0.12 145);  /* Vibrant Mint */
+  --accent-sky: oklch(78% 0.12 245);   /* Vibrant Sky Blue */
+  --accent-lavender: oklch(80% 0.1 300); /* Vibrant Lavender */
+  
+  --card-bg: rgba(255, 255, 255, 0.03);
+  --card-border: rgba(255, 255, 255, 0.08);
+}
+
+@layer base {
+  body {
+    @apply bg-page-bg text-text-main antialiased min-h-screen selection:bg-accent-peach/30 font-sans transition-colors duration-400;
+    background-image: 
+      radial-gradient(at 0% 0%, var(--accent-peach) 0px, transparent 40%),
+      radial-gradient(at 100% 0%, var(--accent-mint) 0px, transparent 40%),
+      radial-gradient(at 50% 100%, var(--accent-sky) 0px, transparent 40%);
+    background-attachment: fixed;
+  }
+
+  .dark body {
+    background-image: 
+      radial-gradient(at 0% 0%, color-mix(in oklch, var(--accent-peach), transparent 80%) 0px, transparent 40%),
+      radial-gradient(at 100% 0%, color-mix(in oklch, var(--accent-mint), transparent 80%) 0px, transparent 40%),
+      radial-gradient(at 50% 100%, color-mix(in oklch, var(--accent-sky), transparent 80%) 0px, transparent 40%);
+  }
+
+  h1, h2, h3, h4 {
+    @apply text-text-main tracking-tight font-black leading-[1.1];
+  }
+
+  /* Polish: Focus states */
+  :focus-visible {
+    @apply outline-2 outline-offset-4 outline-accent-peach/60;
+  }
+}
+
+@layer utilities {
+  .text-fluid-lg {
+    font-size: clamp(3.5rem, 15vw, 12rem);
+    letter-spacing: -0.04em;
+  }
+  
+  .text-fluid-md {
+    font-size: clamp(2.5rem, 10vw, 7rem);
+    letter-spacing: -0.03em;
+  }
+
+  .soft-glass {
+    @apply backdrop-blur-xl bg-white/60 dark:bg-white/5 border border-white/40 dark:border-white/10 shadow-[0_8px_40px_-12px_rgba(0,0,0,0.1)];
+  }
+
+  .creative-card {
+    @apply bg-card-bg backdrop-blur-md border border-card-border rounded-[3rem] shadow-[0_20px_50px_-12px_rgba(0,0,0,0.05)] dark:shadow-[0_20px_50px_-12px_rgba(0,0,0,0.3)] hover:shadow-[0_30px_60px_-12px_rgba(0,0,0,0.08)] dark:hover:shadow-[0_30px_60px_-12px_rgba(0,0,0,0.4)] transition-all duration-300;
+  }
+
+
+  .pill-button {
+    @apply px-8 py-4 rounded-full bg-text-main text-page-bg font-bold hover:scale-[1.03] active:scale-[0.97] transition-all shadow-xl shadow-text-main/10;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-text-main/10 rounded-full hover:bg-text-main/20 transition-all;
+  }
+
+  .grain {
+    position: relative;
+  }
+  .grain::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.02; /* Polished: Lowered grain opacity further for subtle feel */
+    pointer-events: none;
+    background-image: url("https://grainy-gradients.vercel.app/noise.svg");
+    z-index: 50;
+  }
+
+  .dark .grain::before {
+    opacity: 0.04;
+    filter: invert(1);
+  }
+
+  /* Polished: Better line heights for body text */
+  .prose-refined {
+    @apply text-base leading-relaxed text-text-main/70 font-medium max-w-[65ch];
+  }
+
+  .oklch-text-dark {
+    color: oklch(35% 0.05 260); /* Slightly lighter charcoal for better contrast on colors */
+  }
+
+  .dark .oklch-text-dark {
+    color: oklch(95% 0.02 260); /* High contrast for dark mode */
+  }
 }
