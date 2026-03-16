@@ -34,14 +34,14 @@ const ExperienceCard = ({ experience }: ExperienceCardProps) => {
                     </Badge>
                   )}
                 </div>
-                <p className="text-lg font-bold text-text-muted italic opacity-80">
+                <p className="text-lg font-bold text-text-muted opacity-80">
                   {experience.company}
                 </p>
               </div>
             </div>
           </div>
 
-          <div className="flex flex-wrap gap-6 text-xs font-black text-text-muted uppercase tracking-widest pl-1">
+          <div className="flex flex-wrap gap-6 text-[10px] font-black text-text-muted uppercase tracking-widest pl-1">
             <div className="flex items-center gap-2">
               <Calendar className="w-4 h-4 text-accent-sky opacity-60" />
               {experience.period}
@@ -62,12 +62,12 @@ const ExperienceCard = ({ experience }: ExperienceCardProps) => {
         </div>
       </div>
 
-      <div className="mt-10 pt-10 space-y-6 relative z-10 border-t border-black/5">
+      <div className="mt-8 pt-8 space-y-6 relative z-10 border-t border-black/5">
         <ul className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10">
           {experience.description.map((item, i) => (
-            <li key={i} className="flex gap-4 text-base text-text-main/70 font-medium leading-relaxed group/item italic">
+            <li key={i} className="flex gap-4 text-sm text-text-main/70 font-bold leading-relaxed group/item uppercase tracking-tight">
               <div className="mt-1 shrink-0">
-                <Star className="w-4 h-4 text-accent-peach transition-transform group-hover/item:scale-125" fill="currentColor" opacity={0.15} />
+                <div className="w-1.5 h-1.5 rounded-full bg-accent-peach mt-1.5" />
               </div>
               <span className="group-hover/item:text-text-main transition-colors">{item}</span>
             </li>

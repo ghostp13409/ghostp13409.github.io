@@ -23,17 +23,14 @@ const Home = () => {
 
       <div className="max-w-4xl relative z-10">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
           transition={{ type: "spring", stiffness: 260, damping: 26 }}
-          className="flex items-center gap-3 mb-8"
+          className="flex items-center gap-3 mb-10"
         >
-          <div className="p-2.5 rounded-2xl bg-white border border-black/5">
-            <Smile className="w-5 h-5 text-accent-peach" />
-          </div>
-          <span className="text-[10px] font-black text-text-muted uppercase tracking-[0.2em]">
-            Hello, I'm Parth!{" "}
-            <span className="text-accent-peach/40">Welcome to my world.</span>
+          <span className="text-accent-peach font-black text-2xl rotate-[-10deg] select-none">✦</span>
+          <span className="text-xs font-black text-text-muted uppercase tracking-[0.3em]">
+            Digital Craftsman <span className="mx-2 text-black/10 dark:text-white/10">/</span> Based in Ontario
           </span>
         </motion.div>
 
@@ -46,14 +43,11 @@ const Home = () => {
             damping: 20,
             delay: 0.1,
           }}
-          className="text-6xl md:text-8xl font-black mb-10 leading-[0.9] text-text-main tracking-tighter italic uppercase"
+          className="text-7xl md:text-9xl font-black mb-12 leading-[0.9] text-text-main tracking-tighter uppercase"
         >
-          I build <br />
-          things with <br />
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent-peach to-accent-sky">
-            code
-          </span>{" "}
-          & heart<span className="text-accent-peach/40">.</span>
+          Building <br />
+          with <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent-peach to-accent-sky italic">Intent</span> <br />
+          & Care<span className="text-accent-peach">.</span>
         </motion.h1>
 
         <motion.div
@@ -67,14 +61,11 @@ const Home = () => {
           }}
           className="space-y-12"
         >
-          <div className="max-w-2xl">
-            <p className="text-2xl md:text-3xl text-text-main/70 leading-relaxed font-medium italic">
-              Currently a student at{" "}
-              <span className="text-text-main font-black border-b-2 border-accent-mint/40">
-                Conestoga College
-              </span>
-              . I'm passionate about turning complex problems into friendly,
-              human-centric software.
+          <div className="max-w-xl">
+            <p className="text-lg md:text-xl text-text-main/60 leading-relaxed font-medium">
+              I'm <span className="text-text-main font-bold">Parth Gajjar</span>, a software developer 
+              focused on creating software that feels as good as it works. Currently finishing my 
+              final year at <span className="text-text-main font-bold underline decoration-accent-mint/30 decoration-4 underline-offset-4">Conestoga College</span>.
             </p>
 
             <div className="mt-12 flex flex-wrap gap-6">

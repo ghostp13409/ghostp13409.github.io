@@ -132,22 +132,22 @@ const FeaturedProject = ({ project, index }: FeaturedProjectProps) => {
              <div className="w-8 h-px bg-accent-peach" />
              <span className="text-xs font-black text-accent-peach uppercase tracking-[0.3em]">Featured Work</span>
           </div>
-          <h3 className="text-4xl md:text-6xl font-black text-text-main tracking-tighter italic uppercase leading-[0.9] group-hover:text-accent-peach transition-colors">
+          <h3 className="text-4xl md:text-6xl font-black text-text-main tracking-tight uppercase leading-[1] group-hover:text-accent-peach transition-colors">
             {project.title}
           </h3>
-          <p className="text-lg md:text-xl text-text-main/80 font-medium leading-relaxed italic max-w-xl">
+          <p className="text-lg md:text-xl text-text-main/80 font-bold leading-relaxed max-w-xl uppercase tracking-tight">
             {project.description}
           </p>
         </div>
 
         {project.learnings && (
           <div className="space-y-4">
-            <h4 className="text-xs font-black text-text-muted uppercase tracking-widest flex items-center gap-2">
+            <h4 className="text-[10px] font-black text-text-muted uppercase tracking-widest flex items-center gap-2">
               <span className="w-1.5 h-1.5 rounded-full bg-accent-peach" /> Key Highlights
             </h4>
             <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {project.learnings.slice(0, 4).map((learning, i) => (
-                <li key={i} className="flex gap-3 text-base font-bold text-text-main/70 italic leading-snug">
+                <li key={i} className="flex gap-3 text-sm font-bold text-text-main/70 leading-snug">
                   <span className="text-accent-peach shrink-0">✦</span>
                   {learning}
                 </li>

@@ -1,32 +1,24 @@
-# Gemini Project Guide
-
-This file contains project-specific instructions, design context, and architectural decisions for Gemini CLI.
+# GEMINI.md
 
 ## Design Context
 
 ### Users
-Recruiters, potential collaborators, and fellow creators who value both technical skill and a unique, human personality. People who want to see the "why" behind the code.
+- **Tech Recruiters & Managers:** Looking for creative problem-solving, unique style, and strong technical foundations.
+- **Potential Clients:** Small businesses or startups seeking professional, high-quality contract work.
 
 ### Brand Personality
-- **Friendly & Approachable**: Conversational, warm, and inviting. No more "technical spec" jargon.
-- **Creative & Fresh**: Playful layouts, organic shapes, and unexpected delightful moments.
-- **Authentic**: Shares the journey honestly—the struggles, the fun hobbies, and the growth.
+- **Voice & Tone:** Professional, minimal, and clear.
+- **Personality:** Professional, Minimal, Story-driven.
+- **Emotional Goals:** Confidence, clarity, and a sense of discovery.
 
-### Aesthetic Direction: "Luminous Narrative"
-- **Light & Airy**: Move away from deep blacks. Use soft, tinted backgrounds (Warm Whites, Soft Lavenders, or Deep but Muted Teals) with airy negative space.
-- **Organic & Soft**: Use large border-radii, blurred organic blobs, and soft shadows instead of sharp technical lines.
-- **Vibrant & Warm**: A palette of "Sunset" or "Nature" inspired gradients (Soft Peaches, Mint Greens, Sky Blues).
-- **Playful Typography**: Pair a bold, friendly serif or rounded sans-serif for headings with a highly legible, clean sans-serif for body text.
-- **Delightful Motion**: Smooth, springy animations that feel natural and tactile, rather than mechanical.
+### Aesthetic Direction
+- **Visual Tone:** A clean, "scrapbook-style" portfolio that tells a cohesive story.
+- **Refined Minimalism:** Avoid "boxy" layouts and cluttered badges. Use generous whitespace and rounded elements.
+- **Thematic Consistency:** High-signal content with consistent, clear wording across all sections.
 
 ### Design Principles
-1. **Human Language First**: Use storytelling and personal anecdotes. Describe projects by the problem they solved for *people*, not just the stack used.
-2. **Visual Breathability**: Avoid clutter. Let elements have space to exist.
-3. **Tactile Interaction**: Buttons and cards should feel like physical objects that react softly to touch and hover.
-4. **Cohesive Story**: The "Journey" should feel like a photo album or a curated exhibit, not a technical registry.
-
-## Technical Standards
-- **React (TypeScript)**: Standard for all components.
-- **Tailwind CSS**: Focus on custom utilities for soft gradients and organic shapes.
-- **Framer Motion**: Use "spring" physics for a more natural feel.
-- **Iconography**: Use rounded, line-art icons (Lucide) but with soft colors.
+1. **Narrative Flow:** Treat the portfolio as a story or scrapbook. Each section should transition naturally to the next, guiding the user through Parth's journey.
+2. **Organic Layout:** Move away from rigid, boxy grids. Utilize the project's existing `rounded-[3rem]` and glassmorphism to create a softer, more fluid feel.
+3. **High-Signal Content:** Remove redundant badges, useless banner text, and filler. Prioritize clarity and impact in every sentence.
+4. **Polished Minimalism:** Maintain a professional look that uses the OKLCH palette (Peach, Mint, Sky, Lavender) purposefully for focus and delight, not just decoration.
+5. **Systematic Consistency:** Ensure typography, spacing, and tone are uniform throughout the site to reinforce a sense of professional quality.
