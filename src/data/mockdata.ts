@@ -23,12 +23,18 @@ export const experiences: WorkExperience[] = [
       "Collaborating on internal tools and platform enhancements.",
       "Growing as a developer by applying professional architectural patterns and contributing to a live production environment.",
     ],
-    skills: ["Ruby on Rails", "React", "MySQL", "Next.js", "Team Collaboration"],
+    skills: [
+      "Ruby on Rails",
+      "React",
+      "MySQL",
+      "Next.js",
+      "Team Collaboration",
+    ],
   },
   {
     id: 2,
     company: "Ultimate Coders",
-    role: "Coding Tutor",
+    role: "Coding Tutor (Part-Time)",
     location: "Kitchener, ON",
     period: "Oct 2025 – Feb 2026",
     description: [
@@ -111,12 +117,7 @@ export const education: EducationData = {
         "Enterprise Java",
         "Cloud Computing",
       ],
-      keySkills: [
-        "Spring Boot",
-        "Docker",
-        "Microservices",
-        "PostgreSQL",
-      ],
+      keySkills: ["Spring Boot", "Docker", "Microservices", "PostgreSQL"],
       grade: "4.00",
       gpa: 4.0,
       highlights: [
@@ -202,7 +203,11 @@ export const education: EducationData = {
         "Spider-Man Wiki",
         "Batman's Garage Sale",
       ],
-      projects: ["Patient Management App", "Spider-Man Wiki", "Batman Garage Sale"],
+      projects: [
+        "Patient Management App",
+        "Spider-Man Wiki",
+        "Batman Garage Sale",
+      ],
     },
     {
       id: 1,
@@ -297,7 +302,8 @@ export const inProgress: InProgressLearning[] = [
     id: 1,
     title: "AZ-204: Azure Developer",
     source: "Microsoft",
-    sourceUrl: "https://learn.microsoft.com/en-us/credentials/certifications/azure-developer/",
+    sourceUrl:
+      "https://learn.microsoft.com/en-us/credentials/certifications/azure-developer/",
     sourcePlatform: "Microsoft",
     progress: "45%",
   },
@@ -327,8 +333,17 @@ export const projects: Project[] = [
   {
     id: 1,
     title: "SwiftMove — Moving Services Platform",
-    description: "A full-stack marketplace connecting freelance drivers with customers needing moving services. I built this using a modern containerized microservices architecture to ensure it's scalable and robust.",
-    tags: ["Java", "Spring Boot", "React", "TypeScript", "Docker", "RabbitMQ", "PostgreSQL"],
+    description:
+      "A full-stack marketplace connecting freelance drivers with customers needing moving services. I built this using a modern containerized microservices architecture to ensure it's scalable and robust.",
+    tags: [
+      "Java",
+      "Spring Boot",
+      "React",
+      "TypeScript",
+      "Docker",
+      "RabbitMQ",
+      "PostgreSQL",
+    ],
     completionDate: "2026",
     contentUrl: "https://github.com/ghostp13409",
     learnings: [
@@ -337,12 +352,14 @@ export const projects: Project[] = [
       "Implemented service discovery with Eureka and routing through an API Gateway.",
       "Handled inter-service communication asynchronously with RabbitMQ.",
     ],
-    impact: "Designed a system capable of handling multiple concurrent moving requests with real-time driver tracking.",
+    impact:
+      "Designed a system capable of handling multiple concurrent moving requests with real-time driver tracking.",
   },
   {
     id: 2,
     title: "ModernShop — Microservices Evolution",
-    description: "I took a monolithic e-commerce application and evolved it into a microservices platform. This transformation focused on improving scalability for product management and shopping cart services.",
+    description:
+      "I took a monolithic e-commerce application and evolved it into a microservices platform. This transformation focused on improving scalability for product management and shopping cart services.",
     tags: ["Java", "Spring Cloud", "Docker", "PostgreSQL", "Eureka", "Render"],
     completionDate: "2026",
     contentUrl: "https://github.com/ghostp13409",
@@ -352,12 +369,14 @@ export const projects: Project[] = [
       "Gained experience deploying Docker images to cloud platforms like Render.",
       "Managed distributed databases in a cloud environment.",
     ],
-    impact: "Successfully collaborated in a team of 4 to deliver a scalable e-commerce backbone.",
+    impact:
+      "Successfully collaborated in a team of 4 to deliver a scalable e-commerce backbone.",
   },
   {
     id: 3,
     title: "Equipment Rental System",
-    description: "A real-time platform where users can rent tools and equipment. I integrated live chat and notifications to make the user experience seamless and interactive.",
+    description:
+      "A real-time platform where users can rent tools and equipment. I integrated live chat and notifications to make the user experience seamless and interactive.",
     tags: ["ASP.NET Core", "C#", "React", "TypeScript", "Redis", "SignalR"],
     completionDate: "2025",
     learnings: [
@@ -365,12 +384,14 @@ export const projects: Project[] = [
       "Built a secure authentication system with Google OAuth and JWT.",
       "Optimized data retrieval using Redis caching.",
     ],
-    impact: "Built a production-ready rental system with sub-second notification latency.",
+    impact:
+      "Built a production-ready rental system with sub-second notification latency.",
   },
   {
     id: 4,
     title: "WindChime — Mindfulness App",
-    description: "A cross-platform app I built to help people practice mindfulness. It features guided meditation and a custom breathing pattern engine with tactile feedback.",
+    description:
+      "A cross-platform app I built to help people practice mindfulness. It features guided meditation and a custom breathing pattern engine with tactile feedback.",
     imageUrl: "images/projects/WindChime.png",
     tags: ["Flutter", "Dart", "SQLite", "Provider", "Haptics"],
     completionDate: "2025",
@@ -380,12 +401,14 @@ export const projects: Project[] = [
       "Optimized audio playback for a smooth meditation experience.",
       "Built an offline-first experience using SQLite.",
     ],
-    impact: "Delivered a soothing mobile experience with 100% offline functionality.",
+    impact:
+      "Delivered a soothing mobile experience with 100% offline functionality.",
   },
   {
     id: 5,
     title: "Car Renting App",
-    description: "An Android application for car rentals that keeps data in sync between a local database and the cloud, even when offline.",
+    description:
+      "An Android application for car rentals that keeps data in sync between a local database and the cloud, even when offline.",
     tags: ["Kotlin", "Jetpack Compose", "Firebase", "SQLite"],
     completionDate: "2025",
     learnings: [
@@ -396,7 +419,8 @@ export const projects: Project[] = [
   {
     id: 16,
     title: "Spider-Man Wiki",
-    description: "A dynamic, visually engaging wiki dedicated to the Spider-Man universe. It's a place for fans to explore characters, stories, and more.",
+    description:
+      "A dynamic, visually engaging wiki dedicated to the Spider-Man universe. It's a place for fans to explore characters, stories, and more.",
     imageUrl: "images/projects/spiderman_logo.jpg",
     videoUrl: "images/projects/spierman_wiki.mp4",
     tags: ["JavaScript", "HTML5", "CSS3", "Design"],
@@ -409,7 +433,8 @@ export const projects: Project[] = [
   {
     id: 17,
     title: "Batman's Garage Sale",
-    description: "A themed e-commerce site for the world's greatest detective. I built this to practice order management and creating immersive shopping experiences.",
+    description:
+      "A themed e-commerce site for the world's greatest detective. I built this to practice order management and creating immersive shopping experiences.",
     imageUrl: "images/projects/batman_logo.jpg",
     videoUrl: "images/projects/batman_shop.mp4",
     tags: ["React", "Express", "MongoDB", "Node.js"],
@@ -422,7 +447,8 @@ export const projects: Project[] = [
   {
     id: 9,
     title: "Patient Management App",
-    description: "A professional desktop application for managing patient files. I applied SOLID principles to ensure the code is clean, testable, and easy to maintain.",
+    description:
+      "A professional desktop application for managing patient files. I applied SOLID principles to ensure the code is clean, testable, and easy to maintain.",
     imageUrl: "images/projects/PatientManager.png",
     tags: ["C#", "Windows Forms", "OOP", "SOLID"],
     completionDate: "2024",
@@ -434,7 +460,8 @@ export const projects: Project[] = [
   {
     id: 12,
     title: "Automated Trading Bot",
-    description: "A Python-based bot that processes real-time market data to execute trades. It's built to be fast, reliable, and data-driven.",
+    description:
+      "A Python-based bot that processes real-time market data to execute trades. It's built to be fast, reliable, and data-driven.",
     imageUrl: "images/projects/TradingBot.png",
     tags: ["Python", "Binance API", "WebSockets", "Data"],
     completionDate: "2022",
@@ -446,7 +473,8 @@ export const projects: Project[] = [
   {
     id: 14,
     title: "DSA & Problem Solving",
-    description: "I'm constantly sharpening my problem-solving skills. I've solved over 70 algorithmic challenges on LeetCode, focusing on writing efficient and clean code.",
+    description:
+      "I'm constantly sharpening my problem-solving skills. I've solved over 70 algorithmic challenges on LeetCode, focusing on writing efficient and clean code.",
     tags: ["Java", "C#", "Algorithms", "Data Structures"],
     contentUrl: "https://leetcode.com/u/ghostp134/",
     completionDate: "Ongoing",
@@ -454,35 +482,67 @@ export const projects: Project[] = [
   {
     id: 15,
     title: "Graphic Design",
-    description: "Before I was a full-time developer, I spent time as a graphic designer. I love creating visual identities that tell a brand's story.",
+    description:
+      "Before I was a full-time developer, I spent time as a graphic designer. I love creating visual identities that tell a brand's story.",
     imageUrl: "images/projects/Design.jpg",
     tags: ["Canva", "Design", "Creativity"],
     completionDate: "2023",
-    impact: "Helped several local startups establish their first professional visual identities.",
+    impact:
+      "Helped several local startups establish their first professional visual identities.",
   },
 ];
 
 // College Projects (The ones I'm most proud of from school)
-export const collegeProjects: Project[] = projects.filter(p => [1, 2, 4, 16, 17].includes(p.id));
+export const collegeProjects: Project[] = projects.filter((p) =>
+  [1, 2, 4, 16, 17].includes(p.id),
+);
 
 // Skills
 export const skills: SkillCategory[] = [
   {
     id: 1,
     title: "Languages",
-    tags: ["Java", "C#", "Python", "Ruby", "JavaScript", "TypeScript", "Dart", "Kotlin"],
+    tags: [
+      "Java",
+      "C#",
+      "Python",
+      "Ruby",
+      "JavaScript",
+      "TypeScript",
+      "Dart",
+      "Kotlin",
+    ],
     color: "bg-blue-600",
   },
   {
     id: 2,
     title: "Frameworks",
-    tags: ["Spring Boot", "ASP.NET", "Rails", "React", "Next.js", "Node", "Express", "Flutter", "Jetpack Compose"],
+    tags: [
+      "Spring Boot",
+      "ASP.NET",
+      "Rails",
+      "React",
+      "Next.js",
+      "Node",
+      "Express",
+      "Flutter",
+      "Jetpack Compose",
+    ],
     color: "bg-green-600",
   },
   {
     id: 3,
     title: "Databases & Cloud",
-    tags: ["PostgreSQL", "MongoDB", "SQL Server", "SQLite", "Firebase", "Docker", "AWS", "Azure"],
+    tags: [
+      "PostgreSQL",
+      "MongoDB",
+      "SQL Server",
+      "SQLite",
+      "Firebase",
+      "Docker",
+      "AWS",
+      "Azure",
+    ],
     color: "bg-purple-600",
   },
 ];
@@ -493,19 +553,21 @@ export const hobbies: Hobby[] = [
     id: 1,
     title: "Doom Eternal ☠️",
     imageUrl: "images/hobbies/doom.jpg",
-    description: "Halo maybe infinite, but Doom is Eternal. I've played it 7 times and I'm still not bored of the combat loop.",
+    description:
+      "Halo maybe infinite, but Doom is Eternal. I've played it 7 times and I'm still not bored of the combat loop.",
   },
   {
     id: 2,
     title: "Game Modding 🎮",
     imageUrl: "images/hobbies/modding.jpg",
-    description: "I love modding Bethesda games. I've spent over 450 hours in Skyrim, and honestly, most of that was probably just tweaking my mod list.",
+    description:
+      "I love modding Bethesda games. I've spent over 450 hours in Skyrim, and honestly, most of that was probably just tweaking my mod list.",
   },
   {
     id: 3,
     title: "Distro Hopping 🐧",
     imageUrl: "images/hobbies/linux.jpg",
-    description: "I'm a bit obsessed with Linux. I've tried over 20 distros. Currently, I'm loving Fedora with Hyprland for that perfect mix of stability and rice.",
+    description:
+      "I'm a bit obsessed with Linux. I've tried over 20 distros. Currently, I'm loving Fedora with Hyprland for that perfect mix of stability and rice.",
   },
 ];
-

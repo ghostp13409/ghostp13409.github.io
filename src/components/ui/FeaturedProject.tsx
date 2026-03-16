@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ExternalLink, Github, Sparkles, Play, Info } from "lucide-react";
+import { ExternalLink, Github, Sparkles, Play, Info, Code2 } from "lucide-react";
 import type { Project } from "../../types/portfolio";
 import { cn } from "../../lib/utils";
 import { Badge } from "./Badge";
@@ -8,6 +8,64 @@ interface FeaturedProjectProps {
   project: Project;
   index: number;
 }
+
+const ProjectPlaceholder = () => (
+  <div className="w-full h-full relative overflow-hidden bg-page-bg dark:bg-white/[0.02] flex items-center justify-center border-b border-black/5 dark:border-white/5">
+    {/* Clean Dot Grid */}
+    <div 
+      className="absolute inset-0 opacity-[0.15] dark:opacity-[0.1]" 
+      style={{ 
+        backgroundImage: `radial-gradient(circle at 2px 2px, currentColor 1px, transparent 0)`,
+        backgroundSize: '24px 24px'
+      }} 
+    />
+
+    {/* Crisp Geometric Vector Shapes */}
+    <div className="relative w-full h-full flex items-center justify-center scale-75 lg:scale-100">
+      {/* Primary Circle */}
+      <motion.div
+        animate={{ rotate: 360 }}
+        transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+        className="absolute w-64 h-64 border-[1.5px] border-accent-peach/30 rounded-full flex items-center justify-center"
+      >
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-accent-peach shadow-lg shadow-accent-peach/20" />
+      </motion.div>
+
+      {/* Secondary Square Frame */}
+      <motion.div
+        animate={{ rotate: -360 }}
+        transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+        className="absolute w-48 h-48 border-[1.5px] border-accent-sky/30 rotate-45"
+      >
+        <div className="absolute bottom-0 right-0 translate-x-1/2 translate-y-1/2 w-3 h-3 rounded-full bg-accent-sky shadow-lg shadow-accent-sky/20" />
+      </motion.div>
+
+      {/* Decorative Lines */}
+      <div className="absolute inset-0 flex items-center justify-center opacity-20 dark:opacity-10">
+        <div className="w-px h-full bg-gradient-to-b from-transparent via-text-main to-transparent" />
+        <div className="h-px w-full bg-gradient-to-r from-transparent via-text-main to-transparent" />
+      </div>
+
+      {/* Central Prism Graphic */}
+      <div className="relative z-10 w-24 h-24">
+        <div className="absolute inset-0 bg-gradient-to-br from-accent-peach to-accent-sky opacity-20 dark:opacity-30 rounded-2xl rotate-12" />
+        <div className="absolute inset-0 bg-gradient-to-tr from-accent-sky to-accent-mint opacity-20 dark:opacity-30 rounded-2xl -rotate-12" />
+        <div className="absolute inset-0 border border-white/40 dark:border-white/10 rounded-2xl backdrop-blur-[1px]" />
+      </div>
+    </div>
+
+    {/* Accent Shapes */}
+    <div className="absolute bottom-10 left-10 flex gap-4 opacity-30">
+      <div className="w-12 h-1 bg-accent-peach rounded-full" />
+      <div className="w-6 h-1 bg-accent-sky rounded-full" />
+    </div>
+    
+    <div className="absolute top-10 right-10 flex flex-col gap-4 opacity-30">
+      <div className="w-1 h-12 bg-accent-sky rounded-full" />
+      <div className="w-1 h-6 bg-accent-mint rounded-full" />
+    </div>
+  </div>
+);
 
 const FeaturedProject = ({ project, index }: FeaturedProjectProps) => {
   const isEven = index % 2 === 0;
@@ -49,10 +107,7 @@ const FeaturedProject = ({ project, index }: FeaturedProjectProps) => {
               <div className="absolute inset-0 bg-gradient-to-t from-black/20 dark:from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
             </>
           ) : (
-            <div className="w-full h-full flex flex-col items-center justify-center p-12 bg-gradient-to-br from-accent-peach/5 to-accent-sky/5 dark:from-accent-peach/10 dark:to-accent-sky/10">
-              <Sparkles className="w-12 h-12 text-accent-peach/20 dark:text-accent-peach/40 mb-4" />
-              <p className="text-[10px] font-black text-text-muted uppercase tracking-widest text-center italic">A story in the making</p>
-            </div>
+            <ProjectPlaceholder />
           )}
           
           <div className="absolute top-6 right-6 flex gap-2">
