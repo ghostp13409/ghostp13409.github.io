@@ -20,7 +20,7 @@ const ExperienceCard = ({ experience }: ExperienceCardProps) => {
         <div className="space-y-6 flex-1">
           <div className="space-y-4">
             <div className="flex items-start gap-5">
-              <div className="p-3 rounded-2xl bg-accent-peach/10 text-accent-peach shrink-0 shadow-sm group-hover:scale-110 transition-transform duration-300">
+              <div className="p-3 rounded-2xl bg-accent-peach/10 text-accent-peach shrink-0 group-hover:scale-110 transition-transform duration-300">
                 <Briefcase className="w-6 h-6" />
               </div>
               <div className="space-y-1">

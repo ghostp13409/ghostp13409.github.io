@@ -82,16 +82,16 @@
   }
 
   .soft-glass {
-    @apply backdrop-blur-xl bg-white/60 dark:bg-white/5 border border-white/40 dark:border-white/10 shadow-[0_8px_40px_-12px_rgba(0,0,0,0.1)];
+    @apply backdrop-blur-xl bg-white/60 dark:bg-white/5 border border-white/40 dark:border-white/10 shadow-[0_4px_20px_-8px_rgba(0,0,0,0.08)];
   }
 
   .creative-card {
-    @apply bg-card-bg backdrop-blur-md border border-card-border rounded-[3rem] shadow-[0_20px_50px_-12px_rgba(0,0,0,0.05)] dark:shadow-[0_20px_50px_-12px_rgba(0,0,0,0.3)] hover:shadow-[0_30px_60px_-12px_rgba(0,0,0,0.08)] dark:hover:shadow-[0_30px_60px_-12px_rgba(0,0,0,0.4)] transition-all duration-300;
+    @apply bg-card-bg backdrop-blur-md border border-card-border rounded-[3rem] shadow-[0_10px_30px_-8px_rgba(0,0,0,0.04)] dark:shadow-[0_10px_30px_-8px_rgba(0,0,0,0.2)] hover:shadow-[0_15px_40px_-8px_rgba(0,0,0,0.06)] dark:hover:shadow-[0_15px_40px_-8px_rgba(0,0,0,0.3)] transition-all duration-300;
   }
 
 
   .pill-button {
-    @apply px-8 py-4 rounded-full bg-text-main text-page-bg font-bold hover:scale-[1.03] active:scale-[0.97] transition-all shadow-xl shadow-text-main/10;
+    @apply px-8 py-4 rounded-full bg-text-main text-page-bg font-bold hover:scale-[1.03] active:scale-[0.97] transition-all shadow-md shadow-text-main/5;
   }
 
   .custom-scrollbar::-webkit-scrollbar {

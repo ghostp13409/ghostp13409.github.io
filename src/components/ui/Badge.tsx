@@ -3,7 +3,7 @@ import * as React from "react";
 import { cn } from "../../lib/utils";
 
 const badgeVariants = cva(
-  "inline-flex items-center px-3 py-1 text-[10px] font-black uppercase tracking-[0.15em] transition-all duration-200 rounded-full border shadow-sm cursor-default hover:scale-105 italic",
+  "inline-flex items-center px-3 py-1 text-[10px] font-black uppercase tracking-[0.15em] transition-all duration-200 rounded-full border cursor-default hover:scale-105 italic",
   {
     variants: {
       variant: {
@@ -14,13 +14,13 @@ const badgeVariants = cva(
         outline: 
           "bg-transparent border-black/10 dark:border-white/10 text-text-main hover:border-accent-peach hover:text-accent-peach",
         peach: 
-          "bg-accent-peach/10 dark:bg-accent-peach/20 border-accent-peach/20 text-text-main oklch-text-dark shadow-accent-peach/10",
+          "bg-accent-peach/10 dark:bg-accent-peach/20 border-accent-peach/20 text-text-main oklch-text-dark shadow-accent-peach/5",
         sky: 
-          "bg-accent-sky/10 dark:bg-accent-sky/20 border-accent-sky/20 text-text-main oklch-text-dark shadow-accent-sky/10",
+          "bg-accent-sky/10 dark:bg-accent-sky/20 border-accent-sky/20 text-text-main oklch-text-dark shadow-accent-sky/5",
         mint: 
-          "bg-accent-mint/10 dark:bg-accent-mint/20 border-accent-mint/20 text-text-main oklch-text-dark shadow-accent-mint/10",
+          "bg-accent-mint/10 dark:bg-accent-mint/20 border-accent-mint/20 text-text-main oklch-text-dark shadow-accent-mint/5",
         lavender: 
-          "bg-accent-lavender/10 dark:bg-accent-lavender/20 border-accent-lavender/20 text-text-main oklch-text-dark shadow-accent-lavender/10",
+          "bg-accent-lavender/10 dark:bg-accent-lavender/20 border-accent-lavender/20 text-text-main oklch-text-dark shadow-accent-lavender/5",
       },
     },
     defaultVariants: {

@@ -50,7 +50,7 @@ const Sidebar = ({ activeSection = "intro", onMenuItemClick, isMobile = false }:
       {!isMobile && (
         <div className="absolute left-0 top-0 bottom-0 w-1 bg-black/[0.03]">
           <motion.div 
-            className="absolute top-0 left-0 right-0 w-full bg-accent-peach origin-top shadow-[0_0_20px_rgba(249,115,22,0.2)]"
+            className="absolute top-0 left-0 right-0 w-full bg-accent-peach origin-top shadow-[0_0_10px_rgba(249,115,22,0.1)]"
             style={{ scaleY }}
           />
         </div>
@@ -60,7 +60,7 @@ const Sidebar = ({ activeSection = "intro", onMenuItemClick, isMobile = false }:
       <div className="mb-16 relative group px-2">
         <div className="relative mb-6">
           <div className="absolute inset-0 bg-accent-peach/20 blur-2xl rounded-full scale-110 group-hover:scale-125 transition-transform duration-500"></div>
-          <div className="relative aspect-square overflow-hidden rounded-[2rem] border-2 border-white shadow-xl rotate-3 group-hover:rotate-0 transition-all duration-500 bg-white">
+          <div className="relative aspect-square overflow-hidden rounded-[2rem] border-2 border-white shadow-md rotate-3 group-hover:rotate-0 transition-all duration-500 bg-white">
             <img
               src="images/profile_logo.jpeg"
               className="w-full h-full object-cover transition-all duration-500"
@@ -88,7 +88,7 @@ const Sidebar = ({ activeSection = "intro", onMenuItemClick, isMobile = false }:
               className={cn(
                 "w-full text-left group px-4 py-3.5 rounded-2xl relative transition-all duration-500",
                 isActive 
-                  ? "bg-white dark:bg-white/10 text-text-main shadow-md border border-black/5 dark:border-white/5" 
+                  ? "bg-white dark:bg-white/10 text-text-main shadow-sm border border-black/5 dark:border-white/5" 
                   : "text-text-muted hover:text-text-main hover:bg-white/40 dark:hover:bg-white/5"
               )}
             >
@@ -122,7 +122,7 @@ const Sidebar = ({ activeSection = "intro", onMenuItemClick, isMobile = false }:
               <a
                 key={index}
                 href={social.url}
-                className="p-2 rounded-xl text-text-muted hover:text-text-main hover:bg-white dark:hover:bg-white/10 transition-all shadow-sm shadow-transparent hover:shadow-black/5"
+                className="p-2 rounded-xl text-text-muted hover:text-text-main hover:bg-white dark:hover:bg-white/10 transition-all hover:shadow-black/5"
                 target="_blank"
                 rel="noopener noreferrer"
               >

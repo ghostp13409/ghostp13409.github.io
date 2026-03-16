@@ -28,7 +28,7 @@ const Home = () => {
           transition={{ type: "spring", stiffness: 260, damping: 26 }}
           className="flex items-center gap-3 mb-8"
         >
-          <div className="p-2.5 rounded-2xl bg-white shadow-sm border border-black/5">
+          <div className="p-2.5 rounded-2xl bg-white border border-black/5">
             <Smile className="w-5 h-5 text-accent-peach" />
           </div>
           <span className="text-[10px] font-black text-text-muted uppercase tracking-[0.2em]">

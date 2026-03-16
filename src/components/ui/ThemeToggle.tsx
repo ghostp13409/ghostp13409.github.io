@@ -57,7 +57,7 @@ const ThemeToggle = () => {
       animate={{ opacity: 1, scale: 1 }}
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.9 }}
-      className="fixed top-6 right-6 lg:top-10 lg:right-10 z-[100] w-12 h-12 flex items-center justify-center rounded-full soft-glass transition-all duration-300 shadow-xl group"
+      className="fixed top-6 right-6 lg:top-10 lg:right-10 z-[100] w-12 h-12 flex items-center justify-center rounded-full soft-glass transition-all duration-300 shadow-md group"
       aria-label={`Current theme: ${theme}. Click to cycle.`}
     >
       <div className="absolute inset-0 rounded-full bg-gradient-to-br from-accent-peach/5 via-accent-sky/5 to-accent-lavender/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -76,7 +76,7 @@ const ThemeToggle = () => {
       </AnimatePresence>
 
       {/* Tooltip on hover */}
-      <div className="absolute top-full mt-2 right-0 px-3 py-1.5 rounded-xl bg-text-main text-page-bg text-[10px] font-black uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap shadow-2xl">
+      <div className="absolute top-full mt-2 right-0 px-3 py-1.5 rounded-xl bg-text-main text-page-bg text-[10px] font-black uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap shadow-md">
         Theme: {theme}
       </div>
     </motion.button>

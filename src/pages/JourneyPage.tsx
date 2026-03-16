@@ -54,7 +54,7 @@ const JourneyPage = () => {
           className="flex flex-col md:flex-row justify-between items-end gap-12 border-b border-black/[0.03] pb-24"
         >
           <div className="space-y-8 text-center md:text-left">
-            <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-white shadow-sm border border-black/5">
+            <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-white border border-black/5">
               <Sparkles className="w-5 h-5 text-accent-peach" />
               <span className="text-[10px] font-black text-text-muted uppercase tracking-[0.3em]">
                 My Story
@@ -69,7 +69,7 @@ const JourneyPage = () => {
               of my career<span className="text-black/10">.</span>
             </h2>
           </div>
-          <div className="p-2 rounded-[3rem] bg-white/40 border border-white shadow-xl">
+          <div className="p-2 rounded-[3rem] bg-white/40 border border-white shadow-md">
             <JourneyTabs
               activeTab={activeJourney}
               onChange={setActiveJourney}
@@ -103,7 +103,7 @@ const JourneyPage = () => {
               {/* Experience section */}
               <section className="space-y-24">
                 <div className="flex items-center gap-8 group">
-                  <div className="p-5 rounded-[2rem] bg-accent-peach/10 text-accent-peach shadow-sm">
+                  <div className="p-5 rounded-[2rem] bg-accent-peach/10 text-accent-peach">
                     <Briefcase className="w-8 h-8" />
                   </div>
                   <div className="space-y-1 text-left">
@@ -146,7 +146,7 @@ const JourneyPage = () => {
 
                 <div className="flex flex-col lg:flex-row justify-between items-center gap-16 relative z-10">
                   <div className="max-w-4xl space-y-8 text-left">
-                    <div className="inline-flex items-center gap-3 px-6 py-2 rounded-full bg-accent-mint/10 border border-accent-mint/20 shadow-sm">
+                    <div className="inline-flex items-center gap-3 px-6 py-2 rounded-full bg-accent-mint/10 border border-accent-mint/20">
                       <span className="text-[10px] font-black text-text-main oklch-text-dark uppercase tracking-[0.4em]">
                         Where I Learn
                       </span>
@@ -161,7 +161,7 @@ const JourneyPage = () => {
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-2 gap-8 w-full lg:w-auto p-10 rounded-[3rem] bg-white shadow-xl border border-black/[0.02] shrink-0">
+                  <div className="grid grid-cols-2 gap-8 w-full lg:w-auto p-10 rounded-[3rem] bg-white shadow-md border border-black/[0.02] shrink-0">
                     {[
                       {
                         label: "GPA",
@@ -203,7 +203,7 @@ const JourneyPage = () => {
                 {/* Courses */}
                 <div className="lg:col-span-7 space-y-24 text-left">
                   <div className="flex items-center gap-8 group">
-                    <div className="p-5 rounded-[2rem] bg-accent-lavender/10 text-accent-lavender shadow-sm">
+                    <div className="p-5 rounded-[2rem] bg-accent-lavender/10 text-accent-lavender">
                       <BookOpen className="w-8 h-8" />
                     </div>
                     <div className="space-y-1">

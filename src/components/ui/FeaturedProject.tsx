@@ -28,7 +28,7 @@ const ProjectPlaceholder = () => (
         transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
         className="absolute w-64 h-64 border-[1.5px] border-accent-peach/30 rounded-full flex items-center justify-center"
       >
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-accent-peach shadow-lg shadow-accent-peach/20" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-accent-peach shadow-sm shadow-accent-peach/10" />
       </motion.div>
 
       {/* Secondary Square Frame */}
@@ -37,7 +37,7 @@ const ProjectPlaceholder = () => (
         transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
         className="absolute w-48 h-48 border-[1.5px] border-accent-sky/30 rotate-45"
       >
-        <div className="absolute bottom-0 right-0 translate-x-1/2 translate-y-1/2 w-3 h-3 rounded-full bg-accent-sky shadow-lg shadow-accent-sky/20" />
+        <div className="absolute bottom-0 right-0 translate-x-1/2 translate-y-1/2 w-3 h-3 rounded-full bg-accent-sky shadow-sm shadow-accent-sky/10" />
       </motion.div>
 
       {/* Decorative Lines */}
@@ -117,7 +117,7 @@ const FeaturedProject = ({ project, index }: FeaturedProjectProps) => {
               </Badge>
             )}
             {isVideo && (
-              <span className="p-1.5 rounded-full bg-accent-peach text-page-bg shadow-lg">
+              <span className="p-1.5 rounded-full bg-accent-peach text-page-bg shadow-sm">
                 <Play className="w-3 h-3 fill-current" />
               </span>
             )}

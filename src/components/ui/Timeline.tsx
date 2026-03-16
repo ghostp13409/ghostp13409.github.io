@@ -24,7 +24,7 @@ const Timeline = ({ timeline }: TimelineProps) => {
         >
           {/* Path Node */}
           <div className="absolute left-0 top-2 w-12 h-12 flex items-center justify-center">
-            <div className="w-4 h-4 rounded-full bg-white dark:bg-page-bg border-4 border-accent-mint shadow-md group-hover:scale-125 group-hover:border-accent-peach transition-all duration-300 z-10"></div>
+            <div className="w-4 h-4 rounded-full bg-white dark:bg-page-bg border-4 border-accent-mint shadow-sm group-hover:scale-125 group-hover:border-accent-peach transition-all duration-300 z-10"></div>
             <div className="absolute inset-0 bg-accent-peach/20 dark:bg-accent-peach/40 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
           </div>
 

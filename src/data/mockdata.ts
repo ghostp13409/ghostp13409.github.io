@@ -568,6 +568,6 @@ export const hobbies: Hobby[] = [
     title: "Distro Hopping 🐧",
     imageUrl: "images/hobbies/linux.jpg",
     description:
-      "I'm a bit obsessed with Linux. I've tried over 20 distros. Currently, I'm loving Fedora with Hyprland for that perfect mix of stability and rice.",
+      "I'm a bit obsessed with Linux. I've tried over 20 distros. Currently, I'm on Omarchy. (PS. if that wasn't clear, I use Arch btwloving Fedora with Hyprland for that perfect mix of stability and rice)",
   },
 ];

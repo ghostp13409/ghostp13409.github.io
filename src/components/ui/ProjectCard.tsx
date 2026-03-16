@@ -58,7 +58,7 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
           </div>
 
           <div className="absolute top-6 right-6">
-             <span className="px-3 py-1 rounded-full bg-white/90 backdrop-blur-md text-[10px] font-black text-text-main shadow-sm border border-black/5">
+             <span className="px-3 py-1 rounded-full bg-white/90 backdrop-blur-md text-[10px] font-black text-text-main border border-black/5">
                {completionDate}
              </span>
           </div>
@@ -96,7 +96,7 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
               exit={{ scale: 0.9, opacity: 0, y: 40 }}
               transition={{ type: "spring", stiffness: 100, damping: 20 }}
               onClick={(e) => e.stopPropagation()}
-              className="w-full max-w-5xl creative-card rounded-[4rem] relative overflow-hidden flex flex-col lg:flex-row min-h-[70vh] bg-white shadow-2xl"
+              className="w-full max-w-5xl creative-card rounded-[4rem] relative overflow-hidden flex flex-col lg:flex-row min-h-[70vh] bg-white shadow-md"
             >
               {/* Close Button */}
               <button
