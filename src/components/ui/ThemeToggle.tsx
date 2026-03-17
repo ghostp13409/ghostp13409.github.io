@@ -76,8 +76,8 @@ const ThemeToggle = () => {
       </AnimatePresence>
 
       {/* Tooltip on hover */}
-      <div className="absolute top-full mt-2 right-0 px-3 py-1.5 rounded-xl bg-text-main text-page-bg text-[10px] font-black uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap shadow-md">
-        Theme: {theme}
+      <div className="absolute top-full mt-2 right-0 px-3 py-1.5 rounded-xl bg-text-main text-page-bg text-[10px] font-black tracking-widest uppercase opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap shadow-md">
+        theme: {theme}
       </div>
     </motion.button>
   );

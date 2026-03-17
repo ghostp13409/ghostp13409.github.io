@@ -5,12 +5,12 @@
   --color-page-bg: var(--page-bg);
   --color-text-main: var(--text-main);
   --color-text-muted: var(--text-muted);
-  
+
   --color-accent-peach: var(--accent-peach);
   --color-accent-mint: var(--accent-mint);
   --color-accent-sky: var(--accent-sky);
   --color-accent-lavender: var(--accent-lavender);
-  
+
   --color-card-bg: var(--card-bg);
   --color-card-border: var(--card-border);
 }
@@ -19,26 +19,35 @@
   --page-bg: oklch(98% 0.01 45);    /* Warm Cream */
   --text-main: oklch(25% 0.02 260); /* Deep Soft Charcoal */
   --text-muted: oklch(50% 0.02 260); /* Gentle Gray */
-  
+
   --accent-peach: oklch(85% 0.12 45);  /* Soft Peach */
   --accent-mint: oklch(92% 0.1 145);   /* Muted Mint */
   --accent-sky: oklch(88% 0.1 245);    /* Airy Sky Blue */
   --accent-lavender: oklch(90% 0.08 300); /* Soft Lavender */
-  
+
   --card-bg: rgba(255, 255, 255, 0.7);
   --card-border: rgba(0, 0, 0, 0.04);
+
+  /* Semantic Spacing Scale */
+  --space-unit: 1rem;
+  --space-xs: calc(var(--space-unit) * 0.5);   /* 8px */
+  --space-sm: var(--space-unit);               /* 16px */
+  --space-md: calc(var(--space-unit) * 2);     /* 32px */
+  --space-lg: calc(var(--space-unit) * 4);     /* 64px */
+  --space-xl: calc(var(--space-unit) * 6);     /* 96px */
+  --space-xxl: calc(var(--space-unit) * 10);   /* 160px */
 }
 
 .dark {
   --page-bg: oklch(18% 0.02 260);    /* Deep Charcoal/Navy */
   --text-main: oklch(95% 0.01 45);   /* Off White */
   --text-muted: oklch(70% 0.02 260);  /* Readable Gray */
-  
+
   --accent-peach: oklch(75% 0.15 45);  /* Vibrant Peach */
   --accent-mint: oklch(80% 0.12 145);  /* Vibrant Mint */
   --accent-sky: oklch(78% 0.12 245);   /* Vibrant Sky Blue */
   --accent-lavender: oklch(80% 0.1 300); /* Vibrant Lavender */
-  
+
   --card-bg: rgba(255, 255, 255, 0.03);
   --card-border: rgba(255, 255, 255, 0.08);
 }
@@ -46,7 +55,7 @@
 @layer base {
   body {
     @apply bg-page-bg text-text-main antialiased min-h-screen selection:bg-accent-peach/30 font-sans transition-colors duration-400;
-    background-image: 
+    background-image:
       radial-gradient(at 0% 0%, var(--accent-peach) 0px, transparent 40%),
       radial-gradient(at 100% 0%, var(--accent-mint) 0px, transparent 40%),
       radial-gradient(at 50% 100%, var(--accent-sky) 0px, transparent 40%);
@@ -54,7 +63,7 @@
   }
 
   .dark body {
-    background-image: 
+    background-image:
       radial-gradient(at 0% 0%, color-mix(in oklch, var(--accent-peach), transparent 80%) 0px, transparent 40%),
       radial-gradient(at 100% 0%, color-mix(in oklch, var(--accent-mint), transparent 80%) 0px, transparent 40%),
       radial-gradient(at 50% 100%, color-mix(in oklch, var(--accent-sky), transparent 80%) 0px, transparent 40%);
@@ -75,7 +84,7 @@
     font-size: clamp(3.5rem, 15vw, 12rem);
     letter-spacing: -0.04em;
   }
-  
+
   .text-fluid-md {
     font-size: clamp(2.5rem, 10vw, 7rem);
     letter-spacing: -0.03em;
@@ -86,9 +95,30 @@
   }
 
   .creative-card {
-    @apply bg-card-bg backdrop-blur-md border border-card-border rounded-[3rem] shadow-[0_10px_30px_-8px_rgba(0,0,0,0.04)] dark:shadow-[0_10px_30px_-8px_rgba(0,0,0,0.2)] hover:shadow-[0_15px_40px_-8px_rgba(0,0,0,0.06)] dark:hover:shadow-[0_15px_40px_-8px_rgba(0,0,0,0.3)] transition-all duration-300;
+    @apply bg-card-bg backdrop-blur-md border border-card-border rounded-[3rem] transition-all duration-300;
   }
 
+  /* Spacing Utilities for Layout Rhythm */
+  .section-spacing {
+    padding-top: var(--space-xxl);
+    padding-bottom: var(--space-xxl);
+  }
+
+  .content-gap-lg {
+    gap: var(--space-xl);
+  }
+
+  .content-gap-md {
+    gap: var(--space-lg);
+  }
+
+  .content-gap-sm {
+    gap: var(--space-md);
+  }
+
+  .asymmetric-offset {
+    @apply lg:ml-12;
+  }
 
   .pill-button {
     @apply px-8 py-4 rounded-full bg-text-main text-page-bg font-bold hover:scale-[1.03] active:scale-[0.97] transition-all shadow-md shadow-text-main/5;
@@ -97,11 +127,11 @@
   .custom-scrollbar::-webkit-scrollbar {
     width: 8px;
   }
-  
+
   .custom-scrollbar::-webkit-scrollbar-track {
     @apply bg-transparent;
   }
-  
+
   .custom-scrollbar::-webkit-scrollbar-thumb {
     @apply bg-text-main/10 rounded-full hover:bg-text-main/20 transition-all;
   }

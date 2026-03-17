@@ -12,11 +12,10 @@ const Layout = ({ children }: LayoutProps) => {
   const [activeSection, setActiveSection] = useState("intro");
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const isManualScrolling = useRef(false);
-  const scrollTimeout = useRef<any>(null);
-
-  const sections = ["intro", "journey", "hire"];
+  const scrollTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
+    const sections = ["intro", "journey", "hire"];
     const observerOptions = {
       root: null,
       rootMargin: "-20% 0px -70% 0px", // Detect section when it reaches the top 20-30% of viewport

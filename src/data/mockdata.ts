@@ -34,7 +34,7 @@ export const experiences: WorkExperience[] = [
   {
     id: 2,
     company: "Ultimate Coders",
-    role: "Coding Tutor (Part-Time)",
+    role: "Coding Tutor",
     location: "Kitchener, ON",
     period: "Oct 2025 – Feb 2026",
     description: [
@@ -47,8 +47,8 @@ export const experiences: WorkExperience[] = [
   {
     id: 3,
     company: "Saudi Ministry of Municipality and Housing",
-    role: "Front-End Developer (Subcontractor)",
-    location: "Remote / Waterloo, ON",
+    role: "Front-End Developer",
+    location: "Remote / Waterloo",
     period: "Feb 2025 – May 2025",
     description: [
       "Built dynamic user interfaces using Next.js, React, and TypeScript for a UN-Funded Project.",
@@ -332,7 +332,7 @@ export const socials: Social[] = [
 export const projects: Project[] = [
   {
     id: 1,
-    title: "SwiftMove — Moving Services Platform",
+    title: "SwiftMove",
     description:
       "A full-stack marketplace connecting freelance drivers with customers needing moving services. I built this using a modern containerized microservices architecture to ensure it's scalable and robust.",
     tags: [
@@ -357,7 +357,7 @@ export const projects: Project[] = [
   },
   {
     id: 2,
-    title: "ModernShop — Microservices Evolution",
+    title: "ModernShop",
     description:
       "I took a monolithic e-commerce application and evolved it into a microservices platform. This transformation focused on improving scalability for product management and shopping cart services.",
     tags: ["Java", "Spring Cloud", "Docker", "PostgreSQL", "Eureka", "Render"],

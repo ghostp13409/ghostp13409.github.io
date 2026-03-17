@@ -31,14 +31,14 @@ const Timeline = ({ timeline }: TimelineProps) => {
           <div className="space-y-8">
             <div className="space-y-2">
               <div className="flex items-center gap-4">
-                <span className="text-xs font-black text-text-muted uppercase tracking-widest">
+                <span className="text-xs font-black text-text-muted tracking-widest uppercase">
                   {entry.period}
                 </span>
                 <Badge variant={entry.status === "completed" ? "mint" : "secondary"}>
                   {entry.status}
                 </Badge>
               </div>
-              <h3 className="text-4xl font-black text-text-main tracking-tight group-hover:text-accent-peach transition-colors italic uppercase leading-none">
+              <h3 className="text-4xl font-black text-text-main tracking-tight group-hover:text-accent-peach transition-colors italic leading-none">
                 {entry.phase}
               </h3>
             </div>
@@ -48,8 +48,8 @@ const Timeline = ({ timeline }: TimelineProps) => {
               <div className="creative-card p-8 space-y-6">
                 <div className="flex items-center gap-3">
                   <Book className="w-4 h-4 text-accent-sky" />
-                  <h4 className="text-xs font-black text-text-muted uppercase tracking-widest">
-                    Learning focus
+                  <h4 className="text-xs font-black text-text-muted tracking-widest uppercase">
+                    learning focus
                   </h4>
                 </div>
                 <ul className="space-y-4">
@@ -72,8 +72,8 @@ const Timeline = ({ timeline }: TimelineProps) => {
               {/* Highlights & Tech */}
               <div className="space-y-8">
                 <div className="space-y-4">
-                  <h4 className="text-xs font-black text-text-muted uppercase tracking-widest flex items-center gap-3 px-2">
-                    <Sparkles className="w-3 h-3 text-accent-peach" /> Key growth
+                  <h4 className="text-xs font-black text-text-muted tracking-widest uppercase flex items-center gap-3 px-2">
+                    <Sparkles className="w-3 h-3 text-accent-peach" /> key growth
                   </h4>
                   <div className="flex flex-wrap gap-2">
                     {entry.keySkills.map((skill, i) => (
@@ -86,8 +86,8 @@ const Timeline = ({ timeline }: TimelineProps) => {
 
                 {entry.highlights.length > 0 && (
                   <div className="space-y-4">
-                    <h4 className="text-xs font-black text-text-muted uppercase tracking-widest flex items-center gap-3 px-2">
-                      <Star className="w-3 h-3 text-accent-sky" /> Highlights
+                    <h4 className="text-xs font-black text-text-muted tracking-tight flex items-center gap-3 px-2">
+                      <Star className="w-3 h-3 text-accent-sky" /> highlights
                     </h4>
                     <div className="flex flex-wrap gap-2">
                       {entry.highlights.map((highlight, i) => (

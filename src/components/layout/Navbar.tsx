@@ -10,7 +10,7 @@ const Navbar = ({ isMobileMenuOpen, setIsMobileMenuOpen }: NavbarProps) => {
   return (
     <nav className="lg:hidden fixed top-0 left-0 right-0 z-50 bg-page-bg/80 backdrop-blur-md border-b border-black/5 dark:border-white/5 px-6 py-4 flex items-center justify-between transition-colors duration-400">
       <div>
-        <h1 className="text-sm font-black uppercase tracking-tighter text-text-main">Parth <span className="text-accent-peach">Gajjar</span></h1>
+        <h1 className="text-sm font-black tracking-tighter text-text-main">parth <span className="text-accent-peach">gajjar</span></h1>
       </div>
       
       <button

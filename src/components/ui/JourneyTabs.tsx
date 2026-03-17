@@ -24,9 +24,9 @@ const JourneyTabs = ({ activeTab, onChange }: JourneyTabsProps) => {
             transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
           />
         )}
-        <span className="relative z-10 flex items-center gap-2 text-[10px] font-black uppercase tracking-widest">
+        <span className="relative z-10 flex items-center gap-2 text-[10px] font-black tracking-widest uppercase">
           <Code className="w-3.5 h-3.5" />
-          My Work
+          my work
         </span>
       </button>
 
@@ -44,9 +44,9 @@ const JourneyTabs = ({ activeTab, onChange }: JourneyTabsProps) => {
             transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
           />
         )}
-        <span className="relative z-10 flex items-center gap-2 text-[10px] font-black uppercase tracking-widest">
+        <span className="relative z-10 flex items-center gap-2 text-[10px] font-black tracking-widest uppercase">
           <GraduationCap className="w-3.5 h-3.5" />
-          My Schooling
+          my schooling
         </span>
       </button>
     </div>

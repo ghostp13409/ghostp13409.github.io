@@ -46,7 +46,7 @@ const ContactPage = () => {
       setTimeout(() => {
         setStatus((prev) => ({ ...prev, success: false }));
       }, 5000);
-    } catch (error) {
+    } catch {
       setStatus({
         loading: false,
         error: "Oops! Something went wrong. Please try again.",

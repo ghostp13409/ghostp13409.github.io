@@ -20,18 +20,18 @@ const CertificateCard = ({ certificate, index }: CertificateCardProps) => {
       className="group block py-6 border-b border-black/5 last:border-0"
     >
       <div className="flex justify-between items-baseline gap-4 mb-2">
-        <h3 className="text-sm font-black uppercase text-text-main group-hover:text-accent-peach transition-colors tracking-tight">
+        <h3 className="text-sm font-black text-text-main group-hover:text-accent-peach transition-colors tracking-tight">
           {certificate.title}
         </h3>
         <ExternalLink className="w-3 h-3 text-text-muted group-hover:text-accent-peach transition-colors shrink-0" />
       </div>
       <div className="flex justify-between items-baseline gap-4">
-        <p className="text-[10px] font-bold text-text-muted uppercase tracking-widest leading-none">
+        <p className="text-[10px] font-bold text-text-muted tracking-tight leading-none">
           {certificate.issuer} / {certificate.date}
         </p>
         <div className="flex gap-2">
            {certificate.skills.slice(0, 1).map((skill) => (
-             <span key={skill} className="text-[9px] font-bold uppercase tracking-widest text-text-main/40">
+             <span key={skill} className="text-[9px] font-bold tracking-tight text-text-main/40">
                {skill}
              </span>
            ))}

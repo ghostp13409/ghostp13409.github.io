@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ExternalLink, Github, Sparkles, Play, Info, Code2 } from "lucide-react";
+import { ExternalLink, Github } from "lucide-react";
 import type { Project } from "../../types/portfolio";
 import { cn } from "../../lib/utils";
 import { Badge } from "./Badge";
@@ -12,12 +12,12 @@ interface FeaturedProjectProps {
 const ProjectPlaceholder = () => (
   <div className="w-full h-full relative overflow-hidden bg-page-bg dark:bg-white/[0.02] flex items-center justify-center border-b border-black/5 dark:border-white/5">
     {/* Clean Dot Grid */}
-    <div 
-      className="absolute inset-0 opacity-[0.15] dark:opacity-[0.1]" 
-      style={{ 
+    <div
+      className="absolute inset-0 opacity-[0.15] dark:opacity-[0.1]"
+      style={{
         backgroundImage: `radial-gradient(circle at 2px 2px, currentColor 1px, transparent 0)`,
-        backgroundSize: '24px 24px'
-      }} 
+        backgroundSize: "24px 24px",
+      }}
     />
 
     {/* Crisp Geometric Vector Shapes */}
@@ -59,7 +59,7 @@ const ProjectPlaceholder = () => (
       <div className="w-12 h-1 bg-accent-peach rounded-full" />
       <div className="w-6 h-1 bg-accent-sky rounded-full" />
     </div>
-    
+
     <div className="absolute top-10 right-10 flex flex-col gap-4 opacity-30">
       <div className="w-1 h-12 bg-accent-sky rounded-full" />
       <div className="w-1 h-6 bg-accent-mint rounded-full" />
@@ -79,8 +79,8 @@ const FeaturedProject = ({ project, index }: FeaturedProjectProps) => {
       viewport={{ once: true, margin: "-100px" }}
       transition={{ type: "spring", stiffness: 260, damping: 26 }}
       className={cn(
-        "flex flex-col lg:flex-row gap-12 lg:gap-20 items-center",
-        !isEven && "lg:flex-row-reverse"
+        "flex flex-col lg:flex-row content-gap-md items-center",
+        !isEven && "lg:flex-row-reverse",
       )}
     >
       {/* Media Side */}
@@ -91,7 +91,7 @@ const FeaturedProject = ({ project, index }: FeaturedProjectProps) => {
               {isVideo ? (
                 <video
                   src={mediaUrl}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   muted
                   loop
                   playsInline
@@ -101,7 +101,7 @@ const FeaturedProject = ({ project, index }: FeaturedProjectProps) => {
                 <img
                   src={mediaUrl}
                   alt={project.title}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
               )}
               <div className="absolute inset-0 bg-gradient-to-t from-black/20 dark:from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -109,45 +109,46 @@ const FeaturedProject = ({ project, index }: FeaturedProjectProps) => {
           ) : (
             <ProjectPlaceholder />
           )}
-          
-          <div className="absolute top-6 right-6 flex gap-2">
+
+          <div className="absolute top-8 right-8 flex gap-2">
             {project.completionDate && (
-              <Badge variant="default" className="bg-white/90 dark:bg-page-bg/90 backdrop-blur-md">
+              <Badge
+                variant="default"
+                className="bg-white/90 dark:bg-page-bg/90 backdrop-blur-md"
+              >
                 {project.completionDate}
               </Badge>
-            )}
-            {isVideo && (
-              <span className="p-1.5 rounded-full bg-accent-peach text-page-bg shadow-sm">
-                <Play className="w-3 h-3 fill-current" />
-              </span>
             )}
           </div>
         </div>
       </div>
 
       {/* Content Side */}
-      <div className="w-full lg:w-1/2 space-y-8">
-        <div className="space-y-4">
+      <div className="w-full lg:w-1/2 space-y-10">
+        <div className="space-y-6">
           <div className="flex items-center gap-3">
-             <div className="w-8 h-px bg-accent-peach" />
-             <span className="text-xs font-black text-accent-peach uppercase tracking-[0.3em]">Featured Work</span>
+            <div className="w-12 h-px bg-accent-peach" />
           </div>
-          <h3 className="text-4xl md:text-6xl font-black text-text-main tracking-tight uppercase leading-[1] group-hover:text-accent-peach transition-colors">
+          <h3 className="text-4xl md:text-5xl font-black text-text-main tracking-tighter leading-[0.9] group-hover:text-accent-peach transition-colors">
             {project.title}
           </h3>
-          <p className="text-lg md:text-xl text-text-main/80 font-bold leading-relaxed max-w-xl uppercase tracking-tight">
+          <p className="text-lg md:text-xl text-text-main/70 font-bold leading-tight max-w-xl tracking-tight">
             {project.description}
           </p>
         </div>
 
         {project.learnings && (
-          <div className="space-y-4">
-            <h4 className="text-[10px] font-black text-text-muted uppercase tracking-widest flex items-center gap-2">
-              <span className="w-1.5 h-1.5 rounded-full bg-accent-peach" /> Key Highlights
+          <div className="space-y-6">
+            <h4 className="text-[10px] font-black text-text-muted tracking-widest uppercase flex items-center gap-3">
+              <span className="w-1.5 h-1.5 rounded-full bg-accent-peach" /> key
+              highlights
             </h4>
-            <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
               {project.learnings.slice(0, 4).map((learning, i) => (
-                <li key={i} className="flex gap-3 text-sm font-bold text-text-main/70 leading-snug">
+                <li
+                  key={i}
+                  className="flex gap-3 text-[10px] font-black text-text-main/60 leading-snug tracking-widest uppercase"
+                >
                   <span className="text-accent-peach shrink-0">✦</span>
                   {learning}
                 </li>
@@ -156,7 +157,7 @@ const FeaturedProject = ({ project, index }: FeaturedProjectProps) => {
           </div>
         )}
 
-        <div className="space-y-6">
+        <div className="space-y-8">
           <div className="flex flex-wrap gap-2">
             {project.tags.map((tag, i) => (
               <Badge key={i} variant="secondary">
@@ -165,17 +166,27 @@ const FeaturedProject = ({ project, index }: FeaturedProjectProps) => {
             ))}
           </div>
 
-          <div className="flex flex-wrap gap-4 pt-4">
+          <div className="flex flex-wrap gap-6 items-center">
             {project.contentUrl && (
-              <a href={project.contentUrl} target="_blank" rel="noopener noreferrer" className="pill-button flex items-center gap-3">
+              <a
+                href={project.contentUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="pill-button flex items-center gap-3"
+              >
                 <Github className="w-4 h-4" />
-                <span>Source Code</span>
+                <span className="uppercase tracking-widest">Source</span>
               </a>
             )}
             {project.webUrl && (
-              <a href={project.webUrl} target="_blank" rel="noopener noreferrer" className="px-8 py-4 rounded-full border-2 border-black/5 dark:border-white/10 font-bold hover:bg-white dark:hover:bg-white/5 transition-all flex items-center gap-3">
-                <ExternalLink className="w-4 h-4" />
-                <span>Live Demo</span>
+              <a
+                href={project.webUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm font-black tracking-widest uppercase hover:text-accent-peach transition-colors flex items-center gap-2 group"
+              >
+                live preview
+                <ExternalLink className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
               </a>
             )}
           </div>
