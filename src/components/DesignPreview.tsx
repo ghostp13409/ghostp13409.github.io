@@ -32,8 +32,6 @@ const designImages: DesignImage[] = [
 const DesignPreview: FC = () => {
   return (
     <div>
-      <h1 className="text-4xl font-bold mb-10 ">Designs</h1>
-
       <div className=" w-full h-full grid grid-cols-4 gap-6">
         {designImages.map((p) => {
           if (p.id % 2 === 0) {
