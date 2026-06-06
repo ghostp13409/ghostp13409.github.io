@@ -1,6 +1,6 @@
 import { Skills, Certificates, inProgress } from "../data/data";
 import { motion } from "framer-motion";
-import { GraduationCap, Award, BookOpen, TrendingUp } from "lucide-react";
+import { GraduationCap, BookOpen, TrendingUp } from "lucide-react";
 import type { FC } from "react";
 
 const SkillsPage: FC = () => {
