@@ -78,16 +78,29 @@ export interface Social {
   url: string;
 }
 
+export interface WorkExperience {
+  id: number;
+  company: string;
+  role: string;
+  location: string;
+  period: string;
+  description: string[];
+  skills: string[];
+  isCurrent?: boolean;
+}
+
 export interface Project {
   id: number;
   title: string;
   description: string;
   imageUrl: string;
   tags: string[];
-  contnetUrl?: string;
+  contentUrl?: string;
   completionDate: string;
   setup: string[];
   webUrl?: string;
+  learnings?: string[];
+  impact?: string;
 }
 
 export interface Skill {

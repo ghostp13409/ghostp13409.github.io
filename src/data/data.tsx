@@ -344,7 +344,7 @@ export const projects: Project[] = [
     description: "Toss-api is a blazing fast, Vim-inspired TUI and CLI API client built in Rust. It brings the power of full-featured API testing into your terminal, allowing you to seamlessly manage collections, environments, and requests without leaving your keyboard.",
     imageUrl: "images/projects/toss-api.png",
     tags: ["Rust", "Ratatui", "REST API", "CLI"],
-    contnetUrl: "https://github.com/ghostp13409/toss-api",
+    contentUrl: "https://github.com/ghostp13409/toss-api",
     completionDate: "2026",
     setup: ["Rust, Omarchy, Zed"],
     webUrl: "images/projects/toss-api.png",
@@ -356,7 +356,7 @@ export const projects: Project[] = [
       "WindChime is a flutter-based cross-platform mindfulness application designed to help users achieve better mental well-being through guided meditation, breathwork exercises, and mindfulness practices. The app provides a clean and intuitive interface for users to explore various meditation techniques and track their progress.",
     imageUrl: "images/projects/WindChime.png",
     tags: ["Flutter", "Dart", "Firebase", "REST API", "State Management"],
-    contnetUrl: "https://github.com/ghostp13409/WindChime",
+    contentUrl: "https://github.com/ghostp13409/WindChime",
     completionDate: "2025",
     setup: ["Windows, VS Code, Android Studio"],
     webUrl: "images/projects/WindChime.png",
@@ -375,7 +375,7 @@ export const projects: Project[] = [
       "Recursion",
       "Time-Space Complexity",
     ],
-    contnetUrl: "https://leetcode.com/u/ghostp134/",
+    contentUrl: "https://leetcode.com/u/ghostp134/",
     completionDate: "Since 2023",
     setup: ["Windows, Java, C#"],
     webUrl:
@@ -390,7 +390,7 @@ export const projects: Project[] = [
       "https://socialify.git.ci/ehharvey/lms-2024/image?font=Inter&issues=1&language=1&name=1&pattern=Solid&stargazers=1&theme=Dark",
     tags: ["C#", "Entity Framework", "SQLite", "Testing"],
     imageUrl: "images/projects/LMS.jpg",
-    contnetUrl: "https://github.com/ehharvey/lms-2024",
+    contentUrl: "https://github.com/ehharvey/lms-2024",
     completionDate: "2024",
     setup: ["Windows, Visual Studio"],
   },
@@ -402,7 +402,7 @@ export const projects: Project[] = [
     imageUrl: "images/projects/WEB.jpg",
     webUrl: "images/projects/WebScrapper.png",
     tags: ["Python", "Selenium", "BeautifulSoup", "IFTTT"],
-    contnetUrl:
+    contentUrl:
       "https://github.com/ghostp13409/ProjectGraveyard/tree/main/WebScrapers",
     completionDate: "2022",
     setup: ["Ubuntu, PyCharm, IFTTT"],
@@ -415,7 +415,7 @@ export const projects: Project[] = [
     imageUrl: "images/projects/Trading.jpg",
     webUrl: "images/projects/TradingBotPreview.png",
     tags: ["Python", "API", "sqlalchemy", "Pandas", "Web Sockets"],
-    contnetUrl:
+    contentUrl:
       "https://github.com/ghostp13409/ProjectGraveyard/tree/main/WebScrapers",
     completionDate: "2022",
     setup: ["Fedora, VS Code"],
@@ -437,7 +437,7 @@ export const projects: Project[] = [
       "Modern, responsive portfolio website built with React, featuring dark mode, smooth animations, and dynamic content loading. Implements best practices in web development including component-based architecture and responsive design.",
     imageUrl: "images/projects/Portfolio.jpg",
     tags: ["React", "Tailwind CSS", "Component Architecture"],
-    contnetUrl: "https://github.com/ghostp13409/ghostp13409.github.io",
+    contentUrl: "https://github.com/ghostp13409/ghostp13409.github.io",
     completionDate: "2024",
     setup: ["VS Code, Node.js, Git"],
   },
