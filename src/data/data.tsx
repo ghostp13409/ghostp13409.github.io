@@ -345,7 +345,7 @@ export const projects: Project[] = [
     tags: ["Java", "Spring Boot", "React", "TypeScript", "Docker", "RabbitMQ", "PostgreSQL"],
     completionDate: "2026",
     contentUrl: "https://github.com/ghostp13409",
-    imageUrl: "code.png",
+    imageUrl: "images/projects/coding_templete.jpg",
     setup: ["Omarchy", "Gemini CLI", "Docker-Compose", "Cloudflare Tunnel"],
     learnings: [
       "Secured the platform using JWT and Role-Based Access Control.",
@@ -371,12 +371,12 @@ export const projects: Project[] = [
     id: 2,
     title: "Toss-api - TUI API Client",
     description: "Toss-api is a blazing fast, Vim-inspired TUI and CLI API client built in Rust. It brings the power of full-featured API testing into your terminal, allowing you to seamlessly manage collections, environments, and requests without leaving your keyboard.",
-    imageUrl: "images/projects/toss-api.png",
+    imageUrl: "images/projects/toss.png",
     tags: ["Rust", "Ratatui", "REST API", "CLI"],
     contentUrl: "https://github.com/ghostp13409/toss-api",
     completionDate: "2026",
     setup: ["Rust, Omarchy, Zed"],
-    webUrl: "images/projects/toss-api.png",
+    webUrl: "images/projects/toss-demo.gif",
   },
   {
     id: 3,
@@ -404,7 +404,7 @@ export const projects: Project[] = [
     description: "A real-time platform where users can rent tools and equipment. I integrated live chat and notifications to make the user experience seamless and interactive.",
     tags: ["ASP.NET Core", "C#", "React", "TypeScript", "Redis", "SignalR"],
     completionDate: "2025",
-    imageUrl: "code.png",
+    imageUrl: "images/projects/coding_templete.jpg",
     setup: ["VS Code", "Docker", "Render.com"],
     learnings: [
       "Implemented real-time updates using SignalR.",
@@ -421,7 +421,7 @@ export const projects: Project[] = [
     completionDate: "2026",
     contentUrl: "https://github.com/ghostp13409",
     webUrl: "https://render.com",
-    imageUrl: "code.png",
+    imageUrl: "images/projects/coding_templete.jpg",
     setup: ["VS Code", "Docker", "Render.com"],
     learnings: [
       "Mastered monolithic to microservices conversion strategies.",
@@ -449,7 +449,7 @@ export const projects: Project[] = [
     description: "An Android application for car rentals that keeps data in sync between a local database and the cloud, even when offline.",
     tags: ["Kotlin", "Jetpack Compose", "Firebase", "SQLite"],
     completionDate: "2025",
-    imageUrl: "code.png",
+    imageUrl: "images/projects/coding_templete.jpg",
     setup: ["VS Code", "Android Studio", "Firebase"],
     learnings: [
       "Implemented robust data sync between SQLite and Firebase Firestore.",
