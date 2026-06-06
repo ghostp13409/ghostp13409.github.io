@@ -13,5 +13,5 @@ export default defineConfig({
   server: {
     port: 3000,
   },
-  base: '/ghostp13409.github.io/',
+  base: '/',
 })
