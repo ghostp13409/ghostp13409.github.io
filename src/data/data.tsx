@@ -340,14 +340,20 @@ export const socials: Social[] = [
 export const projects: Project[] = [
   {
     id: 0,
-    title: "Toss-api - TUI API Client",
-    description: "Toss-api is a blazing fast, Vim-inspired TUI and CLI API client built in Rust. It brings the power of full-featured API testing into your terminal, allowing you to seamlessly manage collections, environments, and requests without leaving your keyboard.",
-    imageUrl: "images/projects/toss-api.png",
-    tags: ["Rust", "Ratatui", "REST API", "CLI"],
-    contentUrl: "https://github.com/ghostp13409/toss-api",
+    title: "SwiftMove",
+    description: "A full-stack marketplace connecting freelance drivers with customers needing moving services. I built this using a modern containerized microservices architecture to ensure it's scalable and robust.",
+    tags: ["Java", "Spring Boot", "React", "TypeScript", "Docker", "RabbitMQ", "PostgreSQL"],
     completionDate: "2026",
-    setup: ["Rust, Omarchy, Zed"],
-    webUrl: "images/projects/toss-api.png",
+    contentUrl: "https://github.com/ghostp13409",
+    imageUrl: "code.png",
+    setup: ["Omarchy", "Gemini CLI", "Docker-Compose", "Cloudflare Tunnel"],
+    learnings: [
+      "Secured the platform using JWT and Role-Based Access Control.",
+      "Used Docker Compose for seamless development and deployment.",
+      "Implemented service discovery with Eureka and routing through an API Gateway.",
+      "Handled inter-service communication asynchronously with RabbitMQ.",
+    ],
+    impact: "Designed a system capable of handling multiple concurrent moving requests with real-time driver tracking.",
   },
   {
     id: 1,
@@ -363,6 +369,17 @@ export const projects: Project[] = [
   },
   {
     id: 2,
+    title: "Toss-api - TUI API Client",
+    description: "Toss-api is a blazing fast, Vim-inspired TUI and CLI API client built in Rust. It brings the power of full-featured API testing into your terminal, allowing you to seamlessly manage collections, environments, and requests without leaving your keyboard.",
+    imageUrl: "images/projects/toss-api.png",
+    tags: ["Rust", "Ratatui", "REST API", "CLI"],
+    contentUrl: "https://github.com/ghostp13409/toss-api",
+    completionDate: "2026",
+    setup: ["Rust, Omarchy, Zed"],
+    webUrl: "images/projects/toss-api.png",
+  },
+  {
+    id: 3,
     title: "DSA Exercises",
     description:
       "Solved 70+ algorithmic problems on LeetCode. Analyzed time and space complexity for multiple algorithms, ensuring efficient and scalable solutions. Implemented and optimized algorithms for sorting, searching, and dynamic programming, reducing computation time by 30%.",
@@ -382,7 +399,39 @@ export const projects: Project[] = [
       "https://leetcode-stats.vercel.app/api?username=ghostp134&theme=Dark",
   },
   {
-    id: 3,
+    id: 4,
+    title: "Equipment Rental System",
+    description: "A real-time platform where users can rent tools and equipment. I integrated live chat and notifications to make the user experience seamless and interactive.",
+    tags: ["ASP.NET Core", "C#", "React", "TypeScript", "Redis", "SignalR"],
+    completionDate: "2025",
+    imageUrl: "code.png",
+    setup: ["VS Code", "Docker", "Render.com"],
+    learnings: [
+      "Implemented real-time updates using SignalR.",
+      "Built a secure authentication system with Google OAuth and JWT.",
+      "Optimized data retrieval using Redis caching.",
+    ],
+    impact: "Built a production-ready rental system with sub-second notification latency.",
+  },
+  {
+    id: 5,
+    title: "ModernShop",
+    description: "I took a monolithic e-commerce application and evolved it into a microservices platform. This transformation focused on improving scalability for product management and shopping cart services.",
+    tags: ["Java", "Spring Cloud", "Docker", "PostgreSQL", "Eureka", "Render"],
+    completionDate: "2026",
+    contentUrl: "https://github.com/ghostp13409",
+    webUrl: "https://render.com",
+    imageUrl: "code.png",
+    setup: ["VS Code", "Docker", "Render.com"],
+    learnings: [
+      "Mastered monolithic to microservices conversion strategies.",
+      "Gained experience deploying Docker images to cloud platforms like Render.",
+      "Managed distributed databases in a cloud environment.",
+    ],
+    impact: "Successfully collaborated in a team of 4 to deliver a scalable e-commerce backbone.",
+  },
+  {
+    id: 6,
     title: "LMS – Learning Management System (Open Source)",
     description:
       'Designed and integrated core system component "Progress Items". Developed comprehensive test cases for seamless system integration. Maintained and improved documentation and code formatting.',
@@ -395,7 +444,31 @@ export const projects: Project[] = [
     setup: ["Windows, Visual Studio"],
   },
   {
-    id: 4,
+    id: 7,
+    title: "Car Renting App",
+    description: "An Android application for car rentals that keeps data in sync between a local database and the cloud, even when offline.",
+    tags: ["Kotlin", "Jetpack Compose", "Firebase", "SQLite"],
+    completionDate: "2025",
+    imageUrl: "code.png",
+    setup: ["VS Code", "Android Studio", "Firebase"],
+    learnings: [
+      "Implemented robust data sync between SQLite and Firebase Firestore.",
+      "Crafted a modern, reactive UI using Jetpack Compose.",
+    ],
+  },
+  {
+    id: 8,
+    title: "Personal Portfolio Website",
+    description:
+      "Modern, responsive portfolio website built with React, featuring dark mode, smooth animations, and dynamic content loading. Implements best practices in web development including component-based architecture and responsive design.",
+    imageUrl: "images/projects/Portfolio.jpg",
+    tags: ["React", "Tailwind CSS", "Component Architecture"],
+    contentUrl: "https://github.com/ghostp13409/ghostp13409.github.io",
+    completionDate: "2024",
+    setup: ["VS Code, Node.js, Git"],
+  },
+  {
+    id: 9,
     title: "Web Scraper",
     description:
       "Developed Selenium-based web scrapers for stock and price monitoring on local retail sites. Implemented customized SMS-based alerts using IFTTT APIs, resulting in an early edge on stock details in a competitive market.",
@@ -408,7 +481,7 @@ export const projects: Project[] = [
     setup: ["Ubuntu, PyCharm, IFTTT"],
   },
   {
-    id: 5,
+    id: 10,
     title: "Trading Bot",
     description:
       "Strategized a volatility-based trading bot. Designed the trading algorithm and simulated paper trading for testing. Deployed and experimented on the Binance platform for performance tuning.",
@@ -421,7 +494,7 @@ export const projects: Project[] = [
     setup: ["Fedora, VS Code"],
   },
   {
-    id: 6,
+    id: 11,
     title: "Patient Management App",
     description: "An fullfledged application for managing patient files.",
     imageUrl: "images/projects/coding_templete.jpg",
@@ -429,17 +502,6 @@ export const projects: Project[] = [
     tags: ["C#", "Windows Forms", "OOP", "SOLID"],
     completionDate: "2024",
     setup: ["Windows, Visual Studio"],
-  },
-  {
-    id: 7,
-    title: "Personal Portfolio Website",
-    description:
-      "Modern, responsive portfolio website built with React, featuring dark mode, smooth animations, and dynamic content loading. Implements best practices in web development including component-based architecture and responsive design.",
-    imageUrl: "images/projects/Portfolio.jpg",
-    tags: ["React", "Tailwind CSS", "Component Architecture"],
-    contentUrl: "https://github.com/ghostp13409/ghostp13409.github.io",
-    completionDate: "2024",
-    setup: ["VS Code, Node.js, Git"],
   },
 ];
 
