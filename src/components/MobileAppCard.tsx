@@ -153,7 +153,11 @@ const MobileAppCard: FC<MobileAppCardProps> = ({
             opacity-60 group-hover:opacity-40 transition-opacity duration-300 z-10" />
 
           <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transform
-            translate-y-2 group-hover:translate-y-0 transition-all duration-500 z-30 scale-90 group-hover:scale-100">
+            translate-y-2 group-hover:translate-y-0 transition-all duration-500 z-30 scale-90 group-hover:scale-100 flex gap-2">
+            <div className="px-3 py-2 bg-primary/20 backdrop-blur-md border border-primary/30 rounded-md flex items-center gap-2">
+              <div className="w-1.5 h-1.5 bg-primary rounded-full animate-pulse" />
+              <span className="text-[10px] font-bold text-primary uppercase tracking-widest">Live_Demo</span>
+            </div>
             <div className="p-3 bg-primary text-neutral-bg rounded-full shadow-[0_0_20px_rgba(16,185,129,0.4)] transition-all">
               <Eye className="h-5 w-5" />
             </div>
@@ -245,7 +249,7 @@ const MobileAppCard: FC<MobileAppCardProps> = ({
                       <div className="space-y-4 pb-8 border-b border-border/30">
                         <div className="flex items-center gap-3">
                           <span className="px-2 py-0.5 bg-primary/20 text-primary border border-primary/30 rounded-sm text-[10px] font-bold uppercase tracking-widest">
-                            {completionDate || '2026'} Application
+                            Flutter Application
                           </span>
                           <span className="h-px w-6 bg-border" />
                           <span className="text-ink/40 text-[10px] font-mono uppercase">LIVE_DEMO</span>

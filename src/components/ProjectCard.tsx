@@ -86,6 +86,8 @@ const ProjectCard: FC<ProjectCardProps> = ({
             src={imageUrl}
             alt={title}
             onLoad={() => setImageLoaded(true)}
+            loading="lazy"
+            decoding="async"
             className={`w-full h-full object-cover object-center transform group-hover:scale-105
               transition-all duration-700 ease-out ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}
           />
@@ -188,10 +190,11 @@ const ProjectCard: FC<ProjectCardProps> = ({
                     <button
                       onClick={() => setIsFullscreen(true)}
                       className="absolute top-4 right-16 flex items-center gap-2 px-3 py-2 bg-neutral-bg/80 backdrop-blur-md rounded-md border border-border/50
-                        z-30 hover:bg-primary hover:text-neutral-bg transition-all font-bold text-[9px] uppercase tracking-widest shadow-xl"
+                        z-30 hover:bg-primary hover:text-neutral-bg transition-all font-bold text-[9px] uppercase tracking-widest shadow-xl group/fs"
                       title="View Fullscreen"
                     >
-                      <Eye className="w-3.5 h-3.5" />
+                      <Eye className="w-3.5 h-3.5 text-primary group-hover/fs:text-neutral-bg" />
+                      <span className="text-primary group-hover/fs:text-neutral-bg">Full_Screen</span>
                     </button>
 
                     {/* Project Header Overlay - Fixed inside hero */}

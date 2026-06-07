@@ -105,6 +105,7 @@ export interface Project {
   challenges?: string;
   liveAppUrl?: string;
   isMobileApp?: boolean;
+  screenshots?: string[];
 }
 
 export interface Skill {
@@ -121,6 +122,7 @@ export interface CollageProject {
   imageUrl: string;
   tags: string[];
   thumbnailUrl: string;
+  year: number;
 }
 
 export interface Hobby {

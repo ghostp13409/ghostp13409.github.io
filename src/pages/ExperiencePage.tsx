@@ -1,6 +1,7 @@
-import { experiences } from "../data/data";
+import { experiences } from "../data";
 import { motion } from "framer-motion";
 import { Briefcase, Calendar, MapPin } from "lucide-react";
+import GitHubContributionGraph from "../components/GitHubContributionGraph";
 import type { FC } from "react";
 
 const ExperiencePage: FC = () => {
@@ -102,6 +103,9 @@ const ExperiencePage: FC = () => {
             </motion.div>
           ))}
         </div>
+
+        {/* GitHub Contributions Section */}
+        <GitHubContributionGraph />
       </motion.div>
     </section>
   );

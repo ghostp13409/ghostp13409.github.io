@@ -11,9 +11,10 @@ interface VideoCardProps {
   tags: string[];
   videoUrl: string;
   thumbnailUrl: string;
+  year?: number;
 }
 
-const VideoCard: FC<VideoCardProps> = ({ title, description, tags, videoUrl, thumbnailUrl }) => {
+const VideoCard: FC<VideoCardProps> = ({ title, description, tags, videoUrl, thumbnailUrl, year }) => {
   const [showPreview, setShowPreview] = useState(false);
   const [imageLoaded, setImageLoaded] = useState(false);
 
@@ -56,6 +57,8 @@ const VideoCard: FC<VideoCardProps> = ({ title, description, tags, videoUrl, thu
             src={thumbnailUrl}
             alt={title}
             onLoad={() => setImageLoaded(true)}
+            loading="lazy"
+            decoding="async"
             className={`w-full h-full object-cover object-center transform group-hover:scale-105
               transition-all duration-700 ease-out ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}
           />
@@ -77,8 +80,8 @@ const VideoCard: FC<VideoCardProps> = ({ title, description, tags, videoUrl, thu
 
           {/* Quick info badges */}
           <div className="absolute top-4 left-4 z-30 flex items-center gap-2">
-            <div className="px-3 py-1 bg-secondary/20 backdrop-blur-md rounded-full border border-secondary/30">
-              <span className="text-[10px] font-bold text-secondary uppercase tracking-widest">Video</span>
+            <div className="px-3 py-1 backdrop-blur-md rounded-full border /30">
+              <span className="text-[10px] font-bold uppercase tracking-widest">{year}</span>
             </div>
           </div>
         </div>

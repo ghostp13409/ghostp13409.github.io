@@ -1,11 +1,13 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, lazy, Suspense } from "react";
 import type { FC } from "react";
 import Sidebar from "../components/Sidebar";
 import IntroPage from "./IntroPage";
-import ExperiencePage from "./ExperiencePage";
-import SkillsPage from "./SkillsPage";
-import ProjectsPage from "./ProjectsPage";
-import ContactPage from "./ContactPage";
+import LoadingSection from "../components/LoadingSection";
+
+const ExperiencePage = lazy(() => import("./ExperiencePage"));
+const SkillsPage = lazy(() => import("./SkillsPage"));
+const ProjectsPage = lazy(() => import("./ProjectsPage"));
+const ContactPage = lazy(() => import("./ContactPage"));
 
 const Portfolio: FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -131,20 +133,22 @@ const Portfolio: FC = () => {
         <div className="flex-1 pt-24 lg:pt-0">
           <div className="h-screen lg:h-screen p-0 lg:p-4 lg:rounded">
             <div className="h-full overflow-y-auto lg:rounded-lg lg:border-2 lg:border-border">
-              {/* Intro Section */}
-              <IntroPage />
+              <Suspense fallback={<LoadingSection />}>
+                {/* Intro Section */}
+                <IntroPage />
 
-              {/* Experience Section */}
-              <ExperiencePage />
+                {/* Experience Section */}
+                <ExperiencePage />
 
-              {/* Skills Section */}
-              <SkillsPage />
+                {/* Skills Section */}
+                <SkillsPage />
 
-              {/* Projects Section */}
-              <ProjectsPage />
+                {/* Projects Section */}
+                <ProjectsPage />
 
-              {/* Hire Me Section */}
-              <ContactPage />
+                {/* Hire Me Section */}
+                <ContactPage />
+              </Suspense>
             </div>
           </div>
         </div>

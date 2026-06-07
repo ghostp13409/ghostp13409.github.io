@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import type { FC } from "react";
 import { Brain, Heart, Rocket, Sparkles, User, Briefcase } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
-import { socials } from "../data/data";
+import { socials } from "../data";
 
 interface SidebarProps {
   isMobile?: boolean;
@@ -13,7 +13,72 @@ interface NavButtonProps {
   section: string;
   label: string;
   icon: LucideIcon;
+  isActive: boolean;
+  isMobile: boolean;
+  onClick: (section: string) => void;
 }
+
+const NavButton: FC<NavButtonProps> = ({ section, label, icon: Icon, isActive, isMobile, onClick }) => {
+  return (
+    <button
+      onClick={() => onClick(section)}
+      className={`
+        w-full text-left ${
+          isMobile ? "py-3 px-4" : "py-4 px-6"
+        } rounded-md ${
+        isMobile ? "mb-3" : "mb-4"
+      } relative overflow-hidden group flex items-center ${
+        isMobile ? "gap-3" : "gap-4"
+      } backdrop-blur-sm
+        transition-all duration-300 ease-out
+        ${
+          isActive
+            ? "bg-primary/20 text-primary font-semibold border border-primary/30"
+            : "text-ink/60 hover:bg-surface/50 border border-border/30 hover:border-border"
+        }
+        ${!isMobile && isActive ? "transform scale-[1.02]" : ""}
+        ${!isMobile ? "hover:scale-[1.01]" : ""}
+      `}
+    >
+      <div
+        className={`
+        ${
+          isMobile ? "w-8 h-8" : "w-10 h-10"
+        } rounded-md flex items-center justify-center transition-all duration-300
+        ${
+          isActive
+            ? "bg-primary/20 scale-110"
+            : "bg-surface/30 group-hover:bg-surface/50"
+        }
+      `}
+      >
+        <Icon
+          size={isMobile ? 16 : 20}
+          className={`
+            transition-all duration-300
+            ${
+              isActive
+                ? "text-primary"
+                : "text-ink/40 group-hover:text-primary"
+            }
+            ${isActive ? "scale-110" : "group-hover:scale-110"}
+          `}
+        />
+      </div>
+
+      <span
+        className={`
+        relative z-10 ${
+          isMobile ? "text-sm" : "text-base"
+        } font-medium transition-all duration-300
+        ${isActive && !isMobile ? "translate-x-1" : ""}
+      `}
+      >
+        {label}
+      </span>
+    </button>
+  );
+};
 
 const Sidebar: FC<SidebarProps> = ({ isMobile = false, onMenuItemClick = () => {} }) => {
   const [activeSection, setActiveSection] = useState("intro");
@@ -54,70 +119,6 @@ const Sidebar: FC<SidebarProps> = ({ isMobile = false, onMenuItemClick = () => {
     if (isMobile) {
       onMenuItemClick();
     }
-  };
-
-  const NavButton: FC<NavButtonProps> = ({ section, label, icon: Icon }) => {
-    const isActive = activeSection === section;
-
-    return (
-      <button
-        onClick={() => scrollToSection(section)}
-        className={`
-          w-full text-left ${
-            isMobile ? "py-3 px-4" : "py-4 px-6"
-          } rounded-md ${
-          isMobile ? "mb-3" : "mb-4"
-        } relative overflow-hidden group flex items-center ${
-          isMobile ? "gap-3" : "gap-4"
-        } backdrop-blur-sm
-          transition-all duration-300 ease-out
-          ${
-            isActive
-              ? "bg-primary/20 text-primary font-semibold border border-primary/30"
-              : "text-ink/60 hover:bg-surface/50 border border-border/30 hover:border-border"
-          }
-          ${!isMobile && isActive ? "transform scale-[1.02]" : ""}
-          ${!isMobile ? "hover:scale-[1.01]" : ""}
-        `}
-      >
-        <div
-          className={`
-          ${
-            isMobile ? "w-8 h-8" : "w-10 h-10"
-          } rounded-md flex items-center justify-center transition-all duration-300
-          ${
-            isActive
-              ? "bg-primary/20 scale-110"
-              : "bg-surface/30 group-hover:bg-surface/50"
-          }
-        `}
-        >
-          <Icon
-            size={isMobile ? 16 : 20}
-            className={`
-              transition-all duration-300
-              ${
-                isActive
-                  ? "text-primary"
-                  : "text-ink/40 group-hover:text-primary"
-              }
-              ${isActive ? "scale-110" : "group-hover:scale-110"}
-            `}
-          />
-        </div>
-
-        <span
-          className={`
-          relative z-10 ${
-            isMobile ? "text-sm" : "text-base"
-          } font-medium transition-all duration-300
-          ${isActive && !isMobile ? "translate-x-1" : ""}
-        `}
-        >
-          {label}
-        </span>
-      </button>
-    );
   };
 
   return (
@@ -186,11 +187,46 @@ const Sidebar: FC<SidebarProps> = ({ isMobile = false, onMenuItemClick = () => {
 
         {/* Navigation */}
         <nav className={`flex-1 ${isMobile ? "mb-6" : "mb-8"}`}>
-          <NavButton section="intro" icon={Sparkles} label="Introduction" />
-          <NavButton section="experience" icon={Briefcase} label="Experience" />
-          <NavButton section="skills" icon={Brain} label="Skills & Education" />
-          <NavButton section="projects" icon={Rocket} label="Projects" />
-          <NavButton section="hire" icon={Heart} label="Get in touch" />
+          <NavButton 
+            section="intro" 
+            icon={Sparkles} 
+            label="Introduction" 
+            isActive={activeSection === "intro"}
+            isMobile={isMobile}
+            onClick={scrollToSection}
+          />
+          <NavButton 
+            section="experience" 
+            icon={Briefcase} 
+            label="Experience" 
+            isActive={activeSection === "experience"}
+            isMobile={isMobile}
+            onClick={scrollToSection}
+          />
+          <NavButton 
+            section="skills" 
+            icon={Brain} 
+            label="Skills & Education" 
+            isActive={activeSection === "skills"}
+            isMobile={isMobile}
+            onClick={scrollToSection}
+          />
+          <NavButton 
+            section="projects" 
+            icon={Rocket} 
+            label="Projects" 
+            isActive={activeSection === "projects"}
+            isMobile={isMobile}
+            onClick={scrollToSection}
+          />
+          <NavButton 
+            section="hire" 
+            icon={Heart} 
+            label="Get in touch" 
+            isActive={activeSection === "hire"}
+            isMobile={isMobile}
+            onClick={scrollToSection}
+          />
         </nav>
 
         {/* Social Links */}

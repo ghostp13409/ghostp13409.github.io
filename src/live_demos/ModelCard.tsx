@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import type { FC } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import type { ThreeEvent } from "@react-three/fiber";
@@ -14,22 +14,22 @@ interface AnimatedShapeProps {
 
 const AnimatedShape: FC<AnimatedShapeProps> = ({ position, color, speed, shape }) => {
   const meshRef = useRef<THREE.Mesh>(null!);
-  const randomOffset = useRef({
+  const [randomOffsets] = useState(() => ({
     x: Math.random() * Math.PI * 2,
     y: Math.random() * Math.PI * 2,
     z: Math.random() * Math.PI * 2,
-  });
+  }));
 
   useFrame((state) => {
     const time = state.clock.elapsedTime;
 
     // Random circular movement
     meshRef.current.position.x =
-      position[0] + Math.sin(time * 0.5 + randomOffset.current.x) * 0.5;
+      position[0] + Math.sin(time * 0.5 + randomOffsets.x) * 0.5;
     meshRef.current.position.y =
-      position[1] + Math.sin(time * 0.7 + randomOffset.current.y) * 0.3;
+      position[1] + Math.sin(time * 0.7 + randomOffsets.y) * 0.3;
     meshRef.current.position.z =
-      Math.cos(time * 0.3 + randomOffset.current.z) * 0.5;
+      Math.cos(time * 0.3 + randomOffsets.z) * 0.5;
 
     // Rotation
     meshRef.current.rotation.x += speed * 0.01;

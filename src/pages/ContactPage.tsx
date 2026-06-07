@@ -8,7 +8,7 @@ import {
   MessageCircle,
   Heart,
 } from "lucide-react";
-import { Hobbies } from "../data/data";
+import { Hobbies } from "../data";
 import { motion } from "framer-motion";
 
 interface FormData {

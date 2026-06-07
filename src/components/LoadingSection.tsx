@@ -1,0 +1,9 @@
+import { FC } from "react";
+
+const LoadingSection: FC = () => (
+  <div className="min-h-screen flex items-center justify-center bg-neutral-bg">
+    <div className="w-12 h-12 border-4 border-primary border-t-transparent rounded-full animate-spin"></div>
+  </div>
+);
+
+export default LoadingSection;

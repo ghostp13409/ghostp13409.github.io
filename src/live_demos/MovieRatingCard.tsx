@@ -41,7 +41,7 @@ const MovieRatingCard: FC = () => {
       } else {
         setError("Movie not found!");
       }
-    } catch (err) {
+    } catch {
       setError("Failed to fetch movie data");
     } finally {
       setLoading(false);

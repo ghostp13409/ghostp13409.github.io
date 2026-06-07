@@ -1,7 +1,8 @@
-import { CollageProjects, projects } from "../data/data";
+import { CollageProjects, projects } from "../data";
 import DesignPreviewCard from "../components/DesignPreviewCard";
 import ProjectCard from "../components/ProjectCard";
 import MobileAppCard from "../components/MobileAppCard";
+import ProjectShowcaseCard from "../components/ProjectShowcaseCard";
 import VideoCard from "../components/VideoCard";
 import { motion } from "framer-motion";
 import { Rocket, Code } from "lucide-react";
@@ -95,6 +96,19 @@ const ProjectsPage: FC = () => {
                   setup={p.setup}
                   liveAppUrl={p.liveAppUrl}
                 />
+              ) : p.screenshots && p.screenshots.length > 0 ? (
+                <ProjectShowcaseCard
+                  title={p.title}
+                  description={p.description}
+                  tags={p.tags}
+                  year={new Number(p.completionDate).valueOf()}
+                  imageUrl={p.imageUrl}
+                  contentUrl={p.contentUrl}
+                  completionDate={p.completionDate}
+                  challenges={p.challenges}
+                  keyFeatures={p.keyFeatures}
+                  screenshots={p.screenshots}
+                />
               ) : (
                 <ProjectCard
                   title={p.title}
@@ -142,6 +156,7 @@ const ProjectsPage: FC = () => {
                 tags={p.tags}
                 videoUrl={p.imageUrl}
                 thumbnailUrl={p.thumbnailUrl}
+                year={p.year}
               />
             </motion.div>
           ))}

@@ -1,6 +1,7 @@
-import { education, Skills, Certificates, inProgress } from "../data/data";
+import { education, Skills, Certificates } from "../data";
 import { motion } from "framer-motion";
 import { GraduationCap, BookOpen, Zap, ArrowDown } from "lucide-react";
+import { DSACont } from "../components/DSACont";
 import type { FC } from "react";
 
 const SkillsPage: FC = () => {
@@ -72,9 +73,9 @@ const SkillsPage: FC = () => {
             </div>
 
             <div className="grid grid-cols-2 md:grid-cols-3 gap-6 mt-12">
-            {education.achievements.map((achievement, index) => (
+            {education.achievements.map((achievement, i) => (
               <motion.div
-                key={index}
+                key={i}
                 variants={fadeInUp}
                 className="bg-surface/30 p-4 rounded-md border border-border/50 transition-all duration-300 hover:border-primary/50 group"
               >
@@ -99,7 +100,7 @@ const SkillsPage: FC = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 text-left">
-            {Skills.map((skillset, index) => (
+            {Skills.map((skillset) => (
               <motion.div
                 key={skillset.id}
                 variants={fadeInUp}
@@ -123,22 +124,27 @@ const SkillsPage: FC = () => {
           </div>
         </motion.div>
 
+        {/* DSA Contests */}
+        <motion.div variants={fadeInUp}>
+          <DSACont />
+        </motion.div>
+
         {/* Growth & Certifications */}
         <motion.div variants={fadeInUp}>
           <div className="flex items-center gap-4 mb-8">
             <div className="h-px flex-1 bg-border/50"></div>
             <h2 className="text-2xl font-bold text-ink flex items-center gap-3">
               <BookOpen className="h-6 w-6 text-secondary" />
-              Continuous Growth
+              Certifications
             </h2>
             <div className="h-px flex-1 bg-border/50"></div>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 text-left">
+          <div className="grid gap-8 text-left">
             {/* Completed Certs */}
             <div className="space-y-4">
               <h3 className="text-xs font-bold text-ink/40 uppercase tracking-widest px-2">Certifications</h3>
-              <div className="space-y-3">
+              <div className="space-y-3 grid grid-cols-1 md:grid-cols-2 gap-4">
                 {Certificates.slice(0, 4).map((cert) => (
                   <a
                     key={cert.id}
@@ -153,30 +159,6 @@ const SkillsPage: FC = () => {
                     </div>
                     <ArrowDown className="h-4 w-4 text-ink/20 -rotate-90 group-hover:text-secondary transition-colors" />
                   </a>
-                ))}
-              </div>
-            </div>
-
-            {/* In Progress */}
-            <div className="space-y-4">
-              <h3 className="text-xs font-bold text-ink/40 uppercase tracking-widest px-2">Current Focus</h3>
-              <div className="space-y-4">
-                {inProgress.map((item) => (
-                  <div key={item.id} className="p-4 bg-surface/30 rounded-md border border-border">
-                    <div className="flex justify-between items-start mb-3">
-                      <div>
-                        <h4 className="font-bold text-ink">{item.title}</h4>
-                        <p className="text-xs text-ink/40">{item.sourcePlatform}</p>
-                      </div>
-                      <span className="text-xs font-bold text-accent">{item.progress}</span>
-                    </div>
-                    <div className="w-full bg-border rounded-full h-1.5">
-                      <div
-                        className="bg-accent h-1.5 rounded-full"
-                        style={{ width: item.progress }}
-                      ></div>
-                    </div>
-                  </div>
                 ))}
               </div>
             </div>
