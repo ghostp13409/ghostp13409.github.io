@@ -104,15 +104,6 @@ const DesignPreviewCard: FC<DesignPreviewCardProps> = ({ title, description, tag
             ))}
           </div>
 
-          {/* Action buttons */}
-          <div className="flex items-center justify-between mt-auto">
-            <button className="flex items-center gap-1 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-accent/20 text-accent
-              rounded-md text-xs sm:text-sm font-medium hover:bg-accent/30 transition-colors border border-accent/30">
-              <Eye className="h-3 w-3 sm:h-4 sm:w-4" />
-              <span className="hidden sm:inline">View Designs</span>
-              <span className="sm:hidden">View</span>
-            </button>
-          </div>
         </div>
       </motion.div>
 

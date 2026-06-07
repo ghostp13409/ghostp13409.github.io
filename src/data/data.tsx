@@ -334,7 +334,7 @@ export const projects: Project[] = [
     completionDate: "2025",
     setup: ["Windows, VS Code, Android Studio"],
     webUrl: "images/projects/WindChime.png",
-    liveAppUrl: "app-preview/index.html",
+    liveAppUrl: "windchime-preview/index.html",
     isMobileApp: true,
   },
   {

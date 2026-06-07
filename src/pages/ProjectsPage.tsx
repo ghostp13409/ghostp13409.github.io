@@ -1,6 +1,7 @@
 import { CollageProjects, projects } from "../data/data";
 import DesignPreviewCard from "../components/DesignPreviewCard";
 import ProjectCard from "../components/ProjectCard";
+import MobileAppCard from "../components/MobileAppCard";
 import VideoCard from "../components/VideoCard";
 import { motion } from "framer-motion";
 import { Rocket, Code } from "lucide-react";
@@ -81,18 +82,33 @@ const ProjectsPage: FC = () => {
               transition={{ delay: index * 0.1 }}
               className="transform transition-all duration-300 hover:-translate-y-2"
             >
-              <ProjectCard
-                title={p.title}
-                description={p.description}
-                tags={p.tags}
-                imageUrl={p.imageUrl}
-                contnetUrl={p.contentUrl}
-                completionDate={p.completionDate}
-                setup={p.setup}
-                webUrl={p.webUrl}
-                liveAppUrl={p.liveAppUrl}
-                isMobileApp={p.isMobileApp}
-              />
+              {p.isMobileApp && p.liveAppUrl ? (
+                <MobileAppCard
+                  title={p.title}
+                  description={p.description}
+                  tags={p.tags}
+                  imageUrl={p.imageUrl}
+                  contentUrl={p.contentUrl}
+                  completionDate={p.completionDate}
+                  challenges={p.challenges}
+                  keyFeatures={p.keyFeatures}
+                  setup={p.setup}
+                  liveAppUrl={p.liveAppUrl}
+                />
+              ) : (
+                <ProjectCard
+                  title={p.title}
+                  description={p.description}
+                  tags={p.tags}
+                  imageUrl={p.imageUrl}
+                  contnetUrl={p.contentUrl}
+                  completionDate={p.completionDate}
+                  challenges={p.challenges}
+                  keyFeatures={p.keyFeatures}
+                  setup={p.setup}
+                  webUrl={p.webUrl}
+                />
+              )}
             </motion.div>
           ))}
 
