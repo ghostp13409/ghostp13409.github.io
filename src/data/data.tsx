@@ -22,11 +22,11 @@ export const education: Education = {
   program: {
     title: "Advanced Diploma in Computer Programming and Analysis",
     type: "Co-operative Education Program",
-    duration: "2024 - 2027",
-    gpa: "3.99",
+    duration: "2024 - 2026",
+    gpa: "3.93",
     status: "Full-Time Study",
-    totalSemesters: 10,
-    completedSemesters: 4,
+    totalSemesters: 6,
+    completedSemesters: 6,
   },
   description: "Comprehensive 3-year program combining theoretical knowledge with practical industry experience through integrated co-operative work terms, preparing students for successful careers in software development.",
   timeline: [
@@ -104,54 +104,6 @@ export const education: Education = {
     },
     {
       id: 5,
-      phase: "Co-op Term 1",
-      period: "Summer 2025",
-      status: "upcoming",
-      courses: ["Industry Work Experience", "Professional Development", "Workplace Communication"],
-      keySkills: ["Industry Experience", "Professional Development", "Real-world Problem Solving"],
-      grade: "TBD",
-      gpa: null,
-      highlights: ["Open to Work", "Industry-Ready Skills", "Professional Network Building"],
-      projects: ["TBD - Industry Projects"]
-    },
-    {
-      id: 6,
-      phase: "Co-op Term 2",
-      period: "Fall 2025",
-      status: "upcoming",
-      courses: ["Advanced Industry Experience", "Leadership Development", "Technical Specialization"],
-      keySkills: ["Advanced Technical Skills", "Leadership", "Specialization"],
-      grade: "TBD",
-      gpa: null,
-      highlights: ["Career Advancement", "Technical Leadership", "Industry Connections"],
-      projects: ["TBD - Advanced Industry Projects"]
-    },
-    {
-      id: 7,
-      phase: "Co-op Term 3",
-      period: "Winter 2026",
-      status: "upcoming",
-      courses: ["Senior Development Role", "Mentorship Experience", "Industry Innovation"],
-      keySkills: ["Senior Development", "Mentoring", "Innovation"],
-      grade: "TBD",
-      gpa: null,
-      highlights: ["Senior Role Experience", "Mentorship Opportunities", "Innovation Projects"],
-      projects: ["TBD - Senior Level Projects"]
-    },
-    {
-      id: 8,
-      phase: "Co-op Term 4",
-      period: "Summer 2026",
-      status: "upcoming",
-      courses: ["Capstone Industry Project", "Career Preparation", "Professional Certification"],
-      keySkills: ["Capstone Development", "Career Readiness", "Professional Certification"],
-      grade: "TBD",
-      gpa: null,
-      highlights: ["Capstone Project Completion", "Job Readiness", "Industry Certification"],
-      projects: ["TBD - Capstone Industry Project"]
-    },
-    {
-      id: 9,
       phase: "Semester 5",
       period: "Fall 2026",
       status: "upcoming",
@@ -169,7 +121,7 @@ export const education: Education = {
       projects: ["Advanced Architecture Project", "Technology Research", "Final Capstone"]
     },
     {
-      id: 10,
+      id: 6,
       phase: "Semester 6",
       period: "Winter 2027",
       status: "upcoming",
@@ -190,39 +142,31 @@ export const education: Education = {
   achievements: [
     {
       title: "Dean's Honor List",
-      subtitle: "All Semesters (3.99 GPA)",
+      subtitle: "Every Semester",
       icon: "🏆",
-      color: "from-yellow-500 to-orange-500",
-      bgColor: "yellow-500/10",
-      borderColor: "yellow-500/20",
+      color: "primary",
       description: "Consistently maintained excellence with 3.99 GPA across all completed semesters"
     },
     {
-      title: "Google Developer",
-      subtitle: "Community Member",
+      title: "GDG Member",
+      subtitle: "Google Developer",
       icon: "🌐",
-      color: "from-blue-500 to-cyan-500",
-      bgColor: "blue-500/10",
-      borderColor: "blue-500/20",
+      color: "secondary",
       description: "Active participant in Google Developer Group events and tech community"
     },
     {
-      title: "Study Group Leader",
-      subtitle: "Peer Mentoring & Tutoring",
+      title: "Peer Tutor",
+      subtitle: "Programming",
       icon: "👥",
-      color: "from-green-500 to-emerald-500",
-      bgColor: "green-500/10",
-      borderColor: "green-500/20",
+      color: "primary",
       description: "Leading study groups and providing peer tutoring for programming courses"
     },
     {
-      title: "Co-op Ready",
-      subtitle: "Industry Prepared",
-      icon: "💼",
-      color: "from-purple-500 to-pink-500",
-      bgColor: "purple-500/10",
-      borderColor: "purple-500/20",
-      description: "Prepared for professional work environment with industry-relevant skills"
+      title: "3.99 GPA",
+      subtitle: "Top 5% Class",
+      icon: "🎓",
+      color: "accent",
+      description: "Academic excellence recognized by faculty and institution"
     }
   ],
   progressStats: {
@@ -511,19 +455,16 @@ export const Skills: Skill[] = [
     id: 1,
     title: "Languages",
     tags: ["Java", "C#", "Python", "JavaScript", "HTML", "CSS"],
-    color: "bg-blue-600",
   },
   {
     id: 2,
     title: "Frameworks and Databases",
     tags: ["React", "Express.js", "ASP.NET", "Node", "Entity Framework", "EJS"],
-    color: "bg-green-600",
   },
   {
     id: 3,
     title: "Databases",
     tags: ["MySQL", "SQLite", "MongoDB"],
-    color: "bg-purple-600",
   },
   {
     id: 4,
@@ -540,13 +481,11 @@ export const Skills: Skill[] = [
       "Selection Sort",
       "Merge Sort",
     ],
-    color: "bg-sky-900",
   },
   {
     id: 5,
     title: "Tools",
     tags: ["Postman", "Git", "VS Code", "Tailwind CSS", "Bootstrap", "LINQ"],
-    color: "bg-fuchsia-500",
   },
 ];
 

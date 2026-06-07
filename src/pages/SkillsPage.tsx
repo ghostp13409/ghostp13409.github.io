@@ -1,6 +1,6 @@
-import { Skills, Certificates, inProgress } from "../data/data";
+import { education, Skills, Certificates, inProgress } from "../data/data";
 import { motion } from "framer-motion";
-import { GraduationCap, BookOpen, TrendingUp } from "lucide-react";
+import { GraduationCap, BookOpen, Zap, ArrowDown } from "lucide-react";
 import type { FC } from "react";
 
 const SkillsPage: FC = () => {
@@ -21,207 +21,98 @@ const SkillsPage: FC = () => {
   return (
     <section
       id="skills"
-      className="min-h-screen flex flex-col justify-center items-center p-6 relative overflow-hidden"
+      className="min-h-screen flex flex-col justify-center items-center p-6 relative overflow-hidden bg-neutral-bg"
     >
       {/* Background decoration */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-20 left-10 w-20 h-20 bg-green-500/10 rounded-full blur-xl"></div>
-        <div className="absolute top-40 right-20 w-32 h-32 bg-blue-500/10 rounded-full blur-xl"></div>
-        <div className="absolute bottom-20 left-20 w-24 h-24 bg-purple-500/10 rounded-full blur-xl"></div>
-        <div className="absolute bottom-40 right-10 w-28 h-28 bg-yellow-500/10 rounded-full blur-xl"></div>
+        <div className="absolute top-20 left-10 w-20 h-20 bg-primary/10 rounded-full blur-xl"></div>
+        <div className="absolute top-40 right-20 w-32 h-32 bg-secondary/10 rounded-full blur-xl"></div>
+        <div className="absolute bottom-20 left-20 w-24 h-24 bg-accent/10 rounded-full blur-xl"></div>
       </div>
 
       <motion.div
         variants={staggerContainer}
         initial="initial"
         animate="animate"
-        className="w-full px-8 lg:px-16 xl:px-24 text-center z-10 space-y-12"
+        className="w-full px-8 lg:px-16 xl:px-24 text-center z-10 space-y-16"
       >
         <motion.h1
           variants={fadeInUp}
-          className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-8 bg-gradient-to-r from-blue-400 via-purple-500 to-cyan-400 text-transparent bg-clip-text tracking-tight"
+          className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-8 text-primary tracking-tight"
         >
-          Academic Excellence
+          Skills & Education
         </motion.h1>
 
         {/* Education Overview */}
         <motion.div variants={fadeInUp} className="mb-12">
-          <div className="bg-gray-900/60 backdrop-blur-xl p-8 rounded-3xl border border-gray-700/50 shadow-2xl">
-            <div className="flex items-center justify-center gap-3 mb-6">
-              <GraduationCap className="h-12 w-12 text-blue-400" />
-              <div className="text-left">
-                <h2 className="text-2xl sm:text-3xl font-bold text-gray-100">
-                  Conestoga College
-                </h2>
-                <p className="text-blue-400 text-lg">
-                  Computer Programming & Analysis
-                </p>
-                <p className="text-gray-400">
-                  Advanced Diploma • Co-op Program • 2026
-                </p>
+          <div className="bg-surface/40 backdrop-blur-xl p-8 rounded-lg border border-border/50 shadow-2xl">
+            <div className="flex flex-col md:flex-row items-center justify-between gap-8">
+              <div className="flex items-center gap-6">
+                <div className="w-20 h-20 rounded-lg bg-primary/20 flex items-center justify-center border border-primary/30">
+                  <GraduationCap className="h-10 w-10 text-primary" />
+                </div>
+                <div className="text-left">
+                  <h2 className="text-2xl sm:text-3xl font-bold text-ink">
+                    {education.institution.name}
+                  </h2>
+                  <p className="text-primary text-lg font-medium">
+                    {education.program.title}
+                  </p>
+                  <p className="text-ink/60">
+                    Advanced Diploma • Co-op Program • {education.program.duration}
+                  </p>
+                </div>
+              </div>
+              <div className="flex items-center gap-4 bg-primary/10 px-6 py-3 rounded-md border border-primary/20">
+                <div className="text-right">
+                  <p className="text-xs text-ink/40 uppercase tracking-wider font-bold">Current GPA</p>
+                  <p className="text-3xl font-bold text-primary">{education.program.gpa}<span className="text-sm text-ink/40">/4.00</span></p>
+                </div>
               </div>
             </div>
 
-            <div className="flex flex-wrap justify-between gap-8">
-            {[
-              {
-                emoji: "🏆",
-                title: "Dean's Honor List",
-                color: "from-yellow-500 to-orange-500",
-              },
-              {
-                emoji: "🌐",
-                title: "GDG Member",
-                desc: "Google Developer",
-                color: "from-blue-500 to-cyan-500",
-              },
-              {
-                emoji: "👥",
-                title: "Peer Mentoring",
-                desc: "Review Sessions",
-                color: "from-green-500 to-emerald-500",
-              },
-              {
-                emoji: "⭐",
-                title: "3.93/4.00",
-                desc: "GPA",
-                color: "from-purple-500 to-pink-500",
-              },
-            ].map((achievement, index) => (
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12">
+            {education.achievements.map((achievement, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2 + index * 0.1 }}
-                className="bg-gray-800/50 backdrop-blur-sm p-6 rounded-2xl border border-gray-700/50 hover:border-gray-600/50 transition-all duration-300 group hover:-translate-y-2 flex-1 min-w-[200px]"
+                variants={fadeInUp}
+                className="bg-surface/30 p-4 rounded-md border border-border/50 transition-all duration-300 hover:border-primary/50 group"
               >
-                <div
-                  className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${achievement.color} flex items-center justify-center mb-4 mx-auto group-hover:scale-110 transition-transform duration-300`}
-                >
-                  <span className="text-2xl">{achievement.emoji}</span>
-                </div>
-                <h3 className="text-lg font-bold text-gray-100 mb-2">
-                  {achievement.title}
-                </h3>
-                <p className="text-gray-400 text-sm">{achievement.desc}</p>
+                <div className="text-2xl mb-2 group-hover:scale-110 transition-transform">{achievement.icon}</div>
+                <h3 className="text-sm font-bold text-ink">{achievement.title}</h3>
+                <p className="text-ink/40 text-xs">{achievement.subtitle}</p>
               </motion.div>
             ))}
           </div>
           </div>
         </motion.div>
 
-
-        {/* Professional Certifications */}
-        <motion.div variants={fadeInUp} className="mb-12">
-          <h2 className="text-2xl sm:text-3xl font-bold text-gray-100 mb-8 flex items-center justify-center gap-3">
-            <BookOpen className="h-8 w-8 text-blue-400" />
-            Professional Certifications
-          </h2>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-6">
-            {Certificates.map((cert, index) => (
-              <motion.a
-                key={cert.id}
-                href={cert.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
-                className="bg-gray-800/50 backdrop-blur-sm p-6 rounded-2xl border border-gray-700/50 hover:border-blue-500/50 transition-all duration-300 group hover:-translate-y-2 block"
-              >
-                <h3 className="text-lg font-bold text-blue-400 mb-3 group-hover:text-blue-300 transition-colors">
-                  {cert.title}
-                </h3>
-                <p className="text-gray-300 hover:text-blue-400 transition-colors text-sm block mb-4">
-                  {cert.issuer} • {cert.date}
-                </p>
-                <div className="flex flex-wrap gap-2">
-                  {cert.skills.map((skill) => (
-                    <span
-                      key={skill}
-                      className="px-3 py-1 bg-blue-500/20 text-blue-300 rounded-full text-xs border border-blue-500/30"
-                    >
-                      {skill}
-                    </span>
-                  ))}
-                </div>
-              </motion.a>
-            ))}
-          </div>
-        </motion.div>
-
-        {/* Current Learning */}
-        <motion.div variants={fadeInUp} className="mb-12">
-          <h2 className="text-2xl sm:text-3xl font-bold text-gray-100 mb-8 flex items-center justify-center gap-3">
-            <TrendingUp className="h-8 w-8 text-yellow-400" />
-            Currently Learning
-          </h2>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-6">
-            {inProgress.map((item, index) => (
-              <motion.div
-                key={item.id}
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
-                className="bg-gray-800/50 backdrop-blur-sm p-6 rounded-2xl border border-gray-700/50 hover:border-yellow-500/50 transition-all duration-300 group hover:-translate-y-2"
-              >
-                <h3 className="text-lg font-bold text-yellow-400 mb-3 group-hover:text-yellow-300 transition-colors">
-                  {item.title}
-                </h3>
-                <a
-                  href={item.sourceUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-gray-300 hover:text-yellow-400 transition-colors text-sm block mb-4"
-                >
-                  {item.source}
-                </a>
-                <div className="relative">
-                  <div className="w-full bg-gray-700 rounded-full h-2 mb-2">
-                    <div
-                      className="bg-gradient-to-r from-yellow-500 to-orange-500 h-2 rounded-full transition-all duration-500"
-                      style={{ width: item.progress }}
-                    ></div>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-xs text-gray-400">
-                      {item.progress}
-                    </span>
-                    <span className="text-xs px-2 py-1 bg-gray-700/80 rounded-full text-gray-300">
-                      {item.sourcePlatform}
-                    </span>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
-
-        {/* Technical Skills */}
+        {/* Technical Expertise */}
         <motion.div variants={fadeInUp}>
-          <h2 className="text-2xl sm:text-3xl font-bold text-gray-100 mb-8">
-            Technical Expertise
-          </h2>
+          <div className="flex items-center gap-4 mb-8">
+            <div className="h-px flex-1 bg-border/50"></div>
+            <h2 className="text-2xl font-bold text-ink flex items-center gap-3">
+              <Zap className="h-6 w-6 text-primary" />
+              Technical Expertise
+            </h2>
+            <div className="h-px flex-1 bg-border/50"></div>
+          </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 text-left">
             {Skills.map((skillset, index) => (
               <motion.div
                 key={skillset.id}
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
-                className="bg-gray-800/50 backdrop-blur-sm p-6 rounded-2xl border border-gray-700/50 hover:border-gray-600/50 transition-all duration-300 group hover:-translate-y-2"
+                variants={fadeInUp}
+                className="bg-surface/40 backdrop-blur-sm p-6 rounded-md border border-border hover:border-primary/30 transition-all duration-300"
               >
-                <h3 className="text-lg font-bold text-gray-100 mb-4 group-hover:text-blue-400 transition-colors">
+                <h3 className="text-sm font-bold text-primary uppercase tracking-widest mb-4">
                   {skillset.title}
                 </h3>
                 <div className="flex flex-wrap gap-2">
                   {skillset.tags.map((tag) => (
                     <span
                       key={tag}
-                      className={`px-3 py-1 ${skillset.color} rounded-full text-xs text-white transition-all duration-300 hover:scale-105`}
+                      className="px-3 py-1 bg-surface border border-border text-ink/80 rounded-sm text-xs transition-colors hover:border-primary/50 hover:text-primary"
                     >
                       {tag}
                     </span>
@@ -229,6 +120,66 @@ const SkillsPage: FC = () => {
                 </div>
               </motion.div>
             ))}
+          </div>
+        </motion.div>
+
+        {/* Growth & Certifications */}
+        <motion.div variants={fadeInUp}>
+          <div className="flex items-center gap-4 mb-8">
+            <div className="h-px flex-1 bg-border/50"></div>
+            <h2 className="text-2xl font-bold text-ink flex items-center gap-3">
+              <BookOpen className="h-6 w-6 text-secondary" />
+              Continuous Growth
+            </h2>
+            <div className="h-px flex-1 bg-border/50"></div>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 text-left">
+            {/* Completed Certs */}
+            <div className="space-y-4">
+              <h3 className="text-xs font-bold text-ink/40 uppercase tracking-widest px-2">Certifications</h3>
+              <div className="space-y-3">
+                {Certificates.slice(0, 4).map((cert) => (
+                  <a
+                    key={cert.id}
+                    href={cert.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-between p-4 bg-surface/30 rounded-md border border-border hover:border-secondary/50 group transition-all"
+                  >
+                    <div>
+                      <h4 className="font-bold text-ink group-hover:text-secondary transition-colors">{cert.title}</h4>
+                      <p className="text-xs text-ink/40">{cert.issuer} • {cert.date}</p>
+                    </div>
+                    <ArrowDown className="h-4 w-4 text-ink/20 -rotate-90 group-hover:text-secondary transition-colors" />
+                  </a>
+                ))}
+              </div>
+            </div>
+
+            {/* In Progress */}
+            <div className="space-y-4">
+              <h3 className="text-xs font-bold text-ink/40 uppercase tracking-widest px-2">Current Focus</h3>
+              <div className="space-y-4">
+                {inProgress.map((item) => (
+                  <div key={item.id} className="p-4 bg-surface/30 rounded-md border border-border">
+                    <div className="flex justify-between items-start mb-3">
+                      <div>
+                        <h4 className="font-bold text-ink">{item.title}</h4>
+                        <p className="text-xs text-ink/40">{item.sourcePlatform}</p>
+                      </div>
+                      <span className="text-xs font-bold text-accent">{item.progress}</span>
+                    </div>
+                    <div className="w-full bg-border rounded-full h-1.5">
+                      <div
+                        className="bg-accent h-1.5 rounded-full"
+                        style={{ width: item.progress }}
+                      ></div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </motion.div>
       </motion.div>

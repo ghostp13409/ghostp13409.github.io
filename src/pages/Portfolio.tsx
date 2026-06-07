@@ -57,24 +57,24 @@ const Portfolio: FC = () => {
   }, [isMobileMenuOpen]);
 
   return (
-    <div className="min-h-screen bg-gray-900 text-gray-100">
+    <div className="min-h-screen bg-neutral-bg text-ink">
       {/* Mobile Header */}
-      <div className="lg:hidden fixed top-6 left-0 right-0 z-50 bg-gray-800/95 backdrop-blur-md border-b border-gray-700">
+      <div className="lg:hidden fixed top-6 left-0 right-0 z-50 bg-surface/95 backdrop-blur-md border-b border-border">
         <div className="flex items-center justify-between p-4">
           <div className="flex items-center gap-3">
             <img
               src="images/profile_logo.jpeg"
-              className="w-10 h-10 rounded-full object-cover border border-gray-600"
+              className="w-10 h-10 rounded-full object-cover border border-border"
               alt="Profile"
             />
             <div>
-              <h1 className="text-lg font-bold text-gray-100">Parth Gajjar</h1>
-              <p className="text-sm text-gray-400">Software Developer</p>
+              <h1 className="text-lg font-bold text-ink">Parth Gajjar</h1>
+              <p className="text-sm text-ink/60">Software Developer</p>
             </div>
           </div>
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="mobile-menu-button p-2 rounded-lg bg-gray-700 hover:bg-gray-600 transition-colors z-50"
+            className="mobile-menu-button p-2 rounded-lg bg-border hover:bg-border/80 transition-colors z-50"
           >
             <svg
               className="w-6 h-6"
@@ -129,7 +129,7 @@ const Portfolio: FC = () => {
         {/* Main Content */}
         <div className="flex-1 pt-24 lg:pt-0">
           <div className="h-screen lg:h-screen p-0 lg:p-4 lg:rounded">
-            <div className="h-full overflow-y-auto lg:rounded-lg lg:border-2 lg:border-gray-800">
+            <div className="h-full overflow-y-auto lg:rounded-lg lg:border-2 lg:border-border">
               {/* Intro Section */}
               <IntroPage />
 

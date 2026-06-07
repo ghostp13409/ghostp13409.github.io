@@ -65,7 +65,7 @@ const Sidebar: FC<SidebarProps> = ({ isMobile = false, onMenuItemClick = () => {
         className={`
           w-full text-left ${
             isMobile ? "py-3 px-4" : "py-4 px-6"
-          } rounded-2xl ${
+          } rounded-md ${
           isMobile ? "mb-3" : "mb-4"
         } relative overflow-hidden group flex items-center ${
           isMobile ? "gap-3" : "gap-4"
@@ -73,8 +73,8 @@ const Sidebar: FC<SidebarProps> = ({ isMobile = false, onMenuItemClick = () => {
           transition-all duration-300 ease-out
           ${
             isActive
-              ? "bg-gradient-to-r from-blue-600/90 to-purple-600/90 text-white font-semibold shadow-xl border border-blue-500/30"
-              : "text-gray-300 hover:bg-gray-700/50 border border-gray-700/30 hover:border-gray-600/50"
+              ? "bg-primary/20 text-primary font-semibold border border-primary/30"
+              : "text-ink/60 hover:bg-surface/50 border border-border/30 hover:border-border"
           }
           ${!isMobile && isActive ? "transform scale-[1.02]" : ""}
           ${!isMobile ? "hover:scale-[1.01]" : ""}
@@ -84,11 +84,11 @@ const Sidebar: FC<SidebarProps> = ({ isMobile = false, onMenuItemClick = () => {
           className={`
           ${
             isMobile ? "w-8 h-8" : "w-10 h-10"
-          } rounded-xl flex items-center justify-center transition-all duration-300
+          } rounded-md flex items-center justify-center transition-all duration-300
           ${
             isActive
-              ? "bg-white/20 scale-110"
-              : "bg-gray-600/30 group-hover:bg-gray-500/30"
+              ? "bg-primary/20 scale-110"
+              : "bg-surface/30 group-hover:bg-surface/50"
           }
         `}
         >
@@ -98,8 +98,8 @@ const Sidebar: FC<SidebarProps> = ({ isMobile = false, onMenuItemClick = () => {
               transition-all duration-300
               ${
                 isActive
-                  ? "text-white"
-                  : "text-gray-400 group-hover:text-blue-400"
+                  ? "text-primary"
+                  : "text-ink/40 group-hover:text-primary"
               }
               ${isActive ? "scale-110" : "group-hover:scale-110"}
             `}
@@ -124,15 +124,15 @@ const Sidebar: FC<SidebarProps> = ({ isMobile = false, onMenuItemClick = () => {
     <div
       className={`${
         isMobile
-          ? "w-full bg-gray-900/95 backdrop-blur-xl p-4 sm:p-6 flex flex-col h-full border-r border-gray-700/50 overflow-y-auto"
-          : "max-w-xs w-full bg-gray-900/60 backdrop-blur-xl p-4 md:p-6 flex flex-col shadow-2xl rounded-3xl border border-gray-700/50 relative overflow-hidden min-h-0 overflow-y-auto"
+          ? "w-full bg-neutral-bg/95 backdrop-blur-xl p-4 sm:p-6 flex flex-col h-full border-r border-border/50 overflow-y-auto"
+          : "max-w-xs w-full bg-surface/40 backdrop-blur-xl p-4 md:p-6 flex flex-col shadow-2xl rounded-lg border border-border/50 relative overflow-hidden min-h-0 overflow-y-auto"
       }`}
     >
       {/* Background decoration for desktop */}
       {!isMobile && (
         <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-10 right-10 w-20 h-20 bg-blue-500/10 rounded-full blur-xl"></div>
-          <div className="absolute bottom-20 left-10 w-16 h-16 bg-purple-500/10 rounded-full blur-xl"></div>
+          <div className="absolute top-10 right-10 w-20 h-20 bg-primary/5 rounded-full blur-xl"></div>
+          <div className="absolute bottom-20 left-10 w-16 h-16 bg-secondary/5 rounded-full blur-xl"></div>
         </div>
       )}
 
@@ -148,18 +148,18 @@ const Sidebar: FC<SidebarProps> = ({ isMobile = false, onMenuItemClick = () => {
               isMobile ? "mb-4" : "mb-6"
             } hover:scale-105 transition-transform duration-300`}
           >
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full blur-lg opacity-0 group-hover:opacity-30 transition-opacity duration-300"></div>
+            <div className="absolute inset-0 bg-primary/20 rounded-full blur-lg opacity-0 group-hover:opacity-30 transition-opacity duration-300"></div>
             <img
               src="images/profile_logo.jpeg"
               className={`relative ${
                 isMobile ? "w-16 h-16" : "w-28 h-28"
-              } rounded-full object-cover border-2 border-gray-700/50 transition-all duration-300 group-hover:border-blue-500/50`}
+              } rounded-full object-cover border-2 border-border/50 transition-all duration-300 group-hover:border-primary/50`}
               alt="Profile logo"
             />
             <div
               className={`absolute -bottom-1 right-3 ${
                 isMobile ? "w-5 h-5" : "w-6 h-6"
-              } bg-gradient-to-r from-green-400 to-blue-500 rounded-full border-2 border-gray-900 flex items-center justify-center animate-pulse`}
+              } bg-primary rounded-full border-2 border-neutral-bg flex items-center justify-center animate-pulse`}
             >
               <div
                 className={`${
@@ -172,13 +172,13 @@ const Sidebar: FC<SidebarProps> = ({ isMobile = false, onMenuItemClick = () => {
           <h2
             className={`${
               isMobile ? "text-xl" : "text-2xl"
-            } font-bold mb-2 bg-gradient-to-r from-blue-400 to-purple-400 text-transparent bg-clip-text text-center`}
+            } font-bold mb-2 text-ink text-center`}
           >
             Parth Gajjar
           </h2>
           <div className="flex items-center gap-2 mb-3">
-            <User className="h-4 w-4 text-gray-400" />
-            <p className="text-sm text-gray-400 font-medium">
+            <User className="h-4 w-4 text-ink/40" />
+            <p className="text-sm text-ink/40 font-medium">
               Software Developer
             </p>
           </div>
@@ -204,10 +204,10 @@ const Sidebar: FC<SidebarProps> = ({ isMobile = false, onMenuItemClick = () => {
             <div
               className={`text-center ${
                 isMobile ? "p-2" : "p-3"
-              } bg-purple-500/10 border border-purple-500/20 rounded-2xl transition-all duration-300`}
+              } bg-secondary/10 border border-secondary/20 rounded-md transition-all duration-300`}
             >
               <p
-                className={`text-xs text-purple-300 font-medium`}
+                className={`text-xs text-secondary font-medium`}
               >
                 Let's connect!
               </p>
@@ -219,11 +219,11 @@ const Sidebar: FC<SidebarProps> = ({ isMobile = false, onMenuItemClick = () => {
               isMobile ? "gap-2" : "gap-3"
             } ${
               isMobile ? "p-3" : "p-4"
-            } rounded-2xl transition-all duration-300 backdrop-blur-sm
+            } rounded-md transition-all duration-300 backdrop-blur-sm
             ${
               activeSection === "hire"
-                ? "bg-gray-800/50 border border-gray-700/50"
-                : "bg-gray-800/30 border border-gray-700/30"
+                ? "bg-surface/50 border border-border/50"
+                : "bg-surface/30 border border-border/30"
             }`}
           >
             {socials.map((social, index) => (
@@ -232,15 +232,15 @@ const Sidebar: FC<SidebarProps> = ({ isMobile = false, onMenuItemClick = () => {
                 href={social.url}
                 className={`${
                   isMobile ? "p-2" : "p-3"
-                } rounded-xl transition-all duration-300 flex items-center justify-center group backdrop-blur-sm ${
+                } rounded-md transition-all duration-300 flex items-center justify-center group backdrop-blur-sm ${
                   !isMobile
                     ? "hover:scale-110 hover:-translate-y-1"
                     : "hover:scale-105"
                 }
                   ${
                     activeSection === "hire"
-                      ? "bg-gray-700/50 hover:bg-gradient-to-r hover:from-blue-600/50 hover:to-purple-600/50 border border-gray-600/50 hover:border-blue-500/50"
-                      : "bg-gray-700/30 hover:bg-gray-600/50 border border-gray-600/30 hover:border-gray-500/50"
+                      ? "bg-surface/50 hover:bg-primary/20 border border-border/50 hover:border-primary/50"
+                      : "bg-surface/30 hover:bg-surface/50 border border-border/30 hover:border-border"
                   }`}
                 target="_blank"
                 rel="noopener noreferrer"

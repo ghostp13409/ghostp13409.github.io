@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-06-06T12:00:00Z",
+  "title": "Design System: ghostp13409 Portfolio",
+  "extensions": {
+    "colorMeta": {
+      "primary": { "role": "primary", "displayName": "Electric Blue", "canonical": "oklch(70% 0.15 250)" },
+      "secondary": { "role": "secondary", "displayName": "Vibrant Purple", "canonical": "oklch(60% 0.2 300)" },
+      "accent": { "role": "accent", "displayName": "Neon Cyan", "canonical": "oklch(75% 0.12 210)" },
+      "neutral-bg": { "role": "neutral", "displayName": "Midnight Navy", "canonical": "#111827" },
+      "surface": { "role": "neutral", "displayName": "Steel Surface", "canonical": "#1f2937" }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Hero greetings and high-impact headings." },
+      "body": { "displayName": "Body", "purpose": "General readable text and descriptions." }
+    },
+    "motion": [
+      { "name": "standard-ease", "value": "cubic-bezier(0.4, 0, 0.2, 1)", "purpose": "Fluid transitions for hover states." }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Call to action button with neon glow.",
+      "html": "<button class=\"ds-btn-primary\">GET IN TOUCH</button>",
+      "css": ".ds-btn-primary { background: #60a5fa; color: #111827; padding: 12px 24px; border-radius: 12px; font-family: 'Rubik', sans-serif; font-weight: 600; border: none; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 0 0px rgba(96, 165, 250, 0); cursor: pointer; } .ds-btn-primary:hover { transform: translateY(-2px); box-shadow: 0 0 20px rgba(96, 165, 250, 0.3); background: #93c5fd; }"
+    },
+    {
+      "name": "Project Card",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "Main container for projects and sections.",
+      "html": "<div class=\"ds-card\"><h3 class=\"ds-card-title\">Project Name</h3><p class=\"ds-card-text\">A brief description of the technical work done.</p></div>",
+      "css": ".ds-card { background: #1f2937; border-radius: 24px; padding: 32px; border: 1px solid #374151; font-family: 'Rubik', sans-serif; transition: border-color 0.3s; } .ds-card:hover { border-color: #60a5fa; } .ds-card-title { color: #f3f4f6; font-size: 1.25rem; margin-bottom: 12px; font-weight: 500; } .ds-card-text { color: #9ca3af; line-height: 1.6; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Neon Architect",
+    "overview": "The design system is built on a foundation of technical sophistication and immersive storytelling. It embraces a high-contrast dark mode where vibrant neon accents act as light sources in a deep charcoal environment.",
+    "keyCharacteristics": [
+      "High-Contrast Dark Mode",
+      "Fluid Interactivity",
+      "Technical Pulse",
+      "Refined Precision"
+    ],
+    "rules": [
+      { "name": "The Rarity Rule", "body": "Neon accents are used sparingly—on no more than 10% of any given screen.", "section": "colors" },
+      { "name": "The Glow Rule", "body": "Interactive elements should emit a subtle glow in their primary color.", "section": "colors" },
+      { "name": "The Atmospheric Depth Rule", "body": "Depth is created by placing lighter surfaces on top of darker ones.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do use gradients sparingly to draw attention.",
+      "Do maintain high contrast (aim for 7:1).",
+      "Do use icons for tech stack recognition."
+    ],
+    "donts": [
+      "Don't use boxy, sharp corners.",
+      "Don't use heavy, dark drop shadows.",
+      "Don't use generic rainbow gradients."
+    ]
+  }
+}
