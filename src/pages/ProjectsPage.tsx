@@ -87,7 +87,7 @@ const ProjectsPage: FC = () => {
                 description={p.description}
                 tags={p.tags}
                 imageUrl={p.imageUrl}
-                contnetUrl={p.contnetUrl}
+                contnetUrl={p.contentUrl}
                 completionDate={p.completionDate}
                 setup={p.setup}
                 webUrl={p.webUrl}
