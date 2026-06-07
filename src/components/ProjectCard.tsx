@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import type { FC } from "react";
 import { createPortal } from "react-dom";
-import { X, Calendar, Cpu, ExternalLink, Github, Eye } from "lucide-react";
+import { X, ExternalLink, Github, Eye, Smartphone, Play, Loader2 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import type { Variants } from "framer-motion";
 
@@ -17,6 +17,8 @@ interface ProjectCardProps {
   challenges?: string;
   keyFeatures?: string[];
   setup?: string[];
+  liveAppUrl?: string;
+  isMobileApp?: boolean;
 }
 
 const ProjectCard: FC<ProjectCardProps> = ({
@@ -30,22 +32,96 @@ const ProjectCard: FC<ProjectCardProps> = ({
   challenges,
   keyFeatures,
   setup,
+  liveAppUrl,
+  isMobileApp,
 }) => {
   const [showPreview, setShowPreview] = useState(false);
+  const [isFullscreen, setIsFullscreen] = useState(false);
   const [imageLoaded, setImageLoaded] = useState(false);
+  const [isAppLoading, setIsAppLoading] = useState(false);
+  const [isAppStarted, setIsAppStarted] = useState(false);
+
+  // Handle ESC key to close modal
+  useEffect(() => {
+    const handleEsc = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        if (isFullscreen) setIsFullscreen(false);
+        else setShowPreview(false);
+      }
+    };
+    window.addEventListener("keydown", handleEsc);
+    return () => window.removeEventListener("keydown", handleEsc);
+  }, [isFullscreen]);
 
   const cardVariants: Variants = {
     hidden: { opacity: 0, y: 20 },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       y: 0,
       transition: { duration: 0.5, ease: "easeOut" }
     },
-    hover: { 
+    hover: {
       y: -8,
       transition: { duration: 0.3, ease: "easeOut" }
     }
   };
+
+  const PhoneMockup = () => (
+    <div className="relative mx-auto w-[280px] h-[580px] sm:w-[320px] sm:h-[650px] bg-neutral-950 rounded-[3rem] border-[8px] border-surface shadow-2xl overflow-hidden ring-1 ring-border/50">
+      {/* Notch / Dynamic Island */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-7 bg-neutral-950 rounded-b-2xl z-50 flex items-center justify-center gap-2 px-4">
+        <div className="w-2 h-2 rounded-full bg-neutral-800" />
+        <div className="w-12 h-1 bg-neutral-800 rounded-full" />
+      </div>
+
+      {/* Screen Content */}
+      <div className="relative w-full h-full bg-neutral-900">
+        {!isAppStarted ? (
+          <div className="absolute inset-0 flex flex-col items-center justify-center p-8 text-center space-y-6 z-40 bg-neutral-950/80 backdrop-blur-sm">
+            <div className="w-20 h-20 rounded-full bg-primary/20 flex items-center justify-center border border-primary/30 animate-pulse">
+              <Smartphone className="w-10 h-10 text-primary" />
+            </div>
+            <div className="space-y-2">
+              <h4 className="text-lg font-bold text-ink">Live Interactive Preview</h4>
+              <p className="text-xs text-ink/40 leading-relaxed uppercase tracking-widest font-mono">
+                FLUTTER_WEB_INSTANCE_01
+              </p>
+            </div>
+            <button
+              onClick={() => {
+                setIsAppLoading(true);
+                setIsAppStarted(true);
+              }}
+              className="flex items-center gap-2 px-6 py-3 bg-primary text-neutral-bg rounded-full font-bold text-sm hover:scale-105 transition-transform shadow-lg shadow-primary/20"
+            >
+              <Play className="w-4 h-4 fill-current" />
+              <span>START_APP</span>
+            </button>
+          </div>
+        ) : (
+          <>
+            {isAppLoading && (
+              <div className="absolute inset-0 flex flex-col items-center justify-center z-50 bg-neutral-950">
+                <Loader2 className="w-10 h-10 text-primary animate-spin mb-4" />
+                <p className="text-[10px] font-mono text-primary uppercase tracking-[0.2em]">Booting_System...</p>
+              </div>
+            )}
+            <iframe
+              src={liveAppUrl}
+              className="w-full h-full border-none"
+              onLoad={() => setIsAppLoading(false)}
+              title={`${title} Live Preview`}
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
+            />
+          </>
+        )}
+      </div>
+
+      {/* Home Indicator */}
+      <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-1/3 h-1 bg-neutral-800 rounded-full z-50" />
+    </div>
+  );
 
   return (
     <>
@@ -64,35 +140,35 @@ const ProjectCard: FC<ProjectCardProps> = ({
           opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-lg" />
 
         {/* Image container */}
-        <div className="relative aspect-[16/10] sm:aspect-[16/10] w-full overflow-hidden rounded-t-lg">
-          <div className={`absolute inset-0 bg-surface/80 transition-opacity duration-300 ${
+        <div className="relative aspect-[16/10] sm:aspect-[16/10] w-full overflow-hidden rounded-t-lg bg-neutral-bg">
+          <div className={`absolute inset-0 bg-surface/80 transition-opacity duration-300 z-20 ${
             imageLoaded ? 'opacity-0' : 'opacity-100'
           }`} />
-          
+
           <img
             src={imageUrl}
             alt={title}
             onLoad={() => setImageLoaded(true)}
-            className={`w-full h-full object-cover object-center transform group-hover:scale-105 
+            className={`w-full h-full object-cover object-center transform group-hover:scale-105
               transition-all duration-700 ease-out ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}
           />
-          
-          {/* Image overlay with project type indicator */}
-          <div className="absolute inset-0 bg-gradient-to-t from-neutral-bg/80 via-neutral-bg/20 to-transparent 
-            opacity-60 group-hover:opacity-80 transition-opacity duration-300" />
-          
-          {/* Quick preview button */}
-          <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transform 
-            translate-y-2 group-hover:translate-y-0 transition-all duration-300">
-            <div className="p-2 bg-neutral-bg/80 backdrop-blur-sm rounded-full border border-border/50">
-              <Eye className="h-4 w-4 text-primary" />
+
+          {/* Image overlay */}
+          <div className="absolute inset-0 bg-gradient-to-t from-neutral-bg/80 via-transparent to-neutral-bg/20
+            opacity-60 group-hover:opacity-40 transition-opacity duration-300 z-10" />
+
+          {/* Quick preview button - Enhanced Prominence */}
+          <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transform
+            translate-y-2 group-hover:translate-y-0 transition-all duration-500 z-30 scale-90 group-hover:scale-100">
+            <div className="p-3 bg-primary text-neutral-bg rounded-full shadow-[0_0_20px_rgba(16,185,129,0.4)] transition-all">
+              <Eye className="h-5 w-5" />
             </div>
           </div>
 
           {/* Completion year badge */}
           {completionDate && (
-            <div className="absolute top-4 left-4 px-3 py-1 bg-neutral-bg/80 backdrop-blur-sm 
-              rounded-full border border-border/50">
+            <div className="absolute top-4 left-4 px-3 py-1 bg-neutral-bg/80 backdrop-blur-sm
+              rounded-full border border-border/50 z-30">
               <span className="text-xs font-medium text-ink/60">{completionDate}</span>
             </div>
           )}
@@ -104,7 +180,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
             transition-colors duration-300 leading-tight">
             {title}
           </h3>
-          
+
           <p className="text-ink/60 text-sm mb-4 sm:mb-5 line-clamp-3 flex-grow leading-relaxed">
             {description}
           </p>
@@ -116,27 +192,19 @@ const ProjectCard: FC<ProjectCardProps> = ({
                 key={index}
                 className="px-2 sm:px-3 py-1 sm:py-1.5 bg-primary/10 text-primary rounded-md text-xs font-medium
                   border border-primary/20 transition-all duration-300
-                  group-hover:border-primary/40 group-hover:bg-primary/20 group-hover:scale-105"
+                  group-hover:border-primary/40 group-hover:bg-primary/20"
               >
                 {tag}
               </span>
             ))}
-            {tags.length > 4 && (
-              <span className="px-2 sm:px-3 py-1 sm:py-1.5 bg-surface text-ink/40 rounded-md text-xs font-medium
-                border border-border">
-                +{tags.length - 4} more
-              </span>
-            )}
           </div>
 
           {/* Action buttons */}
-          <div className="flex items-center gap-2 sm:gap-3 opacity-0 sm:group-hover:opacity-100
-            transform translate-y-2 sm:group-hover:translate-y-0 transition-all duration-300">
-            <button className="flex items-center gap-1 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-primary/20 text-primary
-              rounded-md text-xs sm:text-sm font-medium hover:bg-primary/30 transition-colors border border-primary/30">
-              <Eye className="h-3 w-3 sm:h-4 sm:w-4" />
-              <span className="hidden sm:inline">View Details</span>
-              <span className="sm:hidden">View</span>
+          <div className="flex items-center justify-between mt-auto">
+            <button className="flex items-center gap-2 px-4 py-2 bg-primary text-neutral-bg
+              rounded-md text-xs font-bold hover:bg-primary/80 transition-all shadow-lg shadow-primary/10">
+              <Eye className="h-3.5 w-3.5" />
+              <span>CASE_STUDY</span>
             </button>
             {contnetUrl && (
               <a
@@ -144,10 +212,10 @@ const ProjectCard: FC<ProjectCardProps> = ({
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={(e) => e.stopPropagation()}
-                className="p-1.5 sm:p-2 bg-surface text-ink/40 rounded-md hover:bg-surface/80
+                className="p-2 bg-surface text-ink/40 rounded-md hover:bg-surface/80
                   hover:text-ink transition-colors border border-border"
               >
-                <ExternalLink className="h-3 w-3 sm:h-4 sm:w-4" />
+                <ExternalLink className="h-3.5 w-3.5" />
               </a>
             )}
           </div>
@@ -156,161 +224,284 @@ const ProjectCard: FC<ProjectCardProps> = ({
 
       {/* Enhanced Modal */}
       {createPortal(
-        <AnimatePresence>
-          {showPreview && (
+        <AnimatePresence mode="wait">
+          {showPreview && !isFullscreen && (
             <motion.div
+              key="modal"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 bg-neutral-bg/95 backdrop-blur-sm z-[9999] overflow-y-auto px-2 sm:px-4 py-4 sm:py-8"
-              onClick={() => setShowPreview(false)}
+              className="fixed inset-0 bg-neutral-bg/98 backdrop-blur-md z-[9999] flex items-center justify-center p-4 sm:p-6 lg:p-8"
+              onClick={() => {
+                setShowPreview(false);
+                setIsAppStarted(false);
+              }}
             >
-              <div className="min-h-screen flex items-center justify-center">
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.9, y: 20 }}
-                  animate={{ opacity: 1, scale: 1, y: 0 }}
-                  exit={{ opacity: 0, scale: 0.9, y: 20 }}
-                  transition={{ duration: 0.3, ease: "easeOut" }}
-                  onClick={(e) => e.stopPropagation()}
-                  className="relative max-w-7xl w-full bg-surface/95 backdrop-blur-xl rounded-lg
-                    shadow-2xl border border-border/50 overflow-hidden"
+              <motion.div
+                initial={{ opacity: 0, y: 30, scale: 0.98 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: 30, scale: 0.98 }}
+                transition={{ type: "spring", damping: 25, stiffness: 200 }}
+                onClick={(e) => e.stopPropagation()}
+                className="relative w-full max-w-6xl max-h-[90vh] bg-surface/40 backdrop-blur-xl rounded-lg
+                  shadow-2xl border border-border/50 overflow-hidden flex flex-col"
+              >
+                {/* Close Button - Floating & Pinned */}
+                <button
+                  onClick={() => {
+                    setShowPreview(false);
+                    setIsAppStarted(false);
+                  }}
+                  className="absolute top-4 right-4 p-2.5 bg-neutral-bg/80 backdrop-blur-md rounded-full
+                    hover:bg-primary/20 hover:text-primary transition-all duration-300 z-50 border border-border/50 group"
                 >
-                  {/* Close button */}
-                  <button
-                    onClick={() => setShowPreview(false)}
-                    className="absolute top-4 sm:top-6 right-4 sm:right-6 p-2 bg-surface/80 backdrop-blur-sm rounded-md
-                      hover:bg-surface transition-colors duration-300 shadow-lg z-30 border border-border/50"
-                  >
-                    <X className="w-4 h-4 text-ink/60" />
-                  </button>
+                  <X className="w-5 h-5 text-ink/60 group-hover:scale-110" />
+                </button>
 
-                  {/* Compact Header with project info */}
-                  <div className="flex flex-col sm:flex-row sm:items-center justify-between p-4 sm:p-6 pr-12 sm:pr-16 border-b border-border/50">
-                    <div className="mb-4 sm:mb-0">
-                      <h2 className="text-xl sm:text-2xl font-bold text-ink mb-2">{title}</h2>
-                      <div className="flex flex-wrap items-center gap-3 sm:gap-4 text-ink/40 text-sm">
-                        {completionDate && (
-                          <div className="flex items-center gap-1">
-                            <Calendar className="h-3 w-3" />
-                            <span>{completionDate}</span>
+                {/* Scrollable Content Area */}
+                <div className="flex-1 overflow-y-auto custom-scrollbar">
+                  {/* 1. Modal Hero Section - Compacted for Apps if liveAppUrl is not present */}
+                  {!liveAppUrl && (
+                    <div className="relative aspect-[21/9] sm:aspect-[21/7] w-full overflow-hidden border-b border-border/50 group/hero bg-black">
+                      <div className="absolute inset-0 bg-gradient-to-t from-neutral-bg via-neutral-bg/20 to-transparent z-10" />
+                      <img
+                        src={webUrl || imageUrl}
+                        alt={title}
+                        className="w-full h-full object-cover object-center"
+                      />
+
+                      {/* Fullscreen Button - Prominent */}
+                      <button
+                        onClick={() => setIsFullscreen(true)}
+                        className="absolute top-4 right-16 flex items-center gap-2 px-3 py-2 bg-neutral-bg/80 backdrop-blur-md rounded-md border border-border/50
+                          z-30 hover:bg-primary hover:text-neutral-bg transition-all font-bold text-[9px] uppercase tracking-widest shadow-xl"
+                        title="View Fullscreen"
+                      >
+                        <Eye className="w-3.5 h-3.5" />
+                        <span>Fullscreen</span>
+                      </button>
+
+                      {/* Project Header Overlay - Fixed inside hero */}
+                      <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-8 lg:p-10 z-20">
+                        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+                          <div className="space-y-1">
+                            <div className="flex items-center gap-3">
+                              <span className="px-2 py-0.5 bg-primary/20 text-primary border border-primary/30 rounded-sm text-[10px] font-bold uppercase tracking-widest">
+                                {completionDate || '2026'} Project
+                              </span>
+                              <span className="h-px w-6 bg-border" />
+                              <span className="text-ink/40 text-[10px] font-mono uppercase">CS_0{tags.length}</span>
+                            </div>
+                            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-ink tracking-tight">
+                              {title}
+                            </h2>
                           </div>
-                        )}
-                        {setup && (
-                          <div className="flex items-center gap-1">
-                            <Cpu className="h-3 w-3" />
-                            <span>{setup.join(", ")}</span>
+
+                          <div className="flex items-center gap-4">
+                            {contnetUrl && (
+                              <a
+                                href={contnetUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex items-center gap-2 px-5 py-2.5 bg-primary text-neutral-bg rounded-md
+                                  font-bold text-sm hover:bg-primary/80 transition-all duration-300 shadow-lg shadow-primary/20"
+                              >
+                                <Github className="w-4 h-4" />
+                                <span>SOURCE_CODE</span>
+                              </a>
+                            )}
                           </div>
-                        )}
+                        </div>
                       </div>
                     </div>
-                    
-                    {/* Action buttons */}
-                    <div className="flex items-center gap-2 sm:gap-3 flex-wrap">
-                      {contnetUrl && (
-                        <a
-                          href={contnetUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex items-center gap-1 sm:gap-2 px-3 sm:px-4 py-2 bg-primary hover:bg-primary/80
-                            text-neutral-bg rounded-md font-medium transition-colors text-xs sm:text-sm"
-                        >
-                          <Github className="h-3 w-3 sm:h-4 sm:w-4" />
-                          <span className="hidden sm:inline">View Code</span>
-                          <span className="sm:hidden">Code</span>
-                        </a>
-                      )}
-                    </div>
-                  </div>
+                  )}
 
-                  {/* Compact Content Grid */}
-                  <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6 p-4 sm:p-6">
-                    {/* Main Image */}
-                    <div className="lg:col-span-2">
-                      <div className="aspect-[16/9] rounded-md overflow-hidden mb-4 border border-border/50">
-                        <img
-                          src={webUrl || imageUrl}
-                          alt={title}
-                          className="w-full h-full object-cover object-center"
-                        />
+                  {/* 2. Content Body Grid */}
+                  <div className={`grid grid-cols-1 ${liveAppUrl ? 'lg:grid-cols-12' : 'lg:grid-cols-12'} gap-0 min-h-0`}>
+
+                    {/* Interactive App Column (if present) */}
+                    {liveAppUrl && (
+                      <div className="lg:col-span-6 bg-neutral-bg/40 p-8 lg:p-12 flex items-center justify-center border-b lg:border-b-0 lg:border-r border-border/50">
+                        <PhoneMockup />
                       </div>
+                    )}
+
+                    {/* Main Story Column */}
+                    <div className={`${liveAppUrl ? 'lg:col-span-6' : 'lg:col-span-8'} p-6 sm:p-10 space-y-10 border-r border-border/50`}>
                       
-                      {/* Description */}
-                      <div className="bg-surface/50 backdrop-blur-sm rounded-md p-4 mb-4 border border-border/50">
-                        <h3 className="text-lg font-bold mb-2 text-primary">About</h3>
-                        <p className="text-ink/80 leading-relaxed text-sm">
+                      {/* App Header for Live Preview Mode */}
+                      {liveAppUrl && (
+                        <div className="space-y-4 pb-8 border-b border-border/30">
+                          <div className="flex items-center gap-3">
+                            <span className="px-2 py-0.5 bg-primary/20 text-primary border border-primary/30 rounded-sm text-[10px] font-bold uppercase tracking-widest">
+                              {completionDate || '2026'} Application
+                            </span>
+                            <span className="h-px w-6 bg-border" />
+                            <span className="text-ink/40 text-[10px] font-mono uppercase">LIVE_DEMO</span>
+                          </div>
+                          <h2 className="text-3xl sm:text-4xl font-bold text-ink tracking-tight">
+                            {title}
+                          </h2>
+                          <div className="flex items-center gap-4">
+                            {contnetUrl && (
+                              <a
+                                href={contnetUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex items-center gap-2 text-primary hover:text-primary/80 transition-colors font-bold text-xs uppercase tracking-widest"
+                              >
+                                <Github className="w-4 h-4" />
+                                <span>View_Source</span>
+                              </a>
+                            )}
+                          </div>
+                        </div>
+                      )}
+
+                      {/* The Brief */}
+                      <section className="space-y-3">
+                        <div className="flex items-center gap-2 text-primary">
+                          <div className="w-1.5 h-1.5 bg-primary rounded-full" />
+                          <h3 className="text-[11px] font-bold uppercase tracking-widest">The Vision</h3>
+                        </div>
+                        <p className="text-base sm:text-lg text-ink/80 leading-relaxed">
                           {description}
                         </p>
-                      </div>
+                      </section>
 
-                      {/* Key Features - Compact */}
+                      {/* Capabilities */}
                       {keyFeatures && keyFeatures.length > 0 && (
-                        <div className="bg-surface/50 backdrop-blur-sm rounded-md p-4 border border-border/50">
-                          <h3 className="text-lg font-bold mb-3 text-primary">Key Features</h3>
-                          <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-                            {keyFeatures.slice(0, 6).map((feature, index) => (
-                              <div key={index} className="flex items-start gap-2 text-sm">
-                                <div className="w-1.5 h-1.5 bg-primary rounded-full mt-2 flex-shrink-0"></div>
-                                <span className="text-ink/60">{feature}</span>
+                        <section className="space-y-6">
+                          <div className="flex items-center gap-2 text-secondary">
+                            <div className="w-1.5 h-1.5 bg-secondary rounded-full" />
+                            <h3 className="text-[11px] font-bold uppercase tracking-widest">Core Capabilities</h3>
+                          </div>
+                          <div className={`grid grid-cols-1 ${liveAppUrl ? '' : 'sm:grid-cols-2'} gap-4`}>
+                            {keyFeatures.map((feature, index) => (
+                              <div key={index} className="flex gap-4 p-4 bg-neutral-bg/20 border border-border/30 rounded-md group hover:border-primary/30 transition-all duration-300">
+                                <div className="w-6 h-6 rounded-full border border-border flex items-center justify-center text-[10px] font-mono text-ink/40 group-hover:text-primary group-hover:border-primary transition-colors flex-shrink-0">
+                                  0{index + 1}
+                                </div>
+                                <p className="text-sm text-ink/60 group-hover:text-ink/90 transition-colors leading-relaxed">
+                                  {feature}
+                                </p>
                               </div>
                             ))}
                           </div>
-                        </div>
+                        </section>
                       )}
-                    </div>
 
-                    {/* Compact Sidebar */}
-                    <div className="space-y-4">
-                      <div className="bg-surface/50 backdrop-blur-sm rounded-md p-4 border border-border/50">
-                        <h3 className="text-lg font-bold mb-3 text-primary">Tech Stack</h3>
-                        <div className="flex flex-wrap gap-1.5">
-                          {tags?.map((tech, index) => (
-                            <span
-                              key={index}
-                              className="px-2 py-1 bg-primary/10 text-primary rounded-md text-xs font-medium
-                                border border-primary/20"
-                            >
-                              {tech}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-
-                      {/* Project Stats - Compact */}
-                      <div className="bg-secondary/10 backdrop-blur-sm
-                        rounded-md p-4 border border-secondary/20">
-                        <h3 className="text-lg font-bold mb-3 text-secondary">Details</h3>
-                        <div className="space-y-2 text-sm">
-                          <div className="flex justify-between items-center">
-                            <span className="text-ink/60">Year</span>
-                            <span className="text-secondary font-semibold">{completionDate || 'N/A'}</span>
-                          </div>
-                          <div className="flex justify-between items-center">
-                            <span className="text-ink/60">Type</span>
-                            <span className="text-secondary font-semibold">
-                              {tags?.includes('React') ? 'Web App' :
-                               tags?.includes('Python') ? 'Backend' :
-                               tags?.includes('Flutter') ? 'Mobile App' : 'Software'}
-                            </span>
-                          </div>
-                        </div>
-                      </div>
-
-                      {/* Challenges - Compact if exists */}
+                      {/* Technical Challenges */}
                       {challenges && (
-                        <div className="bg-surface/50 backdrop-blur-sm rounded-md p-4 border border-border/50">
-                          <h3 className="text-lg font-bold mb-2 text-primary">Challenges</h3>
-                          <p className="text-ink/60 leading-relaxed text-sm">
-                            {challenges.length > 150 ? challenges.substring(0, 150) + '...' : challenges}
+                        <section className="p-6 bg-neutral-bg/40 border border-border/50 rounded-md space-y-3">
+                          <div className="flex items-center gap-2 text-accent">
+                            <div className="w-1.5 h-1.5 bg-accent rounded-full" />
+                            <h3 className="text-[11px] font-bold uppercase tracking-widest">The Hurdles</h3>
+                          </div>
+                          <p className="text-sm text-ink/60 italic leading-relaxed">
+                            "{challenges}"
                           </p>
-                        </div>
+                        </section>
                       )}
                     </div>
+
+                    {/* Sidebar / Metadata Column */}
+                    {!liveAppUrl && (
+                      <div className="lg:col-span-4 bg-neutral-bg/20 p-6 sm:p-10 space-y-10">
+                        
+                        {/* Tech Stack */}
+                        <section className="space-y-4">
+                          <h3 className="text-[10px] font-bold text-ink/40 uppercase tracking-[0.2em]">Architecture</h3>
+                          <div className="flex flex-wrap gap-2">
+                            {tags.map((tech, index) => (
+                              <span
+                                key={index}
+                                className="px-2.5 py-1 bg-surface border border-border text-ink/60 rounded-sm text-[10px] font-mono
+                                  hover:border-primary/50 hover:text-primary transition-all duration-300"
+                              >
+                                {tech}
+                              </span>
+                            ))}
+                          </div>
+                        </section>
+
+                        {/* Specs */}
+                        <section className="space-y-4">
+                          <h3 className="text-[10px] font-bold text-ink/40 uppercase tracking-[0.2em]">Specifications</h3>
+                          <div className="space-y-3">
+                            <div className="flex justify-between items-center py-2.5 border-b border-border/20">
+                              <span className="text-ink/40 text-xs">Deployment</span>
+                              <span className="text-ink/80 text-xs font-bold">{completionDate || '2026'}</span>
+                            </div>
+                            <div className="flex justify-between items-center py-2.5 border-b border-border/20">
+                              <span className="text-ink/40 text-xs">Platform</span>
+                              <span className="text-ink/80 text-xs font-bold">
+                                {tags?.includes('React') ? 'Web' : tags?.includes('Flutter') ? 'Mobile' : 'CLI'}
+                              </span>
+                            </div>
+                            {setup && (
+                              <div className="py-2.5">
+                                <span className="text-ink/40 text-xs block mb-3">Environment</span>
+                                <div className="flex flex-wrap gap-2">
+                                  {setup.slice(0, 4).map((s, i) => (
+                                    <span key={i} className="text-[9px] bg-secondary/10 text-secondary border border-secondary/20 px-2 py-0.5 rounded-full uppercase font-extrabold tracking-tighter">
+                                      {s}
+                                    </span>
+                                  ))}
+                                </div>
+                              </div>
+                            )}
+                          </div>
+                        </section>
+
+                        {/* Sticky-ish CTA */}
+                        <div className="pt-4">
+                          <div className="p-5 bg-gradient-to-br from-primary/5 to-secondary/5 rounded-md border border-primary/20 space-y-4">
+                            <p className="text-[11px] text-ink/50 leading-relaxed font-medium">
+                              Full implementation and documentation available on GitHub.
+                            </p>
+                            <a
+                              href={contnetUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="w-full flex items-center justify-center gap-2 py-2.5 border border-primary/40 rounded-md text-primary text-xs font-bold hover:bg-primary hover:text-neutral-bg transition-all"
+                            >
+                              OPEN_REPOSITORY
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    )}
                   </div>
-                </motion.div>
-              </div>
+                </div>
+              </motion.div>
             </motion.div>
           )}
-        </AnimatePresence>,
+
+          {isFullscreen && (
+            <motion.div
+              key="fullscreen"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 bg-black z-[10000] flex items-center justify-center cursor-zoom-out"
+              onClick={() => setIsFullscreen(false)}
+            >
+              <button
+                onClick={() => setIsFullscreen(false)}
+                className="absolute top-8 right-8 p-3 bg-white/10 hover:bg-white/20 text-white rounded-full backdrop-blur-md transition-all z-50"
+              >
+                <X className="w-6 h-6" />
+              </button>
+              <img
+                src={webUrl || imageUrl}
+                alt={title}
+                className="max-w-full max-h-full object-contain shadow-2xl"
+              />
+            </motion.div>
+          )}
+        </AnimatePresence>
+,
         document.body
       )}
     </>

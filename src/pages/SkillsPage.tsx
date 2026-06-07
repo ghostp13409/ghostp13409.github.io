@@ -65,13 +65,13 @@ const SkillsPage: FC = () => {
               </div>
               <div className="flex items-center gap-4 bg-primary/10 px-6 py-3 rounded-md border border-primary/20">
                 <div className="text-right">
-                  <p className="text-xs text-ink/40 uppercase tracking-wider font-bold">Current GPA</p>
+                  <p className="text-xs text-ink/40 uppercase tracking-wider font-bold">GPA</p>
                   <p className="text-3xl font-bold text-primary">{education.program.gpa}<span className="text-sm text-ink/40">/4.00</span></p>
                 </div>
               </div>
             </div>
 
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-6 mt-12">
             {education.achievements.map((achievement, index) => (
               <motion.div
                 key={index}

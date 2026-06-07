@@ -161,13 +161,6 @@ export const education: Education = {
       color: "primary",
       description: "Leading study groups and providing peer tutoring for programming courses"
     },
-    {
-      title: "3.99 GPA",
-      subtitle: "Top 5% Class",
-      icon: "🎓",
-      color: "accent",
-      description: "Academic excellence recognized by faculty and institution"
-    }
   ],
   progressStats: {
     completedSemesters: 3,
@@ -180,6 +173,37 @@ export const education: Education = {
     totalAcademicSemesters: 6
   }
 };
+
+// Work Experience
+export const experiences: WorkExperience[] = [
+  {
+    id: 1,
+    company: "Ultimate Coders",
+    role: "Coding Tutor",
+    location: "Kitchener, ON",
+    period: "Oct 2025 – Feb 2026",
+    description: [
+      "Taught 20+ students aged 7 to 17 C#, Python, JavaScript, and Scratch through hands-on coding challenges.",
+      "Designed and led an 8-hour coding bootcamp, guiding students through mini projects that increased engagement.",
+      "Managed multiple students with diverse tasks, providing regular feedback to parents on progress.",
+    ],
+    skills: ["C#", "Python", "JavaScript", "Teaching", "Curriculum Design"],
+  },
+  {
+    id: 2,
+    company: "Saudi Ministry of Municipality and Housing",
+    role: "Front-End Developer",
+    location: "Remote / Waterloo",
+    period: "Feb 2025 – May 2025",
+    description: [
+      "Built dynamic user interfaces using Next.js, React, and TypeScript for a UN-Funded Project.",
+      "Integrated LLM-powered responses from AWS-hosted backend services.",
+      "Developed an Admin Dashboard with RBAC and CRUD functionality for managing PDF datasets.",
+      "Collaborated with backend engineers on Python APIs and PostgreSQL.",
+    ],
+    skills: ["Next.js", "React", "TypeScript", "AWS", "Python", "PostgreSQL"],
+  },
+];
 
 // Certificates
 export const Certificates: Certificate[] = [
@@ -301,7 +325,7 @@ export const projects: Project[] = [
   },
   {
     id: 1,
-    title: "WindChime - A Mindfulness App",
+    title: "WindChime",
     description:
       "WindChime is a flutter-based cross-platform mindfulness application designed to help users achieve better mental well-being through guided meditation, breathwork exercises, and mindfulness practices. The app provides a clean and intuitive interface for users to explore various meditation techniques and track their progress.",
     imageUrl: "images/projects/WindChime.png",
@@ -310,10 +334,12 @@ export const projects: Project[] = [
     completionDate: "2025",
     setup: ["Windows, VS Code, Android Studio"],
     webUrl: "images/projects/WindChime.png",
+    liveAppUrl: "app-preview/index.html",
+    isMobileApp: true,
   },
   {
     id: 2,
-    title: "Toss-api - TUI API Client",
+    title: "Toss-api",
     description: "Toss-api is a blazing fast, Vim-inspired TUI and CLI API client built in Rust. It brings the power of full-featured API testing into your terminal, allowing you to seamlessly manage collections, environments, and requests without leaving your keyboard.",
     imageUrl: "images/projects/toss.png",
     tags: ["Rust", "Ratatui", "REST API", "CLI"],
@@ -389,7 +415,7 @@ export const projects: Project[] = [
   },
   {
     id: 7,
-    title: "Car Renting App",
+    title: "SwiftDrive",
     description: "An Android application for car rentals that keeps data in sync between a local database and the cloud, even when offline.",
     tags: ["Kotlin", "Jetpack Compose", "Firebase", "SQLite"],
     completionDate: "2025",

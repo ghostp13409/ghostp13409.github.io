@@ -3,18 +3,18 @@
 
 @theme {
   --font-rubik: "Rubik", sans-serif;
-  
+
   /* Brand Palette - Refined Neon Architect */
   --color-primary: oklch(75% 0.15 160);      /* Electric Emerald */
   --color-secondary: oklch(55% 0.20 260);    /* Ultramarine Indigo */
   --color-accent: oklch(80% 0.15 80);       /* Luminous Amber */
-  
+
   /* Neutrals - Deep Midnight */
   --color-neutral-bg: oklch(12% 0.015 260); /* Deep Midnight (tinted toward brand) */
   --color-surface: oklch(18% 0.02 260);     /* Steel Surface */
   --color-border: oklch(25% 0.02 260);      /* Slate Border */
   --color-ink: oklch(97% 0.005 260);        /* Frosted Ink */
-  
+
   /* Radii */
   --radius-sm: 8px;
   --radius-md: 12px;
@@ -74,6 +74,7 @@ code {
   html,
   body {
     @apply overflow-x-hidden;
+    scroll-behavior: smooth;
   }
 
   /* Prevent horizontal scroll */
@@ -82,9 +83,18 @@ code {
   }
 }
 
-/* Smooth scrolling for better UX */
-@layer base {
-  html {
-    scroll-behavior: smooth;
-  }
+/* Custom Scrollbar for internal scrolling */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--color-primary);
+  border-radius: 10px;
+  opacity: 0.3;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary);
 }

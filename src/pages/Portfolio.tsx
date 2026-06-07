@@ -1,17 +1,18 @@
 import { useState, useEffect } from "react";
 import type { FC } from "react";
 import Sidebar from "../components/Sidebar";
+import IntroPage from "./IntroPage";
+import ExperiencePage from "./ExperiencePage";
 import SkillsPage from "./SkillsPage";
 import ProjectsPage from "./ProjectsPage";
 import ContactPage from "./ContactPage";
-import IntroPage from "./IntroPage";
 
 const Portfolio: FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ["intro", "skills", "projects", "hire"];
+      const sections = ["intro", "experience", "skills", "projects", "hire"];
 
       const observerCallback = () => {
         // No-op for now as Sidebar handles its own state
@@ -132,6 +133,9 @@ const Portfolio: FC = () => {
             <div className="h-full overflow-y-auto lg:rounded-lg lg:border-2 lg:border-border">
               {/* Intro Section */}
               <IntroPage />
+
+              {/* Experience Section */}
+              <ExperiencePage />
 
               {/* Skills Section */}
               <SkillsPage />

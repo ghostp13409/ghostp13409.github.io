@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import type { FC } from "react";
-import { Brain, Heart, Rocket, Sparkles, User } from "lucide-react";
+import { Brain, Heart, Rocket, Sparkles, User, Briefcase } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { socials } from "../data/data";
 
@@ -20,7 +20,7 @@ const Sidebar: FC<SidebarProps> = ({ isMobile = false, onMenuItemClick = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ["intro", "skills", "projects", "hire"];
+      const sections = ["intro", "experience", "skills", "projects", "hire"];
 
       const observerCallback = (entries: IntersectionObserverEntry[]) => {
         entries.forEach((entry) => {
@@ -187,6 +187,7 @@ const Sidebar: FC<SidebarProps> = ({ isMobile = false, onMenuItemClick = () => {
         {/* Navigation */}
         <nav className={`flex-1 ${isMobile ? "mb-6" : "mb-8"}`}>
           <NavButton section="intro" icon={Sparkles} label="Introduction" />
+          <NavButton section="experience" icon={Briefcase} label="Experience" />
           <NavButton section="skills" icon={Brain} label="Skills & Education" />
           <NavButton section="projects" icon={Rocket} label="Projects" />
           <NavButton section="hire" icon={Heart} label="Get in touch" />

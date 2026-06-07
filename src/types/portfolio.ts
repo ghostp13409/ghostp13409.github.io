@@ -101,6 +101,10 @@ export interface Project {
   webUrl?: string;
   learnings?: string[];
   impact?: string;
+  keyFeatures?: string[];
+  challenges?: string;
+  liveAppUrl?: string;
+  isMobileApp?: boolean;
 }
 
 export interface Skill {

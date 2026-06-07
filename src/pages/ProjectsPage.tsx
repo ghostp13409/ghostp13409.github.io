@@ -90,6 +90,8 @@ const ProjectsPage: FC = () => {
                 completionDate={p.completionDate}
                 setup={p.setup}
                 webUrl={p.webUrl}
+                liveAppUrl={p.liveAppUrl}
+                isMobileApp={p.isMobileApp}
               />
             </motion.div>
           ))}
