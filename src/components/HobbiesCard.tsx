@@ -11,26 +11,27 @@ const HobbiesCard: FC<HobbiesCardProps> = ({ title, description }) => {
   return (
     <>
       <div
-        className="group relative flex flex-col bg-gray-800/80 backdrop-blur-sm rounded-xl 
+        className="group relative flex flex-col bg-surface/80 backdrop-blur-sm rounded-lg 
           transform transition-all duration-300 hover:scale-[1.02] hover:shadow-xl 
-          hover:shadow-blue-500/10 cursor-pointer overflow-hidden border border-gray-700
-          hover:border-blue-500/20"
+          hover:shadow-primary/10 cursor-pointer overflow-hidden border border-border
+          hover:border-primary/20"
       >
         {/* Card gradient overlay */}
         <div
-          className="absolute inset-0 bg-gradient-to-br from-blue-600/10 via-purple-600/10 to-blue-600/10 
+          className="absolute inset-0 bg-gradient-to-br from-primary/5 via-secondary/5 to-primary/5 
           opacity-0 group-hover:opacity-100 transition-opacity duration-500"
         />
 
         {/* Content section */}
         <div className="p-5 flex flex-col flex-grow">
           <h3
-            className="text-xl font-bold mb-2 text-gray-100 group-hover:text-blue-400 
+            className="text-xl font-bold mb-2 text-ink group-hover:text-primary
             transition-colors duration-300"
           >
             {title}
           </h3>
-          <p className="text-gray-400 text-sm mb-4 line-clamp-2 flex-grow">
+
+          <p className="text-ink/60 text-sm mb-4 line-clamp-2 flex-grow leading-relaxed">
             {description}
           </p>
         </div>

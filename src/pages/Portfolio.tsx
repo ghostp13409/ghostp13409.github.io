@@ -12,33 +12,6 @@ const ContactPage = lazy(() => import("./ContactPage"));
 const Portfolio: FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const sections = ["intro", "experience", "skills", "projects", "hire"];
-
-      const observerCallback = () => {
-        // No-op for now as Sidebar handles its own state
-      };
-
-      const observer = new IntersectionObserver(observerCallback, {
-        root: null,
-        rootMargin: "-50% 0px",
-        threshold: 0,
-      });
-
-      sections.forEach((section) => {
-        const element = document.getElementById(section);
-        if (element) observer.observe(element);
-      });
-
-      return () => observer.disconnect();
-    };
-
-    handleScroll();
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
   // Close mobile menu when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -108,11 +81,11 @@ const Portfolio: FC = () => {
       {/* Mobile Menu Overlay */}
       {isMobileMenuOpen && (
         <div
-          className="lg:hidden fixed inset-0 z-40 bg-black/50 backdrop-blur-sm"
+          className="lg:hidden fixed inset-0 z-40 bg-neutral-bg/80 backdrop-blur-sm"
           onClick={() => setIsMobileMenuOpen(false)}
         >
           <div
-            className="mobile-sidebar fixed top-20 right-0 bottom-0 w-80 bg-gray-800 border-l border-gray-700 overflow-y-auto"
+            className="mobile-sidebar fixed top-20 right-0 bottom-0 w-80 bg-surface border-l border-border overflow-y-auto shadow-2xl"
             onClick={(e) => e.stopPropagation()}
           >
             <Sidebar
@@ -125,14 +98,17 @@ const Portfolio: FC = () => {
 
       <div className="flex gap-4">
         {/* Desktop Sidebar */}
-        <div className="hidden lg:flex h-screen p-4 rounded">
+        <div className="hidden lg:flex h-screen p-4">
           <Sidebar />
         </div>
 
         {/* Main Content */}
         <div className="flex-1 pt-24 lg:pt-0">
-          <div className="h-screen lg:h-screen p-0 lg:p-4 lg:rounded">
-            <div className="h-full overflow-y-auto lg:rounded-lg lg:border-2 lg:border-border">
+          <div className="h-screen p-0 lg:p-4">
+            <div
+              id="main-scroll-container"
+              className="h-full overflow-y-auto lg:rounded-lg lg:border border-border bg-neutral-bg"
+            >
               <Suspense fallback={<LoadingSection />}>
                 {/* Intro Section */}
                 <IntroPage />

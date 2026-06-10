@@ -132,9 +132,13 @@ const ContactPage: FC = () => {
               </span>
             )}
             {clickCount >= 5 && (
-              <span className="text-sm text-primary animate-bounce">
+              <motion.span 
+                initial={{ scale: 0.9, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                className="text-sm text-primary font-bold tracking-widest uppercase"
+              >
                 Secret Section Unlocked! 🎉
-              </span>
+              </motion.span>
             )}
           </div>
         </motion.div>

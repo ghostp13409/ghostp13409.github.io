@@ -81,17 +81,17 @@ const AIIntegrationCard: FC = () => {
 
   return (
     <div
-      className="w-full max-w-2xl mx-auto bg-gray-900/95 backdrop-blur-lg rounded-2xl 
-      shadow-2xl shadow-blue-500/10 border border-gray-800 overflow-hidden"
+      className="w-full max-w-2xl mx-auto bg-surface/60 backdrop-blur-xl rounded-lg 
+      shadow-2xl border border-border overflow-hidden"
     >
       <div className="flex flex-col h-[600px]">
         {/* Chat header */}
-        <div className="p-4 border-b border-gray-800 bg-gray-800/50">
-          <h2 className="text-xl font-bold text-blue-400">AI Chat Demo</h2>
+        <div className="p-4 border-b border-border bg-surface/40">
+          <h2 className="text-xl font-bold text-primary tracking-tight">AI Chat Demo</h2>
         </div>
 
         {/* Chat messages */}
-        <div className="flex-1 overflow-y-auto p-4 space-y-4">
+        <div className="flex-1 overflow-y-auto p-4 space-y-4 custom-scrollbar">
           {messages.map((message, index) => (
             <div
               key={index}
@@ -100,10 +100,10 @@ const AIIntegrationCard: FC = () => {
               }`}
             >
               <div
-                className={`max-w-[80%] p-3 rounded-xl ${
+                className={`max-w-[80%] p-3 rounded-md ${
                   message.role === "user"
-                    ? "bg-blue-600/20 text-blue-100 rounded-br-sm"
-                    : "bg-gray-800/50 text-gray-300 rounded-bl-sm"
+                    ? "bg-primary/20 text-ink border border-primary/30"
+                    : "bg-secondary/10 text-ink/80 border border-secondary/20"
                 }`}
               >
                 {message.content}
@@ -112,11 +112,24 @@ const AIIntegrationCard: FC = () => {
           ))}
           {isLoading && (
             <div className="flex justify-start">
-              <div className="bg-gray-800/50 text-gray-300 p-3 rounded-xl rounded-bl-sm">
-                <div className="flex space-x-2">
-                  <div className="w-2 h-2 bg-blue-400 rounded-full animate-bounce" />
-                  <div className="w-2 h-2 bg-blue-400 rounded-full animate-bounce delay-100" />
-                  <div className="w-2 h-2 bg-blue-400 rounded-full animate-bounce delay-200" />
+              <div className="bg-secondary/10 text-ink/80 p-3 rounded-md border border-secondary/20">
+                <div className="flex space-x-1.5 items-center h-4">
+                  {[0, 1, 2].map((i) => (
+                    <motion.div
+                      key={i}
+                      animate={{ 
+                        opacity: [0.3, 1, 0.3],
+                        scale: [0.8, 1.1, 0.8]
+                      }}
+                      transition={{ 
+                        duration: 1, 
+                        repeat: Infinity, 
+                        delay: i * 0.2,
+                        ease: "easeInOut"
+                      }}
+                      className="w-1.5 h-1.5 bg-secondary rounded-full"
+                    />
+                  ))}
                 </div>
               </div>
             </div>
@@ -126,7 +139,7 @@ const AIIntegrationCard: FC = () => {
         {/* Input form */}
         <form
           onSubmit={handleSubmit}
-          className="p-4 border-t border-gray-800 bg-gray-800/50"
+          className="p-4 border-t border-border bg-surface/40"
         >
           <div className="flex space-x-2">
             <input
@@ -134,14 +147,14 @@ const AIIntegrationCard: FC = () => {
               value={input}
               onChange={(e) => setInput(e.target.value)}
               placeholder="Type a message..."
-              className="flex-1 bg-gray-900/90 text-gray-100 rounded-xl px-4 py-2 
-                focus:outline-none focus:ring-2 focus:ring-blue-500/40"
+              className="flex-1 bg-neutral-bg/60 text-ink rounded-md px-4 py-2 
+                focus:outline-none focus:ring-1 focus:ring-primary/50 border border-border"
             />
             <button
               type="submit"
               disabled={isLoading}
-              className="bg-blue-600/20 text-blue-400 p-2 rounded-xl hover:bg-blue-600/30 
-                transition-colors disabled:opacity-50"
+              className="bg-primary text-neutral-bg p-2 rounded-md hover:bg-primary/80 
+                transition-all duration-300 disabled:opacity-50 shadow-lg shadow-primary/20"
             >
               <Send className="w-5 h-5" />
             </button>

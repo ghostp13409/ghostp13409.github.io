@@ -49,18 +49,18 @@ const MovieRatingCard: FC = () => {
   };
 
   return (
-    <div className="max-w-md mx-auto p-6 bg-gray-800 rounded-xl shadow-xl">
+    <div className="max-w-md mx-auto p-6 bg-surface/60 backdrop-blur-xl rounded-lg shadow-2xl border border-border">
       <form onSubmit={searchMovie} className="flex gap-2 mb-6">
         <input
           type="text"
           value={movieTitle}
           onChange={(e) => setMovieTitle(e.target.value)}
           placeholder="Enter movie title..."
-          className="flex-1 px-4 py-2 bg-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-white"
+          className="flex-1 px-4 py-2 bg-neutral-bg/60 rounded-md focus:ring-1 focus:ring-primary/50 outline-none text-ink border border-border placeholder-ink/40"
         />
         <button
           type="submit"
-          className="px-4 py-2 bg-blue-600 rounded-lg hover:bg-blue-700 transition-colors text-white"
+          className="px-4 py-2 bg-primary rounded-md hover:bg-primary/80 transition-all text-neutral-bg font-bold shadow-lg shadow-primary/20"
           disabled={loading}
         >
           {loading ? (
@@ -72,7 +72,7 @@ const MovieRatingCard: FC = () => {
       </form>
 
       {error && (
-        <div className="text-red-400 text-center p-4 bg-red-900/20 rounded-lg">
+        <div className="text-accent text-center p-4 bg-accent/10 border border-accent/20 rounded-md text-sm">
           {error}
         </div>
       )}
@@ -84,14 +84,14 @@ const MovieRatingCard: FC = () => {
               <img
                 src={movieData.Poster}
                 alt={movieData.Title}
-                className="w-32 h-auto rounded-lg"
+                className="w-32 h-auto rounded-md border border-border shadow-lg"
               />
             )}
             <div>
-              <h2 className="text-xl font-bold text-white">
+              <h2 className="text-xl font-bold text-ink tracking-tight">
                 {movieData.Title}
               </h2>
-              <p className="text-gray-400">
+              <p className="text-ink/40 text-sm font-mono mt-1">
                 {movieData.Year} • {movieData.Runtime}
               </p>
             </div>
@@ -99,19 +99,19 @@ const MovieRatingCard: FC = () => {
 
           <div className="flex items-center gap-4">
             <div className="flex items-center gap-2">
-              <Star className="w-5 h-5 text-yellow-400 fill-yellow-400" />
-              <span className="text-lg font-bold text-white">{movieData.imdbRating}</span>
+              <Star className="w-4 h-4 text-accent fill-accent" />
+              <span className="text-lg font-bold text-ink">{movieData.imdbRating}</span>
             </div>
-            <span className="text-gray-400">IMDb rating</span>
+            <span className="text-ink/40 text-xs uppercase tracking-widest font-mono">IMDb Score</span>
           </div>
 
-          <div className="text-sm text-gray-300">{movieData.Plot}</div>
+          <div className="text-sm text-ink/80 leading-relaxed italic border-l-2 border-primary/20 pl-4">{movieData.Plot}</div>
 
           <div className="flex flex-wrap gap-2">
             {movieData.Genre.split(", ").map((genre) => (
               <span
                 key={genre}
-                className="px-3 py-1 bg-gray-700 rounded-full text-sm text-gray-300"
+                className="px-2.5 py-1 bg-surface border border-border text-ink/60 rounded-sm text-[10px] font-mono uppercase tracking-wider"
               >
                 {genre}
               </span>

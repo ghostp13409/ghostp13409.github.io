@@ -33,7 +33,7 @@ const NavButton: FC<NavButtonProps> = ({ section, label, icon: Icon, isActive, i
         transition-all duration-300 ease-out
         ${
           isActive
-            ? "bg-primary/20 text-primary font-semibold border border-primary/30"
+            ? "bg-primary/20 text-primary font-semibold border border-primary/30 shadow-[inset_4px_0_0_0_oklch(var(--color-primary))]"
             : "text-ink/60 hover:bg-surface/50 border border-border/30 hover:border-border"
         }
         ${!isMobile && isActive ? "transform scale-[1.02]" : ""}
@@ -84,33 +84,46 @@ const Sidebar: FC<SidebarProps> = ({ isMobile = false, onMenuItemClick = () => {
   const [activeSection, setActiveSection] = useState("intro");
 
   useEffect(() => {
-    const handleScroll = () => {
-      const sections = ["intro", "experience", "skills", "projects", "hire"];
-
-      const observerCallback = (entries: IntersectionObserverEntry[]) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
-          }
-        });
-      };
-      const observer = new IntersectionObserver(observerCallback, {
-        root: null,
-        rootMargin: "-50% 0px",
-        threshold: 0,
+    const sections = ["intro", "experience", "skills", "projects", "hire"];
+    
+    const observerCallback = (entries: IntersectionObserverEntry[]) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setActiveSection(entry.target.id);
+        }
       });
-
-      sections.forEach((section) => {
-        const element = document.getElementById(section);
-        if (element) observer.observe(element);
-      });
-
-      return () => observer.disconnect();
     };
 
-    handleScroll();
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    const observer = new IntersectionObserver(observerCallback, {
+      root: document.getElementById("main-scroll-container"),
+      rootMargin: "-50% 0px",
+      threshold: 0,
+    });
+
+    const observeSections = () => {
+      sections.forEach((id) => {
+        const el = document.getElementById(id);
+        if (el) observer.observe(el);
+      });
+    };
+
+    // Initial attempt
+    observeSections();
+
+    // Watch for new sections (lazy loading)
+    const mutationObserver = new MutationObserver(() => {
+      observeSections();
+    });
+
+    mutationObserver.observe(document.body, {
+      childList: true,
+      subtree: true,
+    });
+
+    return () => {
+      observer.disconnect();
+      mutationObserver.disconnect();
+    };
   }, []);
 
   const scrollToSection = (id: string) => {

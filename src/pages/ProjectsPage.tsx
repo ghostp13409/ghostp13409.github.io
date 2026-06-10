@@ -164,9 +164,8 @@ const ProjectsPage: FC = () => {
           ))}
         </motion.div>
 
-        {/* Project Philosophy */}
         <motion.div variants={fadeInUp}>
-          <blockquote className="text-lg sm:text-xl italic text-gray-300 max-w-3xl mx-auto leading-relaxed">
+          <blockquote className="text-lg sm:text-xl italic text-ink/80 max-w-3xl mx-auto leading-relaxed">
             "I use every project as a learning opportunity. Whether it's
             mastering a new framework, solving a complex algorithm, or creating
             something that genuinely helps people - I approach each challenge
