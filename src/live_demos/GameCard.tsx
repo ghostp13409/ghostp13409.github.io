@@ -229,46 +229,46 @@ const GameCard: FC = () => {
 
   return (
     <div
-      className="max-w-md mx-auto p-6 bg-gray-800/80 backdrop-blur-sm rounded-xl shadow-xl 
-      border border-gray-700 hover:border-blue-500/20 transition-all duration-300"
+      className="max-w-md mx-auto p-6 bg-surface/60 backdrop-blur-xl rounded-lg shadow-2xl 
+      border border-border hover:border-primary/20 transition-all duration-300"
     >
       <div className="flex justify-between items-center mb-4">
-        <h2 className="text-xl font-bold text-gray-100">Space Shooter</h2>
+        <h2 className="text-xl font-bold text-ink tracking-tight">Space Shooter</h2>
         <div className="flex items-center gap-4">
-          <div className="text-blue-400">Score: {score}</div>
+          <div className="text-primary font-mono font-bold tracking-wider">Score: {score}</div>
           {!gameStarted ? (
             <button
               onClick={handleStart}
-              className="flex items-center gap-2 px-4 py-2 bg-blue-600 rounded-lg 
-                hover:bg-blue-700 transition-colors text-white"
+              className="flex items-center gap-2 px-4 py-2 bg-primary rounded-md 
+                hover:bg-primary/80 transition-all text-neutral-bg font-bold shadow-lg shadow-primary/20 uppercase tracking-widest text-[10px]"
             >
-              <Play className="w-4 h-4" />
+              <Play className="w-3 h-3" />
               Start
             </button>
           ) : (
             <button
               onClick={handleReset}
-              className="flex items-center gap-2 px-4 py-2 bg-gray-700 rounded-lg 
-                hover:bg-gray-600 transition-colors text-white"
+              className="flex items-center gap-2 px-4 py-2 bg-surface/80 rounded-md 
+                hover:bg-surface transition-all text-ink/60 border border-border uppercase tracking-widest text-[10px]"
             >
-              <RotateCcw className="w-4 h-4" />
+              <RotateCcw className="w-3 h-3" />
               Reset
             </button>
           )}
         </div>
       </div>
-      <div className="relative rounded-lg overflow-hidden bg-gray-900/50">
+      <div className="relative rounded-lg overflow-hidden bg-neutral-bg/50">
         <canvas
           ref={canvasRef}
           width={400}
           height={500}
-          className="border border-gray-700 rounded-lg"
+          className="border border-border rounded-lg"
         />
         <div
-          className="absolute bottom-4 left-4 text-gray-300 text-sm bg-gray-900/80 
-          backdrop-blur-sm px-3 py-1 rounded-full border border-gray-700"
+          className="absolute bottom-4 left-4 text-ink/40 text-[10px] bg-neutral-bg/80 
+          backdrop-blur-md px-3 py-1 rounded-full border border-border font-mono uppercase tracking-widest"
         >
-          Move mouse to control • Click to shoot
+          Control: Mouse • Action: Click
         </div>
       </div>
     </div>

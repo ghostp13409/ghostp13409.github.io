@@ -8,7 +8,7 @@ import {
   MessageCircle,
   Heart,
 } from "lucide-react";
-import { Hobbies } from "../data/data";
+import { Hobbies } from "../data";
 import { motion } from "framer-motion";
 
 interface FormData {
@@ -97,14 +97,13 @@ const ContactPage: FC = () => {
   return (
     <section
       id="hire"
-      className="min-h-screen flex flex-col justify-center items-center p-6 relative overflow-hidden"
+      className="min-h-screen flex flex-col justify-center items-center p-6 relative overflow-hidden bg-neutral-bg"
     >
       {/* Background decoration */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-20 left-10 w-20 h-20 bg-blue-500/10 rounded-full blur-xl"></div>
-        <div className="absolute top-40 right-20 w-32 h-32 bg-purple-500/10 rounded-full blur-xl"></div>
-        <div className="absolute bottom-20 left-20 w-24 h-24 bg-cyan-500/10 rounded-full blur-xl"></div>
-        <div className="absolute bottom-40 right-10 w-28 h-28 bg-pink-500/10 rounded-full blur-xl"></div>
+        <div className="absolute top-20 left-10 w-20 h-20 bg-primary/10 rounded-full blur-xl"></div>
+        <div className="absolute top-40 right-20 w-32 h-32 bg-secondary/10 rounded-full blur-xl"></div>
+        <div className="absolute bottom-20 left-20 w-24 h-24 bg-accent/10 rounded-full blur-xl"></div>
       </div>
 
       <motion.div
@@ -117,42 +116,46 @@ const ContactPage: FC = () => {
         <motion.div variants={fadeInUp} className="mb-8">
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6">
             <h1
-              className="text-5xl sm:text-6xl lg:text-7xl font-bold bg-gradient-to-r from-blue-400 via-purple-500 to-cyan-400 text-transparent bg-clip-text cursor-pointer tracking-tight"
+              className="text-5xl sm:text-6xl lg:text-7xl font-bold text-primary cursor-pointer tracking-tight"
               onClick={handleHeadingClick}
             >
               Let's Work Together
             </h1>
             {clickCount === 0 && (
-              <span className="text-sm text-gray-400 flex items-center gap-2 animate-pulse">
+              <span className="text-sm text-ink/40 flex items-center gap-2 animate-pulse">
                 <ArrowLeftIcon className="w-4 h-4" /> click me!
               </span>
             )}
             {clickCount > 0 && clickCount < 5 && (
-              <span className="text-sm text-gray-400 animate-pulse">
+              <span className="text-sm text-ink/40 animate-pulse">
                 x{5 - clickCount}
               </span>
             )}
             {clickCount >= 5 && (
-              <span className="text-sm text-green-400 animate-bounce">
+              <motion.span 
+                initial={{ scale: 0.9, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                className="text-sm text-primary font-bold tracking-widest uppercase"
+              >
                 Secret Section Unlocked! 🎉
-              </span>
+              </motion.span>
             )}
           </div>
         </motion.div>
 
         {/* Contact Introduction */}
         <motion.div variants={fadeInUp} className="mb-12">
-          <div className="bg-gray-900/60 backdrop-blur-xl p-8 rounded-3xl border border-gray-700/50 shadow-2xl">
-            <p className="text-xl sm:text-2xl text-gray-200 leading-relaxed mb-6">
+          <div className="bg-surface/40 backdrop-blur-xl p-8 rounded-lg border border-border/50 shadow-2xl">
+            <p className="text-xl sm:text-2xl text-ink leading-relaxed mb-6">
               Got a project in mind? Looking for a{" "}
-              <span className="text-blue-400 font-semibold">fresher</span>? Or
+              <span className="text-primary font-semibold">fresher</span>? Or
               just want to chat about tech? I'd love to hear from you! Drop me a
               message and let's build something{" "}
-              <span className="text-purple-400 font-semibold">amazing</span>{" "}
+              <span className="text-secondary font-semibold">amazing</span>{" "}
               together.
             </p>
 
-            <div className="flex items-center justify-center gap-6 text-gray-400">
+            <div className="flex items-center justify-center gap-6 text-ink/40">
               <div className="flex items-center gap-2">
                 <Mail className="h-5 w-5" />
                 <span className="text-sm">Quick Response</span>
@@ -167,9 +170,9 @@ const ContactPage: FC = () => {
 
         {/* Contact Form */}
         <motion.div variants={fadeInUp} className="mb-12">
-          <div className="bg-gray-800/50 backdrop-blur-sm p-8 rounded-2xl border border-gray-700/50 hover:border-gray-600/50 transition-all duration-300">
-            <h2 className="text-2xl sm:text-3xl font-bold text-gray-100 mb-8 flex items-center justify-center gap-3">
-              <MessageCircle className="h-8 w-8 text-blue-400" />
+          <div className="bg-surface/50 backdrop-blur-sm p-8 rounded-lg border border-border/50 hover:border-primary/50 transition-all duration-300">
+            <h2 className="text-2xl sm:text-3xl font-bold text-ink mb-8 flex items-center justify-center gap-3">
+              <MessageCircle className="h-8 w-8 text-primary" />
               Send Me A Message
             </h2>
 
@@ -182,7 +185,7 @@ const ContactPage: FC = () => {
                   onChange={handleChange}
                   placeholder="Your Name"
                   required
-                  className="w-full p-4 bg-gray-700/50 backdrop-blur-sm rounded-xl focus:ring-2 focus:ring-blue-500/50 outline-none transition-all duration-300 border border-gray-600/50 hover:border-blue-500/50 text-gray-100 placeholder-gray-400"
+                  className="w-full p-4 bg-surface/50 backdrop-blur-sm rounded-md focus:ring-2 focus:ring-primary/50 outline-none transition-all duration-300 border border-border hover:border-primary/50 text-ink placeholder-ink/40"
                 />
                 <input
                   type="email"
@@ -191,7 +194,7 @@ const ContactPage: FC = () => {
                   onChange={handleChange}
                   placeholder="Your Email"
                   required
-                  className="w-full p-4 bg-gray-700/50 backdrop-blur-sm rounded-xl focus:ring-2 focus:ring-blue-500/50 outline-none transition-all duration-300 border border-gray-600/50 hover:border-blue-500/50 text-gray-100 placeholder-gray-400"
+                  className="w-full p-4 bg-surface/50 backdrop-blur-sm rounded-md focus:ring-2 focus:ring-primary/50 outline-none transition-all duration-300 border border-border hover:border-primary/50 text-ink placeholder-ink/40"
                 />
               </div>
 
@@ -202,13 +205,13 @@ const ContactPage: FC = () => {
                 placeholder="Tell me about your project or just say hi!"
                 required
                 rows={6}
-                className="w-full p-4 bg-gray-700/50 backdrop-blur-sm rounded-xl focus:ring-2 focus:ring-blue-500/50 outline-none transition-all duration-300 border border-gray-600/50 hover:border-blue-500/50 text-gray-100 placeholder-gray-400 resize-none"
+                className="w-full p-4 bg-surface/50 backdrop-blur-sm rounded-md focus:ring-2 focus:ring-primary/50 outline-none transition-all duration-300 border border-border hover:border-primary/50 text-ink placeholder-ink/40 resize-none"
               />
 
               <button
                 type="submit"
                 disabled={status.loading}
-                className="w-full md:w-auto px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl transition-all duration-300 transform hover:-translate-y-1 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-3 font-semibold text-white shadow-lg hover:shadow-blue-500/25"
+                className="w-full md:w-auto px-8 py-4 bg-primary rounded-md transition-all duration-300 transform hover:-translate-y-1 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-3 font-semibold text-neutral-bg shadow-lg hover:shadow-primary/25"
               >
                 {status.loading ? (
                   <>
@@ -224,13 +227,13 @@ const ContactPage: FC = () => {
               </button>
 
               {status.error && (
-                <div className="p-4 bg-red-500/10 border border-red-500/20 rounded-xl text-red-400 text-center">
+                <div className="p-4 bg-red-500/10 border border-red-500/20 rounded-md text-red-400 text-center">
                   {status.error}
                 </div>
               )}
 
               {status.success && (
-                <div className="p-4 bg-green-500/10 border border-green-500/20 rounded-xl text-green-400 text-center">
+                <div className="p-4 bg-primary/10 border border-primary/20 rounded-md text-primary text-center">
                   Message sent successfully! I'll get back to you soon. 🚀
                 </div>
               )}
@@ -246,14 +249,14 @@ const ContactPage: FC = () => {
             transition={{ duration: 0.8 }}
             className="mb-12"
           >
-            <div className="bg-gray-800/50 backdrop-blur-sm p-8 rounded-2xl border border-purple-500/30">
-              <h2 className="text-2xl sm:text-3xl font-bold text-gray-100 mb-8 flex items-center justify-center gap-3">
-                <Heart className="h-8 w-8 text-purple-400" />
+            <div className="bg-surface/50 backdrop-blur-sm p-8 rounded-lg border border-secondary/30">
+              <h2 className="text-2xl sm:text-3xl font-bold text-ink mb-8 flex items-center justify-center gap-3">
+                <Heart className="h-8 w-8 text-secondary" />
                 My Hobbies
               </h2>
 
-              <div className="bg-purple-500/10 border border-purple-500/20 rounded-xl p-6 mb-8">
-                <p className="text-gray-300 leading-relaxed">
+              <div className="bg-secondary/10 border border-secondary/20 rounded-md p-6 mb-8">
+                <p className="text-ink/80 leading-relaxed">
                   Congrats! I see you're a curious one, and you have taken
                   enough interest in me to find this section. As a reward,
                   you'll get to know me better by getting to know my hobbies. 🎉
@@ -267,12 +270,12 @@ const ContactPage: FC = () => {
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: index * 0.1 }}
-                    className="bg-gray-700/50 backdrop-blur-sm p-6 rounded-2xl border border-gray-600/50 hover:border-purple-500/50 transition-all duration-300 group hover:-translate-y-2"
+                    className="bg-surface/50 backdrop-blur-sm p-6 rounded-lg border border-border hover:border-secondary/50 transition-all duration-300 group hover:-translate-y-2"
                   >
-                    <h3 className="text-lg font-bold text-purple-400 mb-3 group-hover:text-purple-300 transition-colors">
+                    <h3 className="text-lg font-bold text-secondary mb-3 group-hover:text-secondary transition-colors">
                       {hobby.title}
                     </h3>
-                    <p className="text-gray-300 text-sm leading-relaxed">
+                    <p className="text-ink/60 text-sm leading-relaxed">
                       {hobby.description}
                     </p>
                   </motion.div>

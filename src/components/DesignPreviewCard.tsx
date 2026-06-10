@@ -1,7 +1,7 @@
 import { useState } from "react";
 import type { FC } from "react";
 import { createPortal } from "react-dom";
-import { X, Eye, Palette } from "lucide-react";
+import { X, Eye } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import type { Variants } from "framer-motion";
 import DesignPreview from "./DesignPreview";
@@ -19,12 +19,12 @@ const DesignPreviewCard: FC<DesignPreviewCardProps> = ({ title, description, tag
 
   const cardVariants: Variants = {
     hidden: { opacity: 0, y: 20 },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       y: 0,
       transition: { duration: 0.5, ease: "easeOut" }
     },
-    hover: { 
+    hover: {
       y: -8,
       transition: { duration: 0.3, ease: "easeOut" }
     }
@@ -38,55 +38,55 @@ const DesignPreviewCard: FC<DesignPreviewCardProps> = ({ title, description, tag
         animate="visible"
         whileHover="hover"
         onClick={() => setShowPreview(true)}
-        className="group relative flex flex-col bg-gray-800/50 backdrop-blur-xl rounded-2xl sm:rounded-3xl
-          cursor-pointer overflow-hidden border border-gray-700/50 hover:border-gray-600/50
+        className="group relative flex flex-col bg-surface/40 backdrop-blur-xl rounded-lg
+          cursor-pointer overflow-hidden border border-border/50 hover:border-accent/50
           shadow-xl hover:shadow-2xl transition-all duration-300"
       >
-        {/* Gradient overlay for hover effect */}
-        <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 via-pink-500/10 to-orange-500/10
-          opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl sm:rounded-3xl" />
+        {/* Subtle overlay for hover effect */}
+        <div className="absolute inset-0 bg-accent/5
+          opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-lg" />
 
         {/* Image container */}
-        <div className="relative aspect-[16/10] sm:aspect-[16/10] w-full overflow-hidden rounded-t-2xl sm:rounded-t-3xl">
-          <div className={`absolute inset-0 bg-gray-700/50 transition-opacity duration-300 ${
+        <div className="relative aspect-[16/10] sm:aspect-[16/10] w-full overflow-hidden rounded-t-lg bg-neutral-bg">
+          <div className={`absolute inset-0 bg-surface/80 transition-opacity duration-300 z-20 ${
             imageLoaded ? 'opacity-0' : 'opacity-100'
           }`} />
-          
+
           <img
             src={imageUrl}
             alt={title}
             onLoad={() => setImageLoaded(true)}
-            className={`w-full h-full object-cover object-center transform group-hover:scale-105 
+            className={`w-full h-full object-cover object-center transform group-hover:scale-105
               transition-all duration-700 ease-out ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}
           />
-          
+
           {/* Image overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-gray-900/20 to-transparent 
-            opacity-60 group-hover:opacity-80 transition-opacity duration-300" />
-          
-          {/* Design preview button */}
-          <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transform 
-            translate-y-2 group-hover:translate-y-0 transition-all duration-300">
-            <div className="p-2 bg-gray-900/80 backdrop-blur-sm rounded-full border border-gray-600/50">
-              <Palette className="h-4 w-4 text-purple-400" />
+          <div className="absolute inset-0 bg-gradient-to-t from-neutral-bg/80 via-transparent to-neutral-bg/20
+            opacity-60 group-hover:opacity-40 transition-opacity duration-300 z-10" />
+
+          {/* Quick preview button - Enhanced Prominence */}
+          <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transform
+            translate-y-2 group-hover:translate-y-0 transition-all duration-500 z-30 scale-90 group-hover:scale-100">
+            <div className="p-3 bg-accent text-neutral-bg rounded-full shadow-[0_0_20px_rgba(245,158,11,0.4)] transition-all">
+              <Eye className="h-5 w-5" />
             </div>
           </div>
 
           {/* Design type badge */}
-          <div className="absolute top-4 left-4 px-3 py-1 bg-gray-900/80 backdrop-blur-sm 
-            rounded-full border border-gray-600/50">
-            <span className="text-xs font-medium text-gray-300">Design</span>
+          <div className="absolute top-4 left-4 px-3 py-1 bg-neutral-bg/80 backdrop-blur-sm
+            rounded-full border border-border/50 z-30">
+            <span className="text-xs font-medium text-ink/60">Design</span>
           </div>
         </div>
 
         {/* Content section */}
         <div className="p-4 sm:p-6 flex flex-col flex-grow relative z-10">
-          <h3 className="text-lg sm:text-xl font-bold mb-2 sm:mb-3 text-gray-100 group-hover:text-purple-400
+          <h3 className="text-lg sm:text-xl font-bold mb-2 sm:mb-3 text-ink group-hover:text-accent
             transition-colors duration-300 leading-tight">
             {title}
           </h3>
-          
-          <p className="text-gray-400 text-sm mb-4 sm:mb-5 line-clamp-3 flex-grow leading-relaxed">
+
+          <p className="text-ink/60 text-sm mb-4 sm:mb-5 line-clamp-3 flex-grow leading-relaxed">
             {description}
           </p>
 
@@ -95,31 +95,15 @@ const DesignPreviewCard: FC<DesignPreviewCardProps> = ({ title, description, tag
             {tags.slice(0, 4).map((tag, index) => (
               <span
                 key={index}
-                className="px-2 sm:px-3 py-1 sm:py-1.5 bg-purple-500/10 text-purple-400 rounded-lg sm:rounded-xl text-xs font-medium
-                  border border-purple-500/20 transition-all duration-300
-                  group-hover:border-purple-500/40 group-hover:bg-purple-500/20 group-hover:scale-105"
+                className="px-2 sm:px-3 py-1 sm:py-1.5 bg-accent/10 text-accent rounded-md text-xs font-medium
+                  border border-accent/20 transition-all duration-300
+                  group-hover:border-accent/40 group-hover:bg-accent/20"
               >
                 {tag}
               </span>
             ))}
-            {tags.length > 4 && (
-              <span className="px-2 sm:px-3 py-1 sm:py-1.5 bg-gray-600/20 text-gray-400 rounded-lg sm:rounded-xl text-xs font-medium
-                border border-gray-600/30">
-                +{tags.length - 4} more
-              </span>
-            )}
           </div>
 
-          {/* Action buttons */}
-          <div className="flex items-center gap-2 sm:gap-3 opacity-0 sm:group-hover:opacity-100
-            transform translate-y-2 sm:group-hover:translate-y-0 transition-all duration-300">
-            <button className="flex items-center gap-1 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-purple-600/20 text-purple-400
-              rounded-lg sm:rounded-xl text-xs sm:text-sm font-medium hover:bg-purple-600/30 transition-colors border border-purple-500/30">
-              <Eye className="h-3 w-3 sm:h-4 sm:w-4" />
-              <span className="hidden sm:inline">View Designs</span>
-              <span className="sm:hidden">View</span>
-            </button>
-          </div>
         </div>
       </motion.div>
 
@@ -131,77 +115,126 @@ const DesignPreviewCard: FC<DesignPreviewCardProps> = ({ title, description, tag
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 bg-black/95 backdrop-blur-sm z-[9999] overflow-y-auto px-2 sm:px-4 py-4 sm:py-8"
+              className="fixed inset-0 bg-neutral-bg/98 backdrop-blur-md z-[9999] flex items-center justify-center p-4 sm:p-6 lg:p-8"
               onClick={() => setShowPreview(false)}
             >
-              <div className="min-h-screen flex items-center justify-center">
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.9, y: 20 }}
-                  animate={{ opacity: 1, scale: 1, y: 0 }}
-                  exit={{ opacity: 0, scale: 0.9, y: 20 }}
-                  transition={{ duration: 0.3, ease: "easeOut" }}
-                  onClick={(e) => e.stopPropagation()}
-                  className="relative max-w-7xl w-full bg-gray-900/95 backdrop-blur-xl rounded-2xl sm:rounded-3xl
-                    shadow-2xl border border-gray-700/50 overflow-hidden"
+              <motion.div
+                initial={{ opacity: 0, y: 30, scale: 0.98 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: 30, scale: 0.98 }}
+                transition={{ type: "spring", damping: 25, stiffness: 200 }}
+                onClick={(e) => e.stopPropagation()}
+                className="relative w-full max-w-6xl max-h-[90vh] bg-surface/40 backdrop-blur-xl rounded-lg
+                  shadow-2xl border border-border/50 overflow-hidden flex flex-col"
+              >
+                {/* Close Button */}
+                <button
+                  onClick={() => setShowPreview(false)}
+                  className="absolute top-4 right-4 p-2.5 bg-neutral-bg/80 backdrop-blur-md rounded-full
+                    hover:bg-accent/20 hover:text-accent transition-all duration-300 z-50 border border-border/50 group"
                 >
-                  {/* Close button */}
-                  <button
-                    onClick={() => setShowPreview(false)}
-                    className="absolute top-4 sm:top-6 right-4 sm:right-6 p-2 bg-gray-800/80 backdrop-blur-sm rounded-xl
-                      hover:bg-gray-700/80 transition-colors duration-300 shadow-lg z-30 border border-gray-600/50"
-                  >
-                    <X className="w-4 h-4 text-gray-300" />
-                  </button>
+                  <X className="w-5 h-5 text-ink/60 group-hover:scale-110" />
+                </button>
 
-                  {/* Compact Header */}
-                  <div className="flex flex-col sm:flex-row sm:items-center justify-between p-4 sm:p-6 pr-12 sm:pr-16 border-b border-gray-700/50">
-                    <div className="mb-4 sm:mb-0">
-                      <h2 className="text-xl sm:text-2xl font-bold text-white mb-2">{title}</h2>
-                      <div className="flex items-center gap-4 text-gray-400 text-sm">
-                        <div className="flex items-center gap-1">
-                          <Palette className="h-3 w-3" />
-                          <span>Design Portfolio</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                {/* Scrollable Content Area */}
+                <div className="flex-1 overflow-y-auto custom-scrollbar">
+                  {/* 1. Modal Hero - Compacted */}
+                  <div className="relative aspect-[21/9] sm:aspect-[21/6] w-full overflow-hidden border-b border-border/50">
+                    <div className="absolute inset-0 bg-gradient-to-t from-neutral-bg via-neutral-bg/20 to-transparent z-10" />
+                    <img
+                      src={imageUrl}
+                      alt={title}
+                      className="w-full h-full object-cover object-center"
+                    />
 
-                  {/* Compact Content */}
-                  <div className="p-4 sm:p-6">
-                    {/* Description */}
-                    <div className="bg-gray-800/50 backdrop-blur-sm rounded-xl p-4 mb-6">
-                      <h3 className="text-lg font-bold mb-2 text-purple-400">About This Project</h3>
-                      <p className="text-gray-300 leading-relaxed text-sm">
-                        {description}
-                      </p>
-                    </div>
-
-                    {/* Design Preview Component */}
-                    <div className="bg-gray-800/50 backdrop-blur-sm rounded-xl p-4 mb-6">
-                      <h3 className="text-lg font-bold mb-4 text-purple-400">Design Showcase</h3>
-                      <div className="rounded-xl overflow-hidden">
-                        <DesignPreview />
-                      </div>
-                    </div>
-
-                    {/* Tools Used */}
-                    <div className="bg-gray-800/50 backdrop-blur-sm rounded-xl p-4">
-                      <h3 className="text-lg font-bold mb-3 text-purple-400">Tools & Software</h3>
-                      <div className="flex flex-wrap gap-2">
-                        {tags?.map((tool, index) => (
-                          <span
-                            key={index}
-                            className="px-3 py-1.5 bg-purple-600/20 text-purple-400 rounded-xl text-xs font-medium
-                              border border-purple-500/30"
-                          >
-                            {tool}
+                    {/* Header Overlay */}
+                    <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-8 lg:p-10 z-20">
+                      <div className="space-y-1">
+                        <div className="flex items-center gap-3">
+                          <span className="px-2 py-0.5 bg-accent/20 text-accent border border-accent/30 rounded-sm text-[10px] font-bold uppercase tracking-widest">
+                            Creative Portfolio
                           </span>
-                        ))}
+                          <span className="h-px w-6 bg-border" />
+                          <span className="text-ink/40 text-[10px] font-mono uppercase">DESIGN_EXP_0{tags.length}</span>
+                        </div>
+                        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-ink tracking-tight">
+                          {title}
+                        </h2>
                       </div>
                     </div>
                   </div>
-                </motion.div>
-              </div>
+
+                  {/* 2. Body Grid */}
+                  <div className="grid grid-cols-1 lg:grid-cols-12 gap-0 min-h-0">
+
+                    {/* Main Showcase Column */}
+                    <div className="lg:col-span-8 p-6 sm:p-10 space-y-10 border-r border-border/50">
+
+                      {/* Concept */}
+                      <section className="space-y-3">
+                        <div className="flex items-center gap-2 text-accent">
+                          <div className="w-1.5 h-1.5 bg-accent rounded-full" />
+                          <h3 className="text-[11px] font-bold uppercase tracking-widest">The Concept</h3>
+                        </div>
+                        <p className="text-base sm:text-lg text-ink/80 leading-relaxed">
+                          {description}
+                        </p>
+                      </section>
+
+                      {/* Expanded Gallery - Removed the "Small Box" restriction */}
+                      <section className="space-y-6">
+                        <div className="flex items-center gap-2 text-primary">
+                          <div className="w-1.5 h-1.5 bg-primary rounded-full" />
+                          <h3 className="text-[11px] font-bold uppercase tracking-widest">Visual Assets</h3>
+                        </div>
+                        <div className="w-full">
+                          <DesignPreview />
+                        </div>
+                      </section>
+                    </div>
+
+                    {/* Metadata Column */}
+                    <div className="lg:col-span-4 bg-neutral-bg/20 p-6 sm:p-10 space-y-10">
+
+                      {/* Tools */}
+                      <section className="space-y-4">
+                        <h3 className="text-[10px] font-bold text-ink/40 uppercase tracking-[0.2em]">Creative Stack</h3>
+                        <div className="flex flex-wrap gap-2">
+                          {tags.map((tool, index) => (
+                            <span
+                              key={index}
+                              className="px-2.5 py-1 bg-surface border border-border text-ink/60 rounded-sm text-[10px] font-mono
+                                hover:border-accent/50 hover:text-accent transition-all duration-300"
+                            >
+                              {tool}
+                            </span>
+                          ))}
+                        </div>
+                      </section>
+
+                      {/* Design Specs */}
+                      <section className="space-y-4">
+                        <h3 className="text-[10px] font-bold text-ink/40 uppercase tracking-[0.2em]">Specifications</h3>
+                        <div className="space-y-3">
+                          <div className="flex justify-between items-center py-2.5 border-b border-border/20">
+                            <span className="text-ink/40 text-xs">Category</span>
+                            <span className="text-ink/80 text-xs font-bold uppercase tracking-tighter">Graphic Design</span>
+                          </div>
+                          <div className="flex justify-between items-center py-2.5 border-b border-border/20">
+                            <span className="text-ink/40 text-xs">Identity</span>
+                            <span className="text-ink/80 text-xs font-bold uppercase tracking-tighter">Full Brand Kit</span>
+                          </div>
+                          <div className="flex justify-between items-center py-2.5 border-b border-border/20">
+                            <span className="text-ink/40 text-xs">Focus</span>
+                            <span className="text-accent text-xs font-extrabold uppercase tracking-tighter">UI Precision</span>
+                          </div>
+                        </div>
+                      </section>
+
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
             </motion.div>
           )}
         </AnimatePresence>,

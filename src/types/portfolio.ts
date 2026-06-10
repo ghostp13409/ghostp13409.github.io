@@ -94,6 +94,7 @@ export interface Project {
   title: string;
   description: string;
   imageUrl: string;
+  videoUrl?: string;
   tags: string[];
   contentUrl?: string;
   completionDate: string;
@@ -101,6 +102,12 @@ export interface Project {
   webUrl?: string;
   learnings?: string[];
   impact?: string;
+  keyFeatures?: string[];
+  challenges?: string;
+  platform?: string;
+  liveAppUrl?: string;
+  isMobileApp?: boolean;
+  screenshots?: string[];
 }
 
 export interface Skill {
@@ -117,6 +124,7 @@ export interface CollageProject {
   imageUrl: string;
   tags: string[];
   thumbnailUrl: string;
+  year: number;
 }
 
 export interface Hobby {

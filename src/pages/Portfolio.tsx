@@ -1,40 +1,16 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, lazy, Suspense } from "react";
 import type { FC } from "react";
 import Sidebar from "../components/Sidebar";
-import SkillsPage from "./SkillsPage";
-import ProjectsPage from "./ProjectsPage";
-import ContactPage from "./ContactPage";
 import IntroPage from "./IntroPage";
+import LoadingSection from "../components/LoadingSection";
+
+const ExperiencePage = lazy(() => import("./ExperiencePage"));
+const SkillsPage = lazy(() => import("./SkillsPage"));
+const ProjectsPage = lazy(() => import("./ProjectsPage"));
+const ContactPage = lazy(() => import("./ContactPage"));
 
 const Portfolio: FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const sections = ["intro", "skills", "projects", "hire"];
-
-      const observerCallback = () => {
-        // No-op for now as Sidebar handles its own state
-      };
-
-      const observer = new IntersectionObserver(observerCallback, {
-        root: null,
-        rootMargin: "-50% 0px",
-        threshold: 0,
-      });
-
-      sections.forEach((section) => {
-        const element = document.getElementById(section);
-        if (element) observer.observe(element);
-      });
-
-      return () => observer.disconnect();
-    };
-
-    handleScroll();
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   // Close mobile menu when clicking outside
   useEffect(() => {
@@ -57,24 +33,24 @@ const Portfolio: FC = () => {
   }, [isMobileMenuOpen]);
 
   return (
-    <div className="min-h-screen bg-gray-900 text-gray-100">
+    <div className="min-h-screen bg-neutral-bg text-ink">
       {/* Mobile Header */}
-      <div className="lg:hidden fixed top-6 left-0 right-0 z-50 bg-gray-800/95 backdrop-blur-md border-b border-gray-700">
+      <div className="lg:hidden fixed top-6 left-0 right-0 z-50 bg-surface/95 backdrop-blur-md border-b border-border">
         <div className="flex items-center justify-between p-4">
           <div className="flex items-center gap-3">
             <img
               src="images/profile_logo.jpeg"
-              className="w-10 h-10 rounded-full object-cover border border-gray-600"
+              className="w-10 h-10 rounded-full object-cover border border-border"
               alt="Profile"
             />
             <div>
-              <h1 className="text-lg font-bold text-gray-100">Parth Gajjar</h1>
-              <p className="text-sm text-gray-400">Software Developer</p>
+              <h1 className="text-lg font-bold text-ink">Parth Gajjar</h1>
+              <p className="text-sm text-ink/60">Software Developer</p>
             </div>
           </div>
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="mobile-menu-button p-2 rounded-lg bg-gray-700 hover:bg-gray-600 transition-colors z-50"
+            className="mobile-menu-button p-2 rounded-lg bg-border hover:bg-border/80 transition-colors z-50"
           >
             <svg
               className="w-6 h-6"
@@ -105,11 +81,11 @@ const Portfolio: FC = () => {
       {/* Mobile Menu Overlay */}
       {isMobileMenuOpen && (
         <div
-          className="lg:hidden fixed inset-0 z-40 bg-black/50 backdrop-blur-sm"
+          className="lg:hidden fixed inset-0 z-40 bg-neutral-bg/80 backdrop-blur-sm"
           onClick={() => setIsMobileMenuOpen(false)}
         >
           <div
-            className="mobile-sidebar fixed top-20 right-0 bottom-0 w-80 bg-gray-800 border-l border-gray-700 overflow-y-auto"
+            className="mobile-sidebar fixed top-20 right-0 bottom-0 w-80 bg-surface border-l border-border overflow-y-auto shadow-2xl"
             onClick={(e) => e.stopPropagation()}
           >
             <Sidebar
@@ -122,25 +98,33 @@ const Portfolio: FC = () => {
 
       <div className="flex gap-4">
         {/* Desktop Sidebar */}
-        <div className="hidden lg:flex h-screen p-4 rounded">
+        <div className="hidden lg:flex h-screen p-4">
           <Sidebar />
         </div>
 
         {/* Main Content */}
         <div className="flex-1 pt-24 lg:pt-0">
-          <div className="h-screen lg:h-screen p-0 lg:p-4 lg:rounded">
-            <div className="h-full overflow-y-auto lg:rounded-lg lg:border-2 lg:border-gray-800">
-              {/* Intro Section */}
-              <IntroPage />
+          <div className="h-screen p-0 lg:p-4">
+            <div
+              id="main-scroll-container"
+              className="h-full overflow-y-auto lg:rounded-lg lg:border border-border bg-neutral-bg"
+            >
+              <Suspense fallback={<LoadingSection />}>
+                {/* Intro Section */}
+                <IntroPage />
 
-              {/* Skills Section */}
-              <SkillsPage />
+                {/* Experience Section */}
+                <ExperiencePage />
 
-              {/* Projects Section */}
-              <ProjectsPage />
+                {/* Skills Section */}
+                <SkillsPage />
 
-              {/* Hire Me Section */}
-              <ContactPage />
+                {/* Projects Section */}
+                <ProjectsPage />
+
+                {/* Hire Me Section */}
+                <ContactPage />
+              </Suspense>
             </div>
           </div>
         </div>

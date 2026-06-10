@@ -1,6 +1,8 @@
-import { CollageProjects, projects } from "../data/data";
+import { CollageProjects, projects } from "../data";
 import DesignPreviewCard from "../components/DesignPreviewCard";
 import ProjectCard from "../components/ProjectCard";
+import MobileAppCard from "../components/MobileAppCard";
+import ProjectShowcaseCard from "../components/ProjectShowcaseCard";
 import VideoCard from "../components/VideoCard";
 import { motion } from "framer-motion";
 import { Rocket, Code } from "lucide-react";
@@ -24,14 +26,13 @@ const ProjectsPage: FC = () => {
   return (
     <section
       id="projects"
-      className="min-h-screen flex flex-col justify-center items-center p-6 relative overflow-hidden"
+      className="min-h-screen flex flex-col justify-center items-center p-6 relative overflow-hidden bg-neutral-bg"
     >
       {/* Background decoration */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-20 left-10 w-20 h-20 bg-blue-500/10 rounded-full blur-xl"></div>
-        <div className="absolute top-40 right-20 w-32 h-32 bg-purple-500/10 rounded-full blur-xl"></div>
-        <div className="absolute bottom-20 left-20 w-24 h-24 bg-cyan-500/10 rounded-full blur-xl"></div>
-        <div className="absolute bottom-40 right-10 w-28 h-28 bg-pink-500/10 rounded-full blur-xl"></div>
+        <div className="absolute top-20 left-10 w-20 h-20 bg-primary/10 rounded-full blur-xl"></div>
+        <div className="absolute top-40 right-20 w-32 h-32 bg-secondary/10 rounded-full blur-xl"></div>
+        <div className="absolute bottom-20 left-20 w-24 h-24 bg-accent/10 rounded-full blur-xl"></div>
       </div>
 
       <motion.div
@@ -42,21 +43,21 @@ const ProjectsPage: FC = () => {
       >
         <motion.h1
           variants={fadeInUp}
-          className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-8 bg-gradient-to-r from-blue-400 via-purple-500 to-cyan-400 text-transparent bg-clip-text tracking-tight"
+          className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-8 text-primary tracking-tight"
         >
           My Projects
         </motion.h1>
 
         {/* Project Introduction */}
         <motion.div variants={fadeInUp} className="mb-12">
-          <div className="bg-gray-900/60 backdrop-blur-xl p-8 rounded-3xl border border-gray-700/50 shadow-2xl">
-            <p className="text-xl sm:text-2xl text-gray-200 leading-relaxed mb-6">
+          <div className="bg-surface/40 backdrop-blur-xl p-8 rounded-lg border border-border/50 shadow-2xl">
+            <p className="text-xl sm:text-2xl text-ink leading-relaxed mb-6">
               Here's a collection of projects that showcase my journey as a
               developer. Each one taught me something new and pushed my
               boundaries.
             </p>
 
-            <div className="flex items-center justify-center gap-6 text-gray-400">
+            <div className="flex items-center justify-center gap-6 text-ink/40">
               <div className="flex items-center gap-2">
                 <Code className="h-5 w-5" />
                 <span className="text-sm">12+ Projects Completed</span>
@@ -82,16 +83,48 @@ const ProjectsPage: FC = () => {
               transition={{ delay: index * 0.1 }}
               className="transform transition-all duration-300 hover:-translate-y-2"
             >
-              <ProjectCard
-                title={p.title}
-                description={p.description}
-                tags={p.tags}
-                imageUrl={p.imageUrl}
-                contnetUrl={p.contentUrl}
-                completionDate={p.completionDate}
-                setup={p.setup}
-                webUrl={p.webUrl}
-              />
+              {p.isMobileApp && p.liveAppUrl ? (
+                <MobileAppCard
+                  title={p.title}
+                  description={p.description}
+                  tags={p.tags}
+                  imageUrl={p.imageUrl}
+                  contentUrl={p.contentUrl}
+                  completionDate={p.completionDate}
+                  challenges={p.challenges}
+                  keyFeatures={p.keyFeatures}
+                  setup={p.setup}
+                  liveAppUrl={p.liveAppUrl}
+                />
+              ) : p.screenshots && p.screenshots.length > 0 ? (
+                <ProjectShowcaseCard
+                  title={p.title}
+                  description={p.description}
+                  tags={p.tags}
+                  year={new Number(p.completionDate).valueOf()}
+                  imageUrl={p.imageUrl}
+                  contentUrl={p.contentUrl}
+                  completionDate={p.completionDate}
+                  challenges={p.challenges}
+                  keyFeatures={p.keyFeatures}
+                  screenshots={p.screenshots}
+                />
+              ) : (
+                <ProjectCard
+                  title={p.title}
+                  description={p.description}
+                  tags={p.tags}
+                  imageUrl={p.imageUrl}
+                  videoUrl={p.videoUrl}
+                  contnetUrl={p.contentUrl}
+                  completionDate={p.completionDate}
+                  challenges={p.challenges}
+                  keyFeatures={p.keyFeatures}
+                  setup={p.setup}
+                  webUrl={p.webUrl}
+                  platform={p.platform}
+                />
+              )}
             </motion.div>
           ))}
 
@@ -125,14 +158,14 @@ const ProjectsPage: FC = () => {
                 tags={p.tags}
                 videoUrl={p.imageUrl}
                 thumbnailUrl={p.thumbnailUrl}
+                year={p.year}
               />
             </motion.div>
           ))}
         </motion.div>
 
-        {/* Project Philosophy */}
         <motion.div variants={fadeInUp}>
-          <blockquote className="text-lg sm:text-xl italic text-gray-300 max-w-3xl mx-auto leading-relaxed">
+          <blockquote className="text-lg sm:text-xl italic text-ink/80 max-w-3xl mx-auto leading-relaxed">
             "I use every project as a learning opportunity. Whether it's
             mastering a new framework, solving a complex algorithm, or creating
             something that genuinely helps people - I approach each challenge

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: #0a0a0a; color: white; padding: 2rem; }
+        .grid { display: grid; grid-template-cols: 1fr 1fr; gap: 2rem; }
+        .card { background: #1a1a1a; padding: 1.5rem; border-radius: 12px; border: 1px solid #333; }
+        .tag { display: inline-block; padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.8rem; margin-top: 0.5rem; }
+        .tag-bad { background: #422; color: #f88; }
+        .tag-good { background: #242; color: #8f8; }
+        h2 { margin-top: 0; color: #10b981; }
+        .bundle-viz { height: 40px; border-radius: 6px; margin: 1rem 0; overflow: hidden; display: flex; }
+        .segment { height: 100%; }
+        .seg-main { background: #10b981; width: 40%; }
+        .seg-projects { background: #3b82f6; width: 40%; }
+        .seg-others { background: #f59e0b; width: 20%; }
+        .arrow { font-size: 2rem; text-align: center; margin: 1rem 0; color: #555; }
+    </style>
+</head>
+<body>
+    <h1>Portfolio Optimization Approaches</h1>
+    
+    <div class="grid">
+        <div class="card">
+            <h2>Current Architecture</h2>
+            <div class="tag tag-bad">Heavy Initial Load</div>
+            <p>Everything is bundled into one big <code>index.js</code>. The browser downloads the code for the Projects page before showing the Intro.</p>
+            <div class="bundle-viz">
+                <div class="segment seg-main" style="width: 100%; background: #ef4444;">Main Bundle (All Pages + Data)</div>
+            </div>
+            <ul>
+                <li>❌ Slow "Time to Interactive"</li>
+                <li>❌ Image Pop-in (Layout Shift)</li>
+                <li>❌ High CPU usage on startup</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h2>Recommended Architecture</h2>
+            <div class="tag tag-good">Progressive Loading</div>
+            <p>Code is split into "Chunks". Heavy sections load in the background only when needed.</p>
+            <div class="bundle-viz" style="background: #333;">
+                <div class="segment seg-main">Intro (Loaded)</div>
+            </div>
+            <div class="arrow">⬇️ On Scroll ⬇️</div>
+            <div class="bundle-viz" style="background: #333;">
+                <div class="segment seg-main">Intro</div>
+                <div class="segment seg-projects" style="width: 60%;">Projects (Loading Chunk...)</div>
+            </div>
+            <ul>
+                <li>✅ Instant initial paint</li>
+                <li>✅ Smooth image transitions</li>
+                <li>✅ Better mobile performance</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="card" style="margin-top: 2rem;">
+        <h2>The "Image Pop-in" Fix</h2>
+        <p>Currently, the browser doesn't know how big images are until they finish downloading, causing the layout to jump.</p>
+        <div style="display: flex; gap: 1rem; align-items: center;">
+            <div style="width: 100px; height: 60px; background: #333; display: flex; align-items: center; justify-content: center; border: 1px dashed #666;">Empty</div>
+            <div style="font-size: 1.5rem;">➡️</div>
+            <div style="width: 100px; height: 60px; background: #10b981; border-radius: 4px;">Image</div>
+        </div>
+        <p><b>Fix:</b> Use "Aspect Ratio Boxes" and Blurred Placeholders.</p>
+    </div>
+</body>
+</html>
