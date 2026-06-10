@@ -73,7 +73,7 @@ const IntroPage: FC = () => {
             <p className="text-xl sm:text-2xl text-ink leading-relaxed mb-6">
               I'm a{" "}
               <span className="text-primary font-semibold">
-                computer programming student
+                software developer
               </span>{" "}
               who loves building cool stuff and solving problems. When I'm not
               coding, you'll probably find me

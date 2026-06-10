@@ -1,7 +1,7 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import type { FC } from "react";
 import { createPortal } from "react-dom";
-import { X, Eye, Github } from "lucide-react";
+import { X, Eye, Github, ChevronLeft, ChevronRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import type { Variants } from "framer-motion";
 
@@ -32,19 +32,36 @@ const ProjectShowcaseCard: FC<ProjectShowcaseCardProps> = ({
 }) => {
   const [showPreview, setShowPreview] = useState(false);
   const [imageLoaded, setImageLoaded] = useState(false);
-  const [selectedScreenshot, setSelectedScreenshot] = useState<string | null>(null);
+  const [screenshotIndex, setScreenshotIndex] = useState<number | null>(null);
 
-  // Handle ESC key to close modal
+  const handleNext = useCallback((e?: React.MouseEvent) => {
+    e?.stopPropagation();
+    if (screenshotIndex !== null) {
+      setScreenshotIndex((prev) => (prev! + 1) % screenshots.length);
+    }
+  }, [screenshotIndex, screenshots.length]);
+
+  const handlePrev = useCallback((e?: React.MouseEvent) => {
+    e?.stopPropagation();
+    if (screenshotIndex !== null) {
+      setScreenshotIndex((prev) => (prev! - 1 + screenshots.length) % screenshots.length);
+    }
+  }, [screenshotIndex, screenshots.length]);
+
+  // Handle keyboard events
   useEffect(() => {
-    const handleEsc = (event: KeyboardEvent) => {
+    const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
-        if (selectedScreenshot) setSelectedScreenshot(null);
+        if (screenshotIndex !== null) setScreenshotIndex(null);
         else setShowPreview(false);
+      } else if (screenshotIndex !== null) {
+        if (event.key === "ArrowRight") handleNext();
+        else if (event.key === "ArrowLeft") handlePrev();
       }
     };
-    window.addEventListener("keydown", handleEsc);
-    return () => window.removeEventListener("keydown", handleEsc);
-  }, [selectedScreenshot]);
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [screenshotIndex, handleNext, handlePrev]);
 
   const cardVariants: Variants = {
     hidden: { opacity: 0, y: 20 },
@@ -203,7 +220,7 @@ const ProjectShowcaseCard: FC<ProjectShowcaseCardProps> = ({
                             {screenshots.map((url, index) => (
                               <div
                                 key={index}
-                                onClick={() => setSelectedScreenshot(url)}
+                                onClick={() => setScreenshotIndex(index)}
                                 className="relative aspect-[9/16] bg-neutral-bg/40 rounded-md overflow-hidden border border-border/50 cursor-zoom-in group/item shadow-lg"
                               >
                                 <img
@@ -280,28 +297,56 @@ const ProjectShowcaseCard: FC<ProjectShowcaseCardProps> = ({
             </motion.div>
           )}
 
-          {selectedScreenshot && (
+          {screenshotIndex !== null && (
             <motion.div
               key="fullscreen"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 bg-black/95 z-[10000] flex items-center justify-center p-4 cursor-zoom-out"
-              onClick={() => setSelectedScreenshot(null)}
+              className="fixed inset-0 bg-black/95 z-[10000] flex items-center justify-center p-4"
+              onClick={() => setScreenshotIndex(null)}
             >
+              {/* Close button */}
               <button
-                onClick={() => setSelectedScreenshot(null)}
+                onClick={() => setScreenshotIndex(null)}
                 className="absolute top-8 right-8 p-3 bg-white/10 hover:bg-white/20 text-white rounded-full backdrop-blur-md transition-all z-50 border border-white/10"
               >
                 <X className="w-6 h-6" />
               </button>
+
+              {/* Navigation buttons */}
+              {screenshots.length > 1 && (
+                <>
+                  <button
+                    onClick={handlePrev}
+                    className="absolute left-4 sm:left-8 p-4 bg-white/5 hover:bg-white/10 text-white rounded-full backdrop-blur-md transition-all z-50 border border-white/5 group"
+                  >
+                    <ChevronLeft className="w-8 h-8 group-hover:-translate-x-1 transition-transform" />
+                  </button>
+                  <button
+                    onClick={handleNext}
+                    className="absolute right-4 sm:right-8 p-4 bg-white/5 hover:bg-white/10 text-white rounded-full backdrop-blur-md transition-all z-50 border border-white/5 group"
+                  >
+                    <ChevronRight className="w-8 h-8 group-hover:translate-x-1 transition-transform" />
+                  </button>
+
+                  {/* Counter */}
+                  <div className="absolute bottom-8 left-1/2 -translate-x-1/2 px-4 py-2 bg-white/10 backdrop-blur-md rounded-full border border-white/10 text-white/60 text-sm font-mono tracking-widest">
+                    {screenshotIndex + 1} / {screenshots.length}
+                  </div>
+                </>
+              )}
+
               <motion.img
-                initial={{ scale: 0.9, y: 20 }}
-                animate={{ scale: 1, y: 0 }}
-                exit={{ scale: 0.9, y: 20 }}
-                src={selectedScreenshot}
-                alt="Selected screenshot"
-                className="max-w-full max-h-[90vh] object-contain shadow-2xl rounded-lg"
+                key={screenshotIndex}
+                initial={{ opacity: 0, scale: 0.9, x: 20 }}
+                animate={{ opacity: 1, scale: 1, x: 0 }}
+                exit={{ opacity: 0, scale: 0.9, x: -20 }}
+                transition={{ type: "spring", damping: 25, stiffness: 200 }}
+                src={screenshots[screenshotIndex]}
+                alt={`${title} screenshot ${screenshotIndex + 1}`}
+                className="max-w-full max-h-[90vh] object-contain shadow-2xl rounded-lg cursor-default"
+                onClick={(e) => e.stopPropagation()}
               />
             </motion.div>
           )}

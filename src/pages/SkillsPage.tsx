@@ -1,7 +1,6 @@
 import { education, Skills, Certificates } from "../data";
 import { motion } from "framer-motion";
 import { GraduationCap, BookOpen, Zap, ArrowDown } from "lucide-react";
-import { DSACont } from "../components/DSACont";
 import type { FC } from "react";
 
 const SkillsPage: FC = () => {
@@ -72,7 +71,7 @@ const SkillsPage: FC = () => {
               </div>
             </div>
 
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-6 mt-12">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12">
             {education.achievements.map((achievement, i) => (
               <motion.div
                 key={i}
@@ -124,10 +123,6 @@ const SkillsPage: FC = () => {
           </div>
         </motion.div>
 
-        {/* DSA Contests */}
-        <motion.div variants={fadeInUp}>
-          <DSACont />
-        </motion.div>
 
         {/* Growth & Certifications */}
         <motion.div variants={fadeInUp}>

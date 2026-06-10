@@ -9,6 +9,7 @@ export const projects: Project[] = [
     completionDate: "2026",
     contentUrl: "https://github.com/ghostp13409",
     imageUrl: "images/projects/swiftmove.png",
+    videoUrl: "videos/projects/swiftmove.mp4",
     setup: ["Omarchy", "Gemini CLI", "Docker-Compose", "Cloudflare Tunnel"],
     learnings: [
       "Secured the platform using JWT and Role-Based Access Control.",
@@ -48,7 +49,7 @@ export const projects: Project[] = [
     title: "DSA Exercises",
     description:
       "Solved 70+ algorithmic problems on LeetCode. Analyzed time and space complexity for multiple algorithms, ensuring efficient and scalable solutions. Implemented and optimized algorithms for sorting, searching, and dynamic programming, reducing computation time by 30%.",
-    imageUrl: "images/projects/DSA.jpg",
+    imageUrl: "https://www.readmecodegen.com/api/leetcode-stats/ghostp134?theme=dark&acceptance=false&reputation=false&font=%27JetBrains+Mono%27%2C+%27Courier+New%27%2C+monospace",
     tags: [
       "Java",
       "C#",
@@ -61,7 +62,7 @@ export const projects: Project[] = [
     completionDate: "Since 2023",
     setup: ["Windows, Java, C#"],
     webUrl:
-      "https://leetcode-stats.vercel.app/api?username=ghostp134&theme=Dark",
+      "https://www.readmecodegen.com/api/leetcode-stats/ghostp134?theme=dark&font=%27JetBrains+Mono%27%2C+%27Courier+New%27%2C+monospace&template=minimal",
   },
   {
     id: 4,
@@ -70,6 +71,7 @@ export const projects: Project[] = [
     tags: ["ASP.NET Core", "C#", "React", "TypeScript", "Redis", "SignalR"],
     completionDate: "2025",
     imageUrl: "images/projects/coding_templete.jpg",
+    videoUrl: "videos/projects/ERS.mp4",
     setup: ["VS Code", "Docker", "Render.com"],
     learnings: [
       "Implemented real-time updates using SignalR.",

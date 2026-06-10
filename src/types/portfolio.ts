@@ -94,6 +94,7 @@ export interface Project {
   title: string;
   description: string;
   imageUrl: string;
+  videoUrl?: string;
   tags: string[];
   contentUrl?: string;
   completionDate: string;

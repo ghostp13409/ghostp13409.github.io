@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import type { FC } from "react";
 import { createPortal } from "react-dom";
-import { X, Github, Eye } from "lucide-react";
+import { X, Github, Eye, PlayCircle } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import type { Variants } from "framer-motion";
 
@@ -10,6 +10,7 @@ interface ProjectCardProps {
   description: string;
   tags: string[];
   imageUrl: string;
+  videoUrl?: string;
   contnetUrl?: string;
   webUrl?: string;
   webContent?: string;
@@ -24,6 +25,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
   description,
   tags,
   imageUrl,
+  videoUrl,
   contnetUrl,
   webUrl,
   completionDate,
@@ -95,6 +97,16 @@ const ProjectCard: FC<ProjectCardProps> = ({
           {/* Image overlay */}
           <div className="absolute inset-0 bg-gradient-to-t from-neutral-bg/80 via-transparent to-neutral-bg/20
             opacity-60 group-hover:opacity-40 transition-opacity duration-300 z-10" />
+
+          {/* Video Play Indicator */}
+          {videoUrl && (
+            <div className="absolute inset-0 flex items-center justify-center z-20">
+              <div className="p-3 bg-neutral-bg/40 backdrop-blur-md rounded-full border border-white/20
+                group-hover:scale-110 group-hover:bg-primary/20 group-hover:border-primary/50 transition-all duration-500">
+                <PlayCircle className="w-10 h-10 text-white/80 group-hover:text-primary transition-colors" />
+              </div>
+            </div>
+          )}
 
           {/* Quick preview button - Enhanced Prominence */}
           <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transform
@@ -180,11 +192,24 @@ const ProjectCard: FC<ProjectCardProps> = ({
                   {/* 1. Modal Hero Section */}
                   <div className="relative aspect-[21/9] sm:aspect-[21/7] w-full overflow-hidden border-b border-border/50 group/hero bg-black">
                     <div className="absolute inset-0 bg-gradient-to-t from-neutral-bg via-neutral-bg/20 to-transparent z-10" />
-                    <img
-                      src={webUrl || imageUrl}
-                      alt={title}
-                      className="w-full h-full object-cover object-center"
-                    />
+
+                    {videoUrl ? (
+                      <video
+                        src={videoUrl}
+                        className="w-full h-full object-cover"
+                        autoPlay
+                        muted
+                        loop
+                        playsInline
+                        controls
+                      />
+                    ) : (
+                      <img
+                        src={webUrl || imageUrl}
+                        alt={title}
+                        className="w-full h-full object-cover object-center"
+                      />
+                    )}
 
                     {/* Fullscreen Button - Prominent */}
                     <button
@@ -370,15 +395,24 @@ const ProjectCard: FC<ProjectCardProps> = ({
               >
                 <X className="w-6 h-6" />
               </button>
-              <img
-                src={webUrl || imageUrl}
-                alt={title}
-                className="max-w-full max-h-full object-contain shadow-2xl"
-              />
+              {videoUrl ? (
+                <video
+                  src={videoUrl}
+                  className="max-w-full max-h-full object-contain shadow-2xl"
+                  autoPlay
+                  controls
+                  playsInline
+                />
+              ) : (
+                <img
+                  src={webUrl || imageUrl}
+                  alt={title}
+                  className="max-w-full max-h-full object-contain shadow-2xl"
+                />
+              )}
             </motion.div>
           )}
-        </AnimatePresence>
-,
+        </AnimatePresence>,
         document.body
       )}
     </>

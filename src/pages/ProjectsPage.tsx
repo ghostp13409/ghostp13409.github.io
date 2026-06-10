@@ -115,6 +115,7 @@ const ProjectsPage: FC = () => {
                   description={p.description}
                   tags={p.tags}
                   imageUrl={p.imageUrl}
+                  videoUrl={p.videoUrl}
                   contnetUrl={p.contentUrl}
                   completionDate={p.completionDate}
                   challenges={p.challenges}

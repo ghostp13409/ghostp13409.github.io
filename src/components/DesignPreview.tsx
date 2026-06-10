@@ -1,8 +1,8 @@
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 import type { FC } from "react";
 import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Eye } from "lucide-react";
+import { X, Eye, ChevronLeft, ChevronRight } from "lucide-react";
 
 interface DesignImage {
   id: number;
@@ -34,12 +34,39 @@ const designImages: DesignImage[] = [
 ];
 
 const DesignPreview: FC = () => {
-  const [selectedImage, setSelectedImage] = useState<DesignImage | null>(null);
+  const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
+
+  const handleNext = useCallback((e?: React.MouseEvent) => {
+    e?.stopPropagation();
+    if (selectedImageIndex !== null) {
+      setSelectedImageIndex((prev) => (prev! + 1) % designImages.length);
+    }
+  }, [selectedImageIndex]);
+
+  const handlePrev = useCallback((e?: React.MouseEvent) => {
+    e?.stopPropagation();
+    if (selectedImageIndex !== null) {
+      setSelectedImageIndex((prev) => (prev! - 1 + designImages.length) % designImages.length);
+    }
+  }, [selectedImageIndex]);
+
+  // Handle keyboard events
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (selectedImageIndex !== null) {
+        if (event.key === "Escape") setSelectedImageIndex(null);
+        else if (event.key === "ArrowRight") handleNext();
+        else if (event.key === "ArrowLeft") handlePrev();
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [selectedImageIndex, handleNext, handlePrev]);
 
   return (
     <div className="w-full h-full">
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
-        {designImages.map((p) => {
+        {designImages.map((p, index) => {
           const isEven = p.id % 2 === 0;
           return (
             <div key={p.id} className={`flex flex-col group ${isEven ? 'mt-6' : 'mb-6'}`}>
@@ -56,7 +83,7 @@ const DesignPreview: FC = () => {
               )}
               
               <div 
-                onClick={() => setSelectedImage(p)}
+                onClick={() => setSelectedImageIndex(index)}
                 className="relative overflow-hidden rounded-md border border-border/50 bg-neutral-bg/40 shadow-lg transition-all duration-500 group-hover:shadow-accent/10 group-hover:border-accent/30 cursor-zoom-in"
               >
                 <img
@@ -99,33 +126,53 @@ const DesignPreview: FC = () => {
       {/* Fullscreen Portal */}
       {createPortal(
         <AnimatePresence>
-          {selectedImage && (
+          {selectedImageIndex !== null && (
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 bg-black/95 z-[10000] flex items-center justify-center p-4 cursor-zoom-out"
-              onClick={() => setSelectedImage(null)}
+              className="fixed inset-0 bg-black/95 z-[10000] flex items-center justify-center p-4"
+              onClick={() => setSelectedImageIndex(null)}
             >
               <button
-                onClick={() => setSelectedImage(null)}
+                onClick={() => setSelectedImageIndex(null)}
                 className="absolute top-8 right-8 p-3 bg-white/10 hover:bg-white/20 text-white rounded-full backdrop-blur-md transition-all z-50 border border-white/10"
               >
                 <X className="w-6 h-6" />
               </button>
+
+              {/* Navigation buttons */}
+              {designImages.length > 1 && (
+                <>
+                  <button
+                    onClick={handlePrev}
+                    className="absolute left-4 sm:left-8 p-4 bg-white/5 hover:bg-white/10 text-white rounded-full backdrop-blur-md transition-all z-50 border border-white/5 group"
+                  >
+                    <ChevronLeft className="w-8 h-8 group-hover:-translate-x-1 transition-transform" />
+                  </button>
+                  <button
+                    onClick={handleNext}
+                    className="absolute right-4 sm:right-8 p-4 bg-white/5 hover:bg-white/10 text-white rounded-full backdrop-blur-md transition-all z-50 border border-white/5 group"
+                  >
+                    <ChevronRight className="w-8 h-8 group-hover:translate-x-1 transition-transform" />
+                  </button>
+                </>
+              )}
               
-              <div className="relative max-w-full max-h-full flex flex-col items-center gap-6">
+              <div className="relative max-w-full max-h-full flex flex-col items-center gap-6" onClick={(e) => e.stopPropagation()}>
                 <motion.img
-                  initial={{ scale: 0.9, y: 20 }}
-                  animate={{ scale: 1, y: 0 }}
-                  exit={{ scale: 0.9, y: 20 }}
-                  src={selectedImage.url}
-                  alt={selectedImage.title}
+                  key={selectedImageIndex}
+                  initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                  animate={{ opacity: 1, scale: 1, y: 0 }}
+                  exit={{ opacity: 0, scale: 0.9, y: 20 }}
+                  transition={{ type: "spring", damping: 25, stiffness: 200 }}
+                  src={designImages[selectedImageIndex].url}
+                  alt={designImages[selectedImageIndex].title}
                   className="max-w-full max-h-[85vh] object-contain shadow-2xl rounded-lg"
                 />
                 <div className="text-center">
-                  <h4 className="text-white text-2xl font-bold tracking-tight mb-2">{selectedImage.title}</h4>
-                  <p className="text-white/40 text-xs font-mono uppercase tracking-[0.3em]">Visual_Archive_0{selectedImage.id}</p>
+                  <h4 className="text-white text-2xl font-bold tracking-tight mb-2">{designImages[selectedImageIndex].title}</h4>
+                  <p className="text-white/40 text-xs font-mono uppercase tracking-[0.3em]">Visual_Archive_0{designImages[selectedImageIndex].id}</p>
                 </div>
               </div>
             </motion.div>

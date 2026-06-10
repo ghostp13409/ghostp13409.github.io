@@ -149,6 +149,13 @@ export const education: Education = {
       color: "primary",
       description: "Leading study groups and providing peer tutoring for programming courses"
     },
+    {
+      title: "Capstone 2026 Winner",
+      subtitle: "Team Lead",
+      icon: "🥇",
+      color: "primary",
+      description: "Leading a team to victory in the 2026 Capstone Project competition with an innovative software solution"
+    }
   ],
   progressStats: {
     completedSemesters: 3,
