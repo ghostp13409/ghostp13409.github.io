@@ -18,6 +18,7 @@ interface ProjectCardProps {
   challenges?: string;
   keyFeatures?: string[];
   setup?: string[];
+  platform?: string;
 }
 
 const ProjectCard: FC<ProjectCardProps> = ({
@@ -32,6 +33,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
   challenges,
   keyFeatures,
   setup,
+  platform
 }) => {
   const [showPreview, setShowPreview] = useState(false);
   const [isFullscreen, setIsFullscreen] = useState(false);
@@ -190,7 +192,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
                 {/* Scrollable Content Area */}
                 <div className="flex-1 overflow-y-auto custom-scrollbar">
                   {/* 1. Modal Hero Section */}
-                  <div className="relative aspect-[21/9] sm:aspect-[21/7] w-full overflow-hidden border-b border-border/50 group/hero bg-black">
+                  <div className="relative aspect-[16/10] sm:aspect-[21/7] w-full overflow-hidden border-b border-border/50 group/hero bg-black">
                     <div className="absolute inset-0 bg-gradient-to-t from-neutral-bg via-neutral-bg/20 to-transparent z-10" />
 
                     {videoUrl ? (
@@ -219,21 +221,22 @@ const ProjectCard: FC<ProjectCardProps> = ({
                       title="View Fullscreen"
                     >
                       <Eye className="w-3.5 h-3.5 text-primary group-hover/fs:text-neutral-bg" />
-                      <span className="text-primary group-hover/fs:text-neutral-bg">Full_Screen</span>
+                      <span className="text-primary group-hover/fs:text-neutral-bg hidden sm:inline">Full_Screen</span>
+                      <span className="text-primary group-hover/fs:text-neutral-bg sm:hidden">VIEW</span>
                     </button>
 
                     {/* Project Header Overlay - Fixed inside hero */}
-                    <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-8 lg:p-10 z-20">
+                    <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-8 lg:p-10 z-20">
                       <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
                         <div className="space-y-1">
                           <div className="flex items-center gap-3">
                             <span className="px-2 py-0.5 bg-primary/20 text-primary border border-primary/30 rounded-sm text-[10px] font-bold uppercase tracking-widest">
                               {completionDate || '2026'} Project
                             </span>
-                            <span className="h-px w-6 bg-border" />
-                            <span className="text-ink/40 text-[10px] font-mono uppercase">CS_0{tags.length}</span>
+                            <span className="h-px w-6 bg-border hidden sm:block" />
+                            <span className="text-ink/40 text-[10px] font-mono uppercase hidden sm:block">CS_0{tags.length}</span>
                           </div>
-                          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-ink tracking-tight">
+                          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-bold text-ink tracking-tight drop-shadow-md">
                             {title}
                           </h2>
                         </div>
@@ -244,10 +247,10 @@ const ProjectCard: FC<ProjectCardProps> = ({
                               href={contnetUrl}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="flex items-center gap-2 px-5 py-2.5 bg-primary text-neutral-bg rounded-md
-                                font-bold text-sm hover:bg-primary/80 transition-all duration-300 shadow-lg shadow-primary/20"
+                              className="flex items-center gap-2 px-4 sm:px-5 py-2 sm:py-2.5 bg-primary text-neutral-bg rounded-md
+                                font-bold text-xs sm:text-sm hover:bg-primary/80 transition-all duration-300 shadow-lg shadow-primary/20"
                             >
-                              <Github className="w-4 h-4" />
+                              <Github className="w-3.5 h-3.5 sm:w-4 h-4" />
                               <span>SOURCE_CODE</span>
                             </a>
                           )}
@@ -333,13 +336,13 @@ const ProjectCard: FC<ProjectCardProps> = ({
                         <h3 className="text-[10px] font-bold text-ink/40 uppercase tracking-[0.2em]">Specifications</h3>
                         <div className="space-y-3">
                           <div className="flex justify-between items-center py-2.5 border-b border-border/20">
-                            <span className="text-ink/40 text-xs">Deployment</span>
+                            <span className="text-ink/40 text-xs">Year</span>
                             <span className="text-ink/80 text-xs font-bold">{completionDate || '2026'}</span>
                           </div>
                           <div className="flex justify-between items-center py-2.5 border-b border-border/20">
                             <span className="text-ink/40 text-xs">Platform</span>
                             <span className="text-ink/80 text-xs font-bold">
-                              {tags?.includes('React') ? 'Web' : tags?.includes('Flutter') ? 'Mobile' : 'CLI'}
+                              {platform || (tags?.includes('React') ? 'Web' : tags?.includes('Flutter') ? 'Mobile' : 'CLI')}
                             </span>
                           </div>
                           {setup && (
@@ -356,23 +359,6 @@ const ProjectCard: FC<ProjectCardProps> = ({
                           )}
                         </div>
                       </section>
-
-                      {/* Sticky-ish CTA */}
-                      <div className="pt-4">
-                        <div className="p-5 bg-gradient-to-br from-primary/5 to-secondary/5 rounded-md border border-primary/20 space-y-4">
-                          <p className="text-[11px] text-ink/50 leading-relaxed font-medium">
-                            Full implementation and documentation available on GitHub.
-                          </p>
-                          <a
-                            href={contnetUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="w-full flex items-center justify-center gap-2 py-2.5 border border-primary/40 rounded-md text-primary text-xs font-bold hover:bg-primary hover:text-neutral-bg transition-all"
-                          >
-                            OPEN_REPOSITORY
-                          </a>
-                        </div>
-                      </div>
                     </div>
                   </div>
                 </div>

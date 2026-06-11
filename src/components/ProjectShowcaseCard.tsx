@@ -174,7 +174,7 @@ const ProjectShowcaseCard: FC<ProjectShowcaseCardProps> = ({
                 </button>
 
                 <div className="flex-1 overflow-y-auto custom-scrollbar">
-                  <div className="relative aspect-[21/9] sm:aspect-[21/6] w-full overflow-hidden border-b border-border/50">
+                  <div className="relative aspect-[16/10] sm:aspect-[21/6] w-full overflow-hidden border-b border-border/50">
                     <div className="absolute inset-0 bg-gradient-to-t from-neutral-bg via-neutral-bg/20 to-transparent z-10" />
                     <img
                       src={imageUrl}
@@ -182,16 +182,16 @@ const ProjectShowcaseCard: FC<ProjectShowcaseCardProps> = ({
                       className="w-full h-full object-cover object-center"
                     />
 
-                    <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-8 lg:p-10 z-20">
+                    <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-8 lg:p-10 z-20">
                       <div className="space-y-1">
                         <div className="flex items-center gap-3">
                           <span className="px-2 py-0.5 bg-primary/20 text-primary border border-primary/30 rounded-sm text-[10px] font-bold uppercase tracking-widest">
                             {completionDate || '2025'} Project
                           </span>
-                          <span className="h-px w-6 bg-border" />
-                          <span className="text-ink/40 text-[10px] font-mono uppercase">SHOWCASE_0{tags.length}</span>
+                          <span className="h-px w-6 bg-border hidden sm:block" />
+                          <span className="text-ink/40 text-[10px] font-mono uppercase hidden sm:block">SHOWCASE_0{tags.length}</span>
                         </div>
-                        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-ink tracking-tight">
+                        <h2 className="text-2xl sm:text-4xl lg:text-5xl font-bold text-ink tracking-tight drop-shadow-md">
                           {title}
                         </h2>
                       </div>
@@ -199,13 +199,13 @@ const ProjectShowcaseCard: FC<ProjectShowcaseCardProps> = ({
                   </div>
 
                   <div className="grid grid-cols-1 lg:grid-cols-12 gap-0 min-h-0">
-                    <div className="lg:col-span-8 p-6 sm:p-10 space-y-10 border-r border-border/50">
+                    <div className="lg:col-span-8 p-5 sm:p-10 space-y-8 sm:space-y-10 border-r border-border/50">
                       <section className="space-y-3">
                         <div className="flex items-center gap-2 text-primary">
                           <div className="w-1.5 h-1.5 bg-primary rounded-full" />
-                          <h3 className="text-[11px] font-bold uppercase tracking-widest">The Vision</h3>
+                          <h3 className="text-[10px] sm:text-[11px] font-bold uppercase tracking-widest">The Vision</h3>
                         </div>
-                        <p className="text-base sm:text-lg text-ink/80 leading-relaxed">
+                        <p className="text-sm sm:text-lg text-ink/80 leading-relaxed">
                           {description}
                         </p>
                       </section>

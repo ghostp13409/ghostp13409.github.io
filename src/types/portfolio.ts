@@ -104,6 +104,7 @@ export interface Project {
   impact?: string;
   keyFeatures?: string[];
   challenges?: string;
+  platform?: string;
   liveAppUrl?: string;
   isMobileApp?: boolean;
   screenshots?: string[];

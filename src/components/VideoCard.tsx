@@ -149,7 +149,7 @@ const VideoCard: FC<VideoCardProps> = ({ title, description, tags, videoUrl, thu
                 {/* Scrollable Content Area */}
                 <div className="flex-1 overflow-y-auto custom-scrollbar">
                   {/* 1. Modal Hero - Video Player - Ultra Wide Cinematic Crop */}
-                  <div className="relative aspect-[21/9] w-full overflow-hidden border-b border-border/50 bg-black">
+                  <div className="relative aspect-[16/10] sm:aspect-[21/9] w-full overflow-hidden border-b border-border/50 bg-black">
                     <video
                       src={videoUrl}
                       className="w-full h-full object-cover"
@@ -160,13 +160,13 @@ const VideoCard: FC<VideoCardProps> = ({ title, description, tags, videoUrl, thu
                     />
 
                     {/* Header Overlay */}
-                    <div className="absolute top-0 left-0 right-0 p-6 sm:p-8 lg:p-10 z-20 pointer-events-none bg-gradient-to-b from-black/80 to-transparent">
+                    <div className="absolute top-0 left-0 right-0 p-5 sm:p-8 lg:p-10 z-20 pointer-events-none bg-gradient-to-b from-black/80 to-transparent">
                       <div className="space-y-1">
                         <div className="flex items-center gap-3">
-                          <span className="h-px w-6 bg-border" />
+                          <span className="h-px w-6 bg-border hidden sm:block" />
                           <span className="text-white/40 text-[10px] font-mono uppercase">V_STREAM_0{tags.length}</span>
                         </div>
-                        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight drop-shadow-lg">
+                        <h2 className="text-2xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight drop-shadow-lg">
                           {title}
                         </h2>
                       </div>
@@ -177,22 +177,22 @@ const VideoCard: FC<VideoCardProps> = ({ title, description, tags, videoUrl, thu
                   <div className="grid grid-cols-1 lg:grid-cols-12 gap-0 min-h-0">
 
                     {/* Main Story Column */}
-                    <div className="lg:col-span-8 p-6 sm:p-10 space-y-10 border-r border-border/50">
+                    <div className="lg:col-span-8 p-5 sm:p-10 space-y-8 sm:space-y-10 border-r border-border/50">
 
                       {/* Overview */}
                       <section className="space-y-3">
                         <div className="flex items-center gap-2 text-secondary">
                           <div className="w-1.5 h-1.5 bg-secondary rounded-full" />
-                          <h3 className="text-[11px] font-bold uppercase tracking-widest">Project Overview</h3>
+                          <h3 className="text-[10px] sm:text-[11px] font-bold uppercase tracking-widest">Project Overview</h3>
                         </div>
-                        <p className="text-base sm:text-lg text-ink/80 leading-relaxed">
+                        <p className="text-sm sm:text-lg text-ink/80 leading-relaxed">
                           {description}
                         </p>
                       </section>
                     </div>
 
                     {/* Metadata Column */}
-                    <div className="lg:col-span-4 bg-neutral-bg/20 p-6 sm:p-10 space-y-10">
+                    <div className="lg:col-span-4 bg-neutral-bg/20 p-5 sm:p-10 space-y-8 sm:space-y-10">
 
                       {/* Tech Stack */}
                       <section className="space-y-4">
@@ -201,7 +201,7 @@ const VideoCard: FC<VideoCardProps> = ({ title, description, tags, videoUrl, thu
                           {tags.map((tech, index) => (
                             <span
                               key={index}
-                              className="px-2.5 py-1 bg-surface border border-border text-ink/60 rounded-sm text-[10px] font-mono
+                              className="px-2.5 py-1 bg-surface border border-border text-ink/60 rounded-sm text-[9px] sm:text-[10px] font-mono
                                 hover:border-secondary/50 hover:text-secondary transition-all duration-300"
                             >
                               {tech}

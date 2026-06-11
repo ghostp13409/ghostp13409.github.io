@@ -56,11 +56,11 @@ const IntroPage: FC = () => {
         variants={staggerContainer}
         initial="initial"
         animate="animate"
-        className="w-full px-8 lg:px-16 xl:px-10 text-center z-10"
+        className="w-full px-4 sm:px-8 lg:px-16 xl:px-10 text-center z-10"
       >
         {/* Main greeting */}
-        <motion.div variants={fadeInUp} className="mb-8">
-          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6">
+        <motion.div variants={fadeInUp} className="mb-6 sm:mb-8">
+          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold mb-4 sm:mb-6 leading-tight">
             <span className="text-primary">
               Hey, I'm Parth!
             </span>
@@ -68,9 +68,9 @@ const IntroPage: FC = () => {
         </motion.div>
 
         {/* Personal introduction */}
-        <motion.div variants={fadeInUp} className="mb-12">
-          <div className="bg-surface/40 backdrop-blur-xl p-8 rounded-lg border border-border/50 shadow-2xl">
-            <p className="text-xl sm:text-2xl text-ink leading-relaxed mb-6">
+        <motion.div variants={fadeInUp} className="mb-8 sm:mb-12">
+          <div className="bg-surface/40 backdrop-blur-xl p-6 sm:p-8 rounded-lg border border-border/50 shadow-2xl">
+            <p className="text-lg sm:text-2xl text-ink leading-relaxed mb-4 sm:mb-6">
               I'm a{" "}
               <span className="text-primary font-semibold">
                 software developer
@@ -89,9 +89,9 @@ const IntroPage: FC = () => {
               , or trying out the latest Linux distro.
             </p>
 
-            <div className="flex items-center justify-center gap-3 text-ink/60">
-              <Code2 className="h-5 w-5" />
-              <span>Currently creating bugs in Ontario, Canada</span>
+            <div className="flex items-center justify-center gap-2 sm:gap-3 text-ink/60">
+              <Code2 className="h-4 w-4 sm:h-5 sm:w-5" />
+              <span className="text-xs sm:text-base">Currently creating bugs in Ontario, Canada</span>
             </div>
           </div>
         </motion.div>

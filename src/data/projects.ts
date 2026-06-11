@@ -18,6 +18,7 @@ export const projects: Project[] = [
       "Handled inter-service communication asynchronously with RabbitMQ.",
     ],
     impact: "Designed a system capable of handling multiple concurrent moving requests with real-time driver tracking.",
+    platform: "Web"
   },
   {
     id: 1,
@@ -32,6 +33,7 @@ export const projects: Project[] = [
     webUrl: "images/projects/windchime.png",
     liveAppUrl: "windchime-preview/index.html",
     isMobileApp: true,
+    platform: "Mobile",
   },
   {
     id: 2,
@@ -43,6 +45,7 @@ export const projects: Project[] = [
     completionDate: "2026",
     setup: ["Rust, Omarchy, Zed"],
     webUrl: "images/projects/toss-demo.gif",
+    platform: "CLI",
   },
   {
     id: 3,
@@ -61,6 +64,7 @@ export const projects: Project[] = [
     contentUrl: "https://leetcode.com/u/ghostp134/",
     completionDate: "Since 2023",
     setup: ["Windows, Java, C#"],
+    platform: "LeetCode",
     webUrl:
       "https://www.readmecodegen.com/api/leetcode-stats/ghostp134?theme=dark&font=%27JetBrains+Mono%27%2C+%27Courier+New%27%2C+monospace&template=minimal",
   },
@@ -79,6 +83,7 @@ export const projects: Project[] = [
       "Optimized data retrieval using Redis caching.",
     ],
     impact: "Built a production-ready rental system with sub-second notification latency.",
+    platform: "Web",
   },
   {
     id: 5,
@@ -96,6 +101,7 @@ export const projects: Project[] = [
       "Managed distributed databases in a cloud environment.",
     ],
     impact: "Successfully collaborated in a team of 4 to deliver a scalable e-commerce backbone.",
+    platform: "Web",
   },
   {
     id: 6,
@@ -109,6 +115,7 @@ export const projects: Project[] = [
     contentUrl: "https://github.com/ehharvey/lms-2024",
     completionDate: "2024",
     setup: ["Windows, Visual Studio"],
+    platform: "Web",
   },
   {
     id: 7,
@@ -118,6 +125,7 @@ export const projects: Project[] = [
     completionDate: "2025",
     imageUrl: "images/projects/swiftdrive.png",
     setup: ["VS Code", "Android Studio", "Firebase"],
+    platform: "Mobile",
     learnings: [
       "Implemented robust data sync between SQLite and Firebase Firestore.",
       "Crafted a modern, reactive UI using Jetpack Compose.",
@@ -140,6 +148,7 @@ export const projects: Project[] = [
     contentUrl: "https://github.com/ghostp13409/ghostp13409.github.io",
     completionDate: "2024",
     setup: ["VS Code, Node.js, Git"],
+    platform: "Web",
   },
   {
     id: 9,
@@ -153,6 +162,7 @@ export const projects: Project[] = [
       "https://github.com/ghostp13409/ProjectGraveyard/tree/main/WebScrapers",
     completionDate: "2022",
     setup: ["Ubuntu, PyCharm, IFTTT"],
+    platform: "CLI",
   },
   {
     id: 10,
@@ -166,6 +176,7 @@ export const projects: Project[] = [
       "https://github.com/ghostp13409/ProjectGraveyard/tree/main/WebScrapers",
     completionDate: "2022",
     setup: ["Fedora, VS Code"],
+    platform: "CLI",
   },
   {
     id: 11,
@@ -176,6 +187,7 @@ export const projects: Project[] = [
     tags: ["C#", "Windows Forms", "OOP", "SOLID"],
     completionDate: "2024",
     setup: ["Windows, Visual Studio"],
+    platform: "Windows"
   },
 ];
 

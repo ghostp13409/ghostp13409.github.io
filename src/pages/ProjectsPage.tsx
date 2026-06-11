@@ -122,6 +122,7 @@ const ProjectsPage: FC = () => {
                   keyFeatures={p.keyFeatures}
                   setup={p.setup}
                   webUrl={p.webUrl}
+                  platform={p.platform}
                 />
               )}
             </motion.div>
