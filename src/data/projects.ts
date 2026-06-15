@@ -7,7 +7,7 @@ export const projects: Project[] = [
     description: "A full-stack marketplace connecting freelance drivers with customers needing moving services. I built this using a modern containerized microservices architecture to ensure it's scalable and robust.",
     tags: ["Java", "Spring Boot", "React", "TypeScript", "Docker", "RabbitMQ", "PostgreSQL"],
     completionDate: "2026",
-    contentUrl: "https://github.com/ghostp13409",
+    contentUrl: "https://github.com/ghostp13409/SwiftMove",
     imageUrl: "images/projects/swiftmove.png",
     videoUrl: "videos/projects/swiftmove.mp4",
     setup: ["Omarchy", "Gemini CLI", "Docker-Compose", "Cloudflare Tunnel"],
@@ -52,7 +52,7 @@ export const projects: Project[] = [
     title: "DSA Exercises",
     description:
       "Solved 70+ algorithmic problems on LeetCode. Analyzed time and space complexity for multiple algorithms, ensuring efficient and scalable solutions. Implemented and optimized algorithms for sorting, searching, and dynamic programming, reducing computation time by 30%.",
-    imageUrl: "https://www.readmecodegen.com/api/leetcode-stats/ghostp134?theme=dark&acceptance=false&reputation=false&font=%27JetBrains+Mono%27%2C+%27Courier+New%27%2C+monospace",
+    imageUrl: "https://www.readmecodegen.com/api/leetcode-stats?username=ghostp134&theme=github_dark",
     tags: [
       "Java",
       "C#",
@@ -66,7 +66,7 @@ export const projects: Project[] = [
     setup: ["Windows, Java, C#"],
     platform: "LeetCode",
     webUrl:
-      "https://www.readmecodegen.com/api/leetcode-stats/ghostp134?theme=dark&font=%27JetBrains+Mono%27%2C+%27Courier+New%27%2C+monospace&template=minimal",
+      "https://www.readmecodegen.com/api/leetcode-stats?username=ghostp134&theme=github_dark",
   },
   {
     id: 4,
