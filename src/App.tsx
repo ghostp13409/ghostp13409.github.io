@@ -1,13 +1,15 @@
-import "./App.css";
+import { MotionConfig } from "framer-motion";
 import Portfolio from "./pages/Portfolio";
 import type { FC } from "react";
 
 const App: FC = () => {
   return (
-    <div className="App">
-      <Portfolio />
-    </div>
+    <MotionConfig reducedMotion="user">
+      <div className="App">
+        <Portfolio />
+      </div>
+    </MotionConfig>
   );
-}
+};
 
 export default App;

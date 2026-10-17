@@ -7,82 +7,66 @@ import VideoCard from "../components/VideoCard";
 import { motion } from "framer-motion";
 import { Rocket, Code } from "lucide-react";
 import type { FC } from "react";
+import { fadeInUp, staggerContainer } from "../lib/motion";
+
+// +1 for the graphic design card rendered below.
+const totalProjects = projects.length + CollageProjects.length + 1;
 
 const ProjectsPage: FC = () => {
-  const fadeInUp = {
-    initial: { opacity: 0, y: 30 },
-    animate: { opacity: 1, y: 0 },
-    transition: { duration: 0.8, ease: "easeOut" },
-  };
-
-  const staggerContainer = {
-    animate: {
-      transition: {
-        staggerChildren: 0.15,
-      },
-    },
-  };
-
   return (
     <section
       id="projects"
-      className="min-h-screen flex flex-col justify-center items-center p-6 relative overflow-hidden bg-neutral-bg"
+      className="min-h-screen scroll-mt-18 lg:scroll-mt-0 flex flex-col justify-center items-center p-6 relative overflow-hidden bg-neutral-bg"
     >
       {/* Background decoration */}
-      <div className="absolute inset-0 overflow-hidden">
+      <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
         <div className="absolute top-20 left-10 w-20 h-20 bg-primary/10 rounded-full blur-xl"></div>
         <div className="absolute top-40 right-20 w-32 h-32 bg-secondary/10 rounded-full blur-xl"></div>
         <div className="absolute bottom-20 left-20 w-24 h-24 bg-accent/10 rounded-full blur-xl"></div>
       </div>
 
       <motion.div
-        variants={staggerContainer}
+        variants={staggerContainer(0.15)}
         initial="initial"
-        animate="animate"
-        className="w-full px-8 lg:px-16 xl:px-24 text-center z-10 space-y-12"
+        whileInView="animate"
+        viewport={{ once: true, amount: 0.05 }}
+        className="w-full max-w-7xl px-2 sm:px-8 text-center z-10 space-y-12"
       >
-        <motion.h1
+        <motion.h2
           variants={fadeInUp}
-          className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-8 text-primary tracking-tight"
+          className="text-4xl sm:text-6xl lg:text-7xl font-bold mb-8 text-primary tracking-tight"
         >
-          My Projects
-        </motion.h1>
+          Projects
+        </motion.h2>
 
         {/* Project Introduction */}
-        <motion.div variants={fadeInUp} className="mb-12">
-          <div className="bg-surface/40 backdrop-blur-xl p-8 rounded-lg border border-border/50 shadow-2xl">
-            <p className="text-xl sm:text-2xl text-ink leading-relaxed mb-6">
-              Here's a collection of projects that showcase my journey as a
-              developer. Each one taught me something new and pushed my
-              boundaries.
+        <motion.div variants={fadeInUp}>
+          <div className="bg-surface/40 backdrop-blur-xl p-6 sm:p-8 rounded-lg border border-border/50 shadow-2xl">
+            <p className="text-lg sm:text-2xl text-ink leading-relaxed mb-6">
+              A collection of projects from my journey as a developer. Each one taught me something new and pushed
+              my boundaries. Click any card for details, demos, and source code.
             </p>
 
-            <div className="flex items-center justify-center gap-6 text-ink/40">
+            <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-ink/40">
               <div className="flex items-center gap-2">
-                <Code className="h-5 w-5" />
-                <span className="text-sm">12+ Projects Completed</span>
+                <Code className="h-5 w-5" aria-hidden="true" />
+                <span className="text-sm">{totalProjects} projects</span>
               </div>
               <div className="flex items-center gap-2">
-                <Rocket className="h-5 w-5" />
-                <span className="text-sm">Always Building More</span>
+                <Rocket className="h-5 w-5" aria-hidden="true" />
+                <span className="text-sm">Always building more</span>
               </div>
             </div>
           </div>
         </motion.div>
 
         {/* Main Projects Grid */}
-        <motion.div
-          variants={staggerContainer}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-3 gap-6 mb-12"
+        <motion.ul
+          variants={staggerContainer(0.08)}
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12 list-none p-0 m-0"
         >
-          {projects.map((p, index) => (
-            <motion.div
-              key={p.id}
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1 }}
-              className="transform transition-all duration-300 hover:-translate-y-2"
-            >
+          {projects.map((p) => (
+            <motion.li key={p.id} variants={fadeInUp} className="h-full">
               {p.isMobileApp && p.liveAppUrl ? (
                 <MobileAppCard
                   title={p.title}
@@ -92,8 +76,8 @@ const ProjectsPage: FC = () => {
                   contentUrl={p.contentUrl}
                   completionDate={p.completionDate}
                   challenges={p.challenges}
-                  keyFeatures={p.keyFeatures}
-                  setup={p.setup}
+                  keyFeatures={p.keyFeatures ?? p.learnings}
+                  impact={p.impact}
                   liveAppUrl={p.liveAppUrl}
                 />
               ) : p.screenshots && p.screenshots.length > 0 ? (
@@ -101,12 +85,12 @@ const ProjectsPage: FC = () => {
                   title={p.title}
                   description={p.description}
                   tags={p.tags}
-                  year={new Number(p.completionDate).valueOf()}
                   imageUrl={p.imageUrl}
                   contentUrl={p.contentUrl}
                   completionDate={p.completionDate}
                   challenges={p.challenges}
-                  keyFeatures={p.keyFeatures}
+                  keyFeatures={p.keyFeatures ?? p.learnings}
+                  impact={p.impact}
                   screenshots={p.screenshots}
                 />
               ) : (
@@ -116,42 +100,32 @@ const ProjectsPage: FC = () => {
                   tags={p.tags}
                   imageUrl={p.imageUrl}
                   videoUrl={p.videoUrl}
-                  contnetUrl={p.contentUrl}
+                  contentUrl={p.contentUrl}
                   completionDate={p.completionDate}
                   challenges={p.challenges}
-                  keyFeatures={p.keyFeatures}
+                  keyFeatures={p.keyFeatures ?? p.learnings}
+                  impact={p.impact}
                   setup={p.setup}
                   webUrl={p.webUrl}
                   platform={p.platform}
                 />
               )}
-            </motion.div>
+            </motion.li>
           ))}
 
           {/* Design Project */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: projects.length * 0.1 }}
-            className="transform transition-all duration-300 hover:-translate-y-2"
-          >
+          <motion.li variants={fadeInUp} className="h-full">
             <DesignPreviewCard
               title="Graphic Design"
-              description="Designed visually appealing Logos, Posters, Brochures for a local business."
+              description="Logos, posters, menus, and brochures designed for local businesses."
               imageUrl="images/projects/Design.jpg"
-              tags={["Canva", "Design", "Creativity"]}
+              tags={["Canva", "Branding", "Print"]}
             />
-          </motion.div>
+          </motion.li>
 
           {/* College Projects */}
-          {CollageProjects.map((p, index) => (
-            <motion.div
-              key={p.id}
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: (projects.length + 1 + index) * 0.1 }}
-              className="transform transition-all duration-300 hover:-translate-y-2"
-            >
+          {CollageProjects.map((p) => (
+            <motion.li key={`college-${p.id}`} variants={fadeInUp} className="h-full">
               <VideoCard
                 title={p.title}
                 description={p.description}
@@ -160,16 +134,15 @@ const ProjectsPage: FC = () => {
                 thumbnailUrl={p.thumbnailUrl}
                 year={p.year}
               />
-            </motion.div>
+            </motion.li>
           ))}
-        </motion.div>
+        </motion.ul>
 
         <motion.div variants={fadeInUp}>
           <blockquote className="text-lg sm:text-xl italic text-ink/80 max-w-3xl mx-auto leading-relaxed">
-            "I use every project as a learning opportunity. Whether it's
-            mastering a new framework, solving a complex algorithm, or creating
-            something that genuinely helps people - I approach each challenge
-            with curiosity and determination."
+            "I use every project as a learning opportunity. Whether it's mastering a new framework, solving a complex
+            algorithm, or creating something that genuinely helps people, I approach each challenge with curiosity and
+            determination."
           </blockquote>
         </motion.div>
       </motion.div>

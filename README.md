@@ -1,75 +1,56 @@
-# React + TypeScript + Vite
+# Parth Gajjar · Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Personal portfolio site, live at **https://ghostp13409.github.io/**.
 
-Currently, two official plugins are available:
+A single-page React application with a fixed sidebar, lazily loaded sections, and rich project modals (video demos, screenshot galleries, and an embedded live Flutter web build).
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Stack
 
-## React Compiler
+- **React 19** + **TypeScript** (React Compiler enabled)
+- **Vite 8** with `@vitejs/plugin-react`
+- **Tailwind CSS 4** (design tokens in `src/index.css`)
+- **Framer Motion** for section and modal animations (respects `prefers-reduced-motion`)
+- **EmailJS** for the contact form
+- **react-github-calendar** for the contributions graph
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+## Project layout
 
-Note: This will impact Vite dev & build performances.
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```
+src/
+  pages/          One component per section (Intro, Experience, Skills, Projects, Contact)
+  components/     Sidebar, project cards, GitHub graph
+  components/ui/  Shared card face, modal shell, lightbox, modal building blocks
+  data/           All portfolio content (projects, experience, skills, education, profile)
+  types/          Content type definitions
+  hooks/          Scroll lock and Escape-key helpers for modals
+  lib/            Shared Framer Motion variants
+public/
+  images/, videos/   Project media
+  windchime-preview/ Flutter web build embedded as a live demo
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+To update content, edit the files under `src/data/`. No component changes are needed for new projects, roles, or certificates.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Development
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm ci
+npm run dev        # http://localhost:3000
+npm run typecheck  # tsc -b
+npm run lint       # eslint
+npm run build      # typecheck + production build to dist/
+npm run preview    # serve dist/ locally
 ```
+
+## Deployment
+
+The site is deployed to GitHub Pages from the `gh-pages` branch:
+
+```bash
+npm run deploy     # builds, then publishes dist/ with gh-pages
+```
+
+## Notes
+
+- Asset paths in `src/data/` are case-sensitive on GitHub Pages. Match the file name exactly.
+- The WindChime live demo loads only when a visitor clicks "Launch App", so the large Flutter bundle is never fetched on page load.

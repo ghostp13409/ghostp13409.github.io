@@ -1,19 +1,18 @@
-@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&display=swap');
 @import "tailwindcss";
 
 @theme {
-  --font-rubik: "Rubik", sans-serif;
+  --font-rubik: "Rubik", ui-sans-serif, system-ui, sans-serif;
 
   /* Brand Palette - Refined Neon Architect */
   --color-primary: oklch(75% 0.15 160);      /* Electric Emerald */
   --color-secondary: oklch(55% 0.20 260);    /* Ultramarine Indigo */
-  --color-accent: oklch(80% 0.15 80);       /* Luminous Amber */
+  --color-accent: oklch(80% 0.15 80);        /* Luminous Amber */
 
   /* Neutrals - Deep Midnight */
-  --color-neutral-bg: oklch(12% 0.015 260); /* Deep Midnight (tinted toward brand) */
-  --color-surface: oklch(18% 0.02 260);     /* Steel Surface */
-  --color-border: oklch(25% 0.02 260);      /* Slate Border */
-  --color-ink: oklch(97% 0.005 260);        /* Frosted Ink */
+  --color-neutral-bg: oklch(12% 0.015 260);  /* Deep Midnight (tinted toward brand) */
+  --color-surface: oklch(18% 0.02 260);      /* Steel Surface */
+  --color-border: oklch(25% 0.02 260);       /* Slate Border */
+  --color-ink: oklch(97% 0.005 260);         /* Frosted Ink */
 
   /* Radii */
   --radius-sm: 8px;
@@ -21,18 +20,59 @@
   --radius-lg: 24px;
 }
 
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+@layer base {
+  html {
+    color-scheme: dark;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+  }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+  body {
+    margin: 0;
+    overflow-x: hidden;
+    background-color: var(--color-neutral-bg);
+    color: var(--color-ink);
+    font-family: var(--font-rubik);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Prevent background scroll while a modal or the mobile menu is open */
+  body.scroll-locked {
+    overflow: hidden;
+  }
+
+  code,
+  pre {
+    font-family: "Source Code Pro", ui-monospace, Menlo, Monaco, Consolas, "Courier New", monospace;
+  }
+
+  /* Visible keyboard focus everywhere, without affecting mouse users */
+  :focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  /* Comfortable touch targets on interactive controls */
+  button,
+  [role="button"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
 }
 
 .App {
@@ -40,60 +80,21 @@ code {
   font-family: var(--font-rubik);
 }
 
-/* Custom mobile-friendly utilities */
-@utility text-responsive {
-  @apply text-sm sm:text-base md:text-lg;
-}
-
-@utility heading-responsive {
-  @apply text-xl sm:text-2xl md:text-3xl lg:text-4xl;
-}
-
-@utility padding-responsive {
-  @apply p-3 sm:p-4 md:p-6;
-}
-
-@utility gap-responsive {
-  @apply gap-3 sm:gap-4 md:gap-6;
-}
-
-@utility mobile-safe-area {
-  @apply px-4 sm:px-6 lg:px-8;
-}
-
-/* Improve touch targets for mobile */
-@layer base {
-  button,
-  a {
-    @apply min-h-[44px] min-w-[44px];
-  }
-}
-
-/* Fix viewport issues on mobile */
-@layer base {
-  html,
-  body {
-    @apply overflow-x-hidden;
-    scroll-behavior: smooth;
-  }
-
-  /* Prevent horizontal scroll */
-  * {
-    @apply max-w-full;
-  }
-}
-
 /* Custom Scrollbar for internal scrolling */
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in oklch, var(--color-primary) 40%, transparent) transparent;
+}
 .custom-scrollbar::-webkit-scrollbar {
-  width: 4px;
+  width: 6px;
+  height: 6px;
 }
 .custom-scrollbar::-webkit-scrollbar-track {
   background: transparent;
 }
 .custom-scrollbar::-webkit-scrollbar-thumb {
-  background: var(--color-primary);
+  background: color-mix(in oklch, var(--color-primary) 40%, transparent);
   border-radius: 10px;
-  opacity: 0.3;
 }
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
   background: var(--color-primary);

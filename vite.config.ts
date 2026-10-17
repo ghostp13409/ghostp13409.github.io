@@ -11,10 +11,14 @@ export default defineConfig({
     babel({ presets: [reactCompilerPreset()] }),
     tailwindcss(),
     ViteImageOptimizer({
-      test: /\.(jpe?g|png|gif|tiff|webp|svg)$/i,
+      // GIFs are excluded: the animated demo GIF exceeds sharp's pixel limit
+      // and re-encoding animated GIFs gains nothing.
+      test: /\.(jpe?g|png|tiff|webp|svg)$/i,
+      // The embedded Flutter build ships its own optimized assets.
+      exclude: /windchime-preview\//,
       png: { quality: 80 },
       jpeg: { quality: 80 },
-      webp: { lossy: true, quality: 80 },
+      webp: { quality: 80 },
     }),
   ],
   server: {

@@ -1,133 +1,114 @@
-import { useState, useEffect, lazy, Suspense } from "react";
+import { useState, lazy, Suspense, useCallback } from "react";
 import type { FC } from "react";
+import { Menu, X } from "lucide-react";
 import Sidebar from "../components/Sidebar";
 import IntroPage from "./IntroPage";
 import LoadingSection from "../components/LoadingSection";
+import { useEscapeKey, useScrollLock } from "../hooks/useModal";
 
 const ExperiencePage = lazy(() => import("./ExperiencePage"));
 const SkillsPage = lazy(() => import("./SkillsPage"));
 const ProjectsPage = lazy(() => import("./ProjectsPage"));
 const ContactPage = lazy(() => import("./ContactPage"));
 
+/**
+ * Page shell.
+ *
+ * Mobile (< lg): a fixed top bar, a slide-in menu, and the window itself scrolls.
+ * Desktop (lg+): a fixed-height two-column layout where the right column is
+ * its own scroll container (#main-scroll-container) so the sidebar stays put.
+ */
 const Portfolio: FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const closeMenu = useCallback(() => setIsMobileMenuOpen(false), []);
 
-  // Close mobile menu when clicking outside
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      const target = event.target as HTMLElement;
-      if (
-        isMobileMenuOpen &&
-        !target.closest(".mobile-sidebar") &&
-        !target.closest(".mobile-menu-button")
-      ) {
-        setIsMobileMenuOpen(false);
-      }
-    };
-
-    if (isMobileMenuOpen) {
-      document.addEventListener("click", handleClickOutside);
-    }
-
-    return () => document.removeEventListener("click", handleClickOutside);
-  }, [isMobileMenuOpen]);
+  useScrollLock(isMobileMenuOpen);
+  useEscapeKey(isMobileMenuOpen, closeMenu);
 
   return (
     <div className="min-h-screen bg-neutral-bg text-ink">
       {/* Mobile Header */}
-      <div className="lg:hidden fixed top-6 left-0 right-0 z-50 bg-surface/95 backdrop-blur-md border-b border-border">
-        <div className="flex items-center justify-between p-4">
-          <div className="flex items-center gap-3">
+      <header className="lg:hidden fixed top-0 left-0 right-0 z-50 h-18 bg-surface/95 backdrop-blur-md border-b border-border">
+        <div className="flex items-center justify-between h-full px-4">
+          <button
+            type="button"
+            onClick={() => {
+              closeMenu();
+              document.getElementById("intro")?.scrollIntoView({ behavior: "smooth" });
+            }}
+            className="flex items-center gap-3 text-left rounded-md"
+            aria-label="Back to top"
+          >
             <img
               src="images/profile_logo.jpeg"
+              width={40}
+              height={40}
               className="w-10 h-10 rounded-full object-cover border border-border"
-              alt="Profile"
+              alt=""
             />
-            <div>
-              <h1 className="text-lg font-bold text-ink">Parth Gajjar</h1>
-              <p className="text-sm text-ink/60">Software Developer</p>
-            </div>
-          </div>
+            <span>
+              <span className="block text-lg font-bold text-ink leading-tight">Parth Gajjar</span>
+              <span className="block text-sm text-ink/60">Software Developer @ Catalis</span>
+            </span>
+          </button>
           <button
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="mobile-menu-button p-2 rounded-lg bg-border hover:bg-border/80 transition-colors z-50"
+            type="button"
+            onClick={() => setIsMobileMenuOpen((open) => !open)}
+            className="mobile-menu-button p-2 rounded-lg bg-border hover:bg-border/80 transition-colors"
+            aria-label={isMobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+            aria-expanded={isMobileMenuOpen}
+            aria-controls="mobile-navigation"
           >
-            <svg
-              className="w-6 h-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              {isMobileMenuOpen ? (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              ) : (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
-              )}
-            </svg>
+            {isMobileMenuOpen ? <X className="w-6 h-6" aria-hidden="true" /> : <Menu className="w-6 h-6" aria-hidden="true" />}
           </button>
         </div>
-      </div>
+      </header>
 
       {/* Mobile Menu Overlay */}
       {isMobileMenuOpen && (
         <div
-          className="lg:hidden fixed inset-0 z-40 bg-neutral-bg/80 backdrop-blur-sm"
-          onClick={() => setIsMobileMenuOpen(false)}
+          role="presentation"
+          className="lg:hidden fixed inset-0 top-18 z-40 bg-neutral-bg/80 backdrop-blur-sm"
+          onClick={closeMenu}
         >
           <div
-            className="mobile-sidebar fixed top-20 right-0 bottom-0 w-80 bg-surface border-l border-border overflow-y-auto shadow-2xl"
+            id="mobile-navigation"
+            role="presentation"
+            className="mobile-sidebar absolute top-0 right-0 bottom-0 w-80 max-w-[85vw] bg-surface border-l border-border overflow-y-auto shadow-2xl"
             onClick={(e) => e.stopPropagation()}
           >
-            <Sidebar
-              isMobile={true}
-              onMenuItemClick={() => setIsMobileMenuOpen(false)}
-            />
+            <Sidebar isMobile onMenuItemClick={closeMenu} />
           </div>
         </div>
       )}
 
-      <div className="flex gap-4">
+      <div className="lg:flex lg:gap-4 lg:h-screen lg:p-4">
         {/* Desktop Sidebar */}
-        <div className="hidden lg:flex h-screen p-4">
+        <div className="hidden lg:flex lg:h-full">
           <Sidebar />
         </div>
 
         {/* Main Content */}
-        <div className="flex-1 pt-24 lg:pt-0">
-          <div className="h-screen p-0 lg:p-4">
-            <div
-              id="main-scroll-container"
-              className="h-full overflow-y-auto lg:rounded-lg lg:border border-border bg-neutral-bg"
-            >
-              <Suspense fallback={<LoadingSection />}>
-                {/* Intro Section */}
-                <IntroPage />
-
-                {/* Experience Section */}
-                <ExperiencePage />
-
-                {/* Skills Section */}
-                <SkillsPage />
-
-                {/* Projects Section */}
-                <ProjectsPage />
-
-                {/* Hire Me Section */}
-                <ContactPage />
-              </Suspense>
-            </div>
+        <main className="pt-18 lg:pt-0 lg:flex-1 lg:min-w-0 lg:h-full">
+          <div
+            id="main-scroll-container"
+            className="lg:h-full lg:overflow-y-auto lg:rounded-lg lg:border border-border bg-neutral-bg"
+          >
+            <IntroPage />
+            <Suspense fallback={<LoadingSection />}>
+              <ExperiencePage />
+            </Suspense>
+            <Suspense fallback={<LoadingSection />}>
+              <SkillsPage />
+            </Suspense>
+            <Suspense fallback={<LoadingSection />}>
+              <ProjectsPage />
+            </Suspense>
+            <Suspense fallback={<LoadingSection />}>
+              <ContactPage />
+            </Suspense>
           </div>
-        </div>
+        </main>
       </div>
     </div>
   );

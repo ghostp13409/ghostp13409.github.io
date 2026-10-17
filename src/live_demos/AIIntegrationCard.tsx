@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { motion } from "framer-motion";
 import type { FC, FormEvent } from "react";
 import { Send } from "lucide-react";
 

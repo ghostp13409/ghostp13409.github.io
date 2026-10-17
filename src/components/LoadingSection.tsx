@@ -1,4 +1,4 @@
-import { FC } from "react";
+import type { FC } from "react";
 
 const LoadingSection: FC = () => (
   <div className="min-h-screen flex items-center justify-center bg-neutral-bg">

@@ -1,25 +1,10 @@
 import type { ReactNode } from "react";
 
-export interface Course {
-  id: number;
-  phase: string;
-  period: string;
-  status: "completed" | "upcoming";
-  courses: string[];
-  keySkills: string[];
-  grade: string;
-  gpa: number | null;
-  highlights: string[];
-  projects: string[];
-}
-
 export interface Achievement {
   title: string;
   subtitle: string;
   icon: string;
   color: string;
-  bgColor: string;
-  borderColor: string;
   description: string;
 }
 
@@ -40,18 +25,7 @@ export interface Education {
     completedSemesters: number;
   };
   description: string;
-  timeline: Course[];
   achievements: Achievement[];
-  progressStats: {
-    completedSemesters: number;
-    currentSemester: number;
-    totalSemesters: number;
-    completedPercentage: number;
-    coopTermsCompleted: number;
-    totalCoopTerms: number;
-    academicSemestersCompleted: number;
-    totalAcademicSemesters: number;
-  };
 }
 
 export interface Certificate {
@@ -60,7 +34,8 @@ export interface Certificate {
   issuer: string;
   date: string;
   skills: string[];
-  link: string;
+  /** Verification URL. Omit when no public credential link exists. */
+  link?: string;
 }
 
 export interface InProgressLearning {
@@ -69,7 +44,8 @@ export interface InProgressLearning {
   source: string;
   sourceUrl: string;
   sourcePlatform: string;
-  progress: string;
+  /** Whole-number percentage, 0-100. */
+  progress: number;
 }
 
 export interface Social {
@@ -78,12 +54,26 @@ export interface Social {
   url: string;
 }
 
+export interface ExperienceHighlight {
+  title: string;
+  text: string;
+  stack?: string[];
+}
+
 export interface WorkExperience {
   id: number;
   company: string;
+  /** One-line description of the employer, shown under the company name. */
+  companyNote?: string;
+  companyUrl?: string;
   role: string;
   location: string;
   period: string;
+  /** Short paragraph introducing the role. */
+  summary?: string;
+  /** Named accomplishments, rendered as a grid of cards. */
+  highlights?: ExperienceHighlight[];
+  /** Plain bullet points. */
   description: string[];
   skills: string[];
   isCurrent?: boolean;
@@ -99,6 +89,7 @@ export interface Project {
   contentUrl?: string;
   completionDate: string;
   setup: string[];
+  /** Larger preview image shown in the project modal. Falls back to imageUrl. */
   webUrl?: string;
   learnings?: string[];
   impact?: string;
@@ -121,6 +112,7 @@ export interface CollageProject {
   id: number;
   title: string;
   description: string;
+  /** Video demo path. */
   imageUrl: string;
   tags: string[];
   thumbnailUrl: string;
@@ -130,6 +122,5 @@ export interface CollageProject {
 export interface Hobby {
   id: number;
   title: string;
-  imageUrl: string;
   description: string;
 }
